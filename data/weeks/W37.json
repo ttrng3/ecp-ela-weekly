@@ -1,0 +1,210 @@
+{
+ "week": "Tuần 37",
+ "range": "11–12/09/2026",
+ "prev": "Tuần 36 (05/09)",
+ "compiled": "15/09/2026",
+ "sub": "So sánh tuần liền kề · <b>Tuần 36 (05/09) → Tuần 37 (11–12/09/2026)</b> · tổng hợp 15/09/2026 · nguồn: Báo cáo Vận hành Ban QLVH (Vinh &amp; Long An)",
+ "verdict": {
+  "lead": "Cả hai dự án <b>tiến triển đúng hướng ở khâu bàn giao – nghiệm thu</b>: ELA thực nhận PK1 tăng 27 → 37 căn và nghiệm thu lần 1 PK3 lên 66/68; ECP bàn giao thấp tầng +3 căn, cư dân về ở +9 hộ. Ba điểm cần lưu ý:",
+  "points": "① <b>Cầu tham quan rơi mạnh WoW ở cả hai</b> — tuần sau lễ 2/9 cộng mưa bão (ECP có công tác khắc phục sau bão trong tuần). ② <b>ELA: khai trương Eco Bazaar đóng băng 28/66 (~20 tuần)</b> trong khi báo cáo vẫn in “đã cho thuê 100%” — churn (căn K23 trả mặt bằng) đang bị con số headline che. ③ <b>Báo cáo hai bên vẫn thiếu lớp số thương mại</b> (doanh thu/công nợ phí dịch vụ); riêng ECP xuất bản dạng ảnh, không bóc tách số tự động được."
+ },
+ "kpis": {
+  "ecp": [
+   {
+    "label": "Khách tham quan công viên",
+    "value": "5.501",
+    "unit": "",
+    "delta": "−24.111 · −81,4%",
+    "cls": "dn"
+   },
+   {
+    "label": "Khách khu vui chơi",
+    "value": "1.253",
+    "unit": "",
+    "delta": "−4.827 · −79,4%",
+    "cls": "dn"
+   },
+   {
+    "label": "Hộ cư dân về ở",
+    "value": "580",
+    "unit": "",
+    "delta": "+9",
+    "cls": "up"
+   },
+   {
+    "label": "Bàn giao thấp tầng",
+    "value": "1.184",
+    "unit": "/1.657",
+    "delta": "+3 · 71,5%",
+    "cls": "up"
+   },
+   {
+    "label": "Căn đang thi công (fit-out)",
+    "value": "986",
+    "unit": "",
+    "delta": "+8",
+    "cls": "fl"
+   },
+   {
+    "label": "Căn thi công đã về ở",
+    "value": "102",
+    "unit": "",
+    "delta": "−21 · −17,1%",
+    "cls": "wn"
+   }
+  ],
+  "ela": [
+   {
+    "label": "Khách tham quan KĐT",
+    "value": "3.918",
+    "unit": "",
+    "delta": "−7.412 · −65,4%",
+    "cls": "dn"
+   },
+   {
+    "label": "Khách khu vui chơi",
+    "value": "240",
+    "unit": "",
+    "delta": "−5.324 · −95,7%",
+    "cls": "dn"
+   },
+   {
+    "label": "Bàn giao Eco Bazaar",
+    "value": "58",
+    "unit": "/66",
+    "delta": "88% · đứng yên",
+    "cls": "fl"
+   },
+   {
+    "label": "Khai trương Eco Bazaar",
+    "value": "28",
+    "unit": "/66",
+    "delta": "43% · đóng băng ~20 tuần",
+    "cls": "dn"
+   },
+   {
+    "label": "Nhân sự BQL",
+    "value": "152",
+    "unit": "",
+    "delta": "±0",
+    "cls": "fl"
+   },
+   {
+    "label": "Nhà thầu thi công",
+    "value": "30",
+    "unit": "",
+    "delta": "+3",
+    "cls": "up"
+   }
+  ]
+ },
+ "done": {
+  "ecp": [
+   "<b>Bàn giao & về ở:</b> thấp tầng +3 căn (1.184/1.657), thêm 9 hộ cư dân về ở (580).",
+   "<b>Ứng phó bão:</b> cả 6 bộ phận hỗ trợ cư dân phòng chống và khắc phục sau bão.",
+   "<b>Kỹ thuật:</b> chốt đồng hồ nước bàn giao, kiểm soát cấp nước/PCCC, xử lý defect với nhà thầu tại The Garden / The Campus / Central Park Residences; chuẩn bị vận hành công viên nước Zone 3.",
+   "<b>Cộng đồng & đào tạo:</b> chương trình “Rung Chuông Vàng” toàn CBNV; đón đoàn teambuilding tại Hồ Thiên Nga; đào tạo tác phong diện mạo (AN) và PCCC cơ sở."
+  ],
+  "ela": [
+   "<b>Thực nhận cư dân:</b> PK1 (Mùa Xuân) 27 → 37 căn (+10); nghiệm thu theo lịch nâng 65 → 85/198.",
+   "<b>Nghiệm thu PK3 (Mùa Hạ):</b> lần 1 lên 66/68 (+16), lần 2 42/68; đã nhận 15 căn.",
+   "<b>Tiến độ xây dựng nhích:</b> PK1 xây dựng 57→62%, PK3 62→68%; PK4 (Mùa Thu) vẫn 31%.",
+   "<b>Sẵn sàng đón cư dân:</b> lắp camera & bố trí PCCC tại PK1/PK3; nghiệm thu cấp điện – cấp thoát nước.",
+   "<b>Văn hóa nội bộ:</b> lập nhóm “Eco – Ngôi nhà chung” (460 thành viên); sự kiện thả diều, kayak, “Ngày Thứ 7 Xanh”."
+  ]
+ },
+ "progress": {
+  "ecp": [
+   {
+    "label": "Thấp tầng",
+    "value": "1.184 / 1.657 · 71,5%",
+    "pct": 71.5,
+    "warn": false
+   },
+   {
+    "label": "Tòa Central Park Residences",
+    "value": "618 / 620 · 99,7%",
+    "pct": 99.7,
+    "warn": false
+   },
+   {
+    "label": "Còn phải bàn giao (thấp tầng)",
+    "value": "473 căn",
+    "pct": 28.5,
+    "warn": true
+   }
+  ],
+  "ela": [
+   {
+    "label": "PK1 – Mùa Xuân (đã nhận 37)",
+    "value": "85 / 198 · 42,9%",
+    "pct": 42.9,
+    "warn": false
+   },
+   {
+    "label": "PK3 – Mùa Hạ (đã nhận 15)",
+    "value": "68 / 121 · 56,2%",
+    "pct": 56.2,
+    "warn": false
+   },
+   {
+    "label": "PK4 – Mùa Thu (xây dựng)",
+    "value": "31% · chưa có lịch NT",
+    "pct": 31.0,
+    "warn": true
+   }
+  ]
+ },
+ "actions": {
+  "ecp": [
+   {
+    "tag": "VERIFY",
+    "title": "Phục hồi & đo lại nền cầu tham quan sau bão",
+    "meta": "Khách công viên rơi về 5.501 từ ~29.612 tuần lễ 2/9. Cần tách hiệu ứng lễ vs bão và đặt mục tiêu tuần thường. <span class=\"own\">Owner: BQL + Marketing.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "Lộ trình đóng 473 căn thấp tầng chưa bàn giao",
+    "meta": "1.184/1.657 đã bàn giao; 986 căn còn đang fit-out. Cần mốc và tiến độ đón cư dân theo phân khu. <span class=\"own\">Owner: Ban Bàn giao + QLTC.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Nộp kèm bản số của báo cáo tuần",
+    "meta": "Báo cáo ECP xuất bản dạng ảnh (không có lớp text) → không đối chiếu/theo dõi số tự động được. Đề nghị kèm Excel/PDF có lớp text. <span class=\"own\">Owner: Ban QLVH Vinh.</span>"
+   }
+  ],
+  "ela": [
+   {
+    "tag": "DECIDE",
+    "title": "Đính chính con số cho thuê + danh sách 38 căn “tối đèn”",
+    "meta": "Khai trương 28/66 đứng ~20 tuần, K23 vừa trả mặt bằng, nhưng vẫn in “cho thuê 100%”. Cần số HĐ còn hiệu lực + danh sách 38 căn (tên khách, ngày ký, cam kết khai trương, tình trạng phí). <span class=\"own\">Owner: KDTM + BQL.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "Chốt cơ chế xử lý căn tối đèn",
+    "meta": "Gia hạn có điều kiện / phạt theo ngày / thu hồi cho thuê lại — quy định có Pháp chế ký. <span class=\"own\">Owner: KDTM + Pháp chế.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Bắt buộc 5 dòng KPI thương mại vào mẫu báo cáo",
+    "meta": "Doanh thu / phải thu phí dịch vụ, bảng aging công nợ, khai trương mới &amp; chấm dứt HĐ trong tuần, footfall theo ngày. <span class=\"own\">Owner: BLĐ + KDTM.</span> <span class=\"freeze\">Treo từ review W21.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "3 căn lưu trú qua đêm (K25, K30, K58) &amp; định biên 152 vs 108",
+    "meta": "Rủi ro PCCC/pháp lý mặt bằng thương mại — nhắc nhiều tuần chưa dứt. Đối chiếu định biên thực tế 152 so duyệt 108. <span class=\"own\">Owner: BQL + AN + Nhân sự.</span>"
+   }
+  ]
+ },
+ "ksnb": [
+  "<b>Chủ sở hữu chỉ số cầu:</b> footfall giảm mạnh cả hai dự án nhưng không báo cáo nào nêu nguyên nhân/mục tiêu — cần chốt BQL hay Marketing chịu trách nhiệm và KPI tuần.",
+  "<b>ELA — headline che churn:</b> “cho thuê 100%” trong khi hai căn đã rời (K55 thu hồi W33, K23 trả mặt bằng W37); tỷ lệ thực tối đa 64/66 ≈ 97%.",
+  "<b>Định dạng báo cáo:</b> ECP là ảnh (không bóc tách số); ELA file 100–130MB, mẫu thay đổi giữa các tuần — làm chậm việc tổng hợp và đối chiếu tự động."
+ ],
+ "legend": [
+  "✓ <b>Đã kiểm chứng</b> — mọi chỉ số KPI đọc trực tiếp từ báo cáo gốc W36/W37 phiên này; Δ tính lại bằng mã.",
+  "~ <b>Nhiều khả năng</b> — quy nhân cầu giảm cho tuần sau lễ 2/9 + mưa bão (theo nội dung báo cáo).",
+  "◦ <b>Chưa kiểm chứng</b> — quy mô tài chính 38 căn tối đèn (khung giá 24/05)."
+ ],
+ "sourceNote": "ECP Tuần 36 (05/09) &amp; Tuần 37 (11/09) — Ban QLVH Vinh; ELA Tuần 36 (05/09) &amp; Tuần 37 (12/09) — Ban QLVH Long An. Bối cảnh lịch sử ELA (W18–W34) từ bảng theo dõi tuần hiện có. Lưu ý so sánh: ECP không có tuần W34–W35; ELA không có tuần W35. Tổng hợp cho KSNB &amp; QTRR, register Pragmatic Technocrat."
+}

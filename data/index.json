@@ -1,0 +1,19 @@
+{
+ "generatedUtc": "2026-09-15T08:00:00Z",
+ "current": "W37",
+ "projects": {
+  "ecp": {
+   "name": "Eco Central Park",
+   "loc": "Vinh · Nghệ An"
+  },
+  "ela": {
+   "name": "Eco Retreat",
+   "loc": "Long An"
+  }
+ },
+ "weeks": {
+  "W37": "W37"
+ },
+ "pages": "https://ttrng3.github.io/ecp-ela-weekly/",
+ "repo": "https://github.com/ttrng3/ecp-ela-weekly"
+}
