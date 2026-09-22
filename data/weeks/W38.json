@@ -1,0 +1,216 @@
+{
+ "week": "Tuần 38",
+ "range": "18–19/09/2026",
+ "prev": "Tuần 37 (11–12/09)",
+ "compiled": "22/09/2026",
+ "sub": "So sánh tuần liền kề · <b>Tuần 37 (11–12/09) → Tuần 38 (18–19/09/2026)</b> · tổng hợp 22/09/2026 · nguồn: Báo cáo Vận hành Ban QLVH Vinh (ECP). <b>ELA tuần này chưa bóc tách được (file 164MB, không có lớp text) — toàn bộ số ELA giữ nguyên W37 và gắn ⚠.</b>",
+ "verdict": {
+  "lead": "<b>Chỉ ECP có số mới tuần này.</b> Bàn giao thấp tầng nhích +2 căn (1.186/1.657), căn thi công đã về ở +20 (102 → 122), nhưng <b>hộ cư dân về ở lại giảm 580 → 578</b> và cầu tham quan tiếp tục đi xuống. ELA: chưa có số — không kết luận được gì về tuần 38. Ba điểm cần lưu ý:",
+  "points": "① <b>ECP: số hộ về ở giảm −2</b> — chỉ số tích lũy không nên giảm; hoặc có hộ chuyển đi, hoặc báo cáo nhập sai. Cần BQL xác nhận. ② <b>Cầu tham quan ECP chưa hồi</b> — khách công viên −386 (−7,0%) và khu vui chơi −166 (−13,2%) dù đã qua tuần bão; đây là tuần thứ hai giảm liên tiếp. ③ <b>Chất lượng báo cáo ECP:</b> file “Tuần 38” mở đầu bằng “Bản sao của…”, trang bìa vẫn ghi “BÁO CÁO TUẦN 37”, và phần công việc/sự kiện (bão, “Rung Chuông Vàng”, teambuilding) lặp nguyên văn W37 — chỉ khối số liệu là mới. ELA W38 hoàn toàn chưa đọc được."
+ },
+ "kpis": {
+  "ecp": [
+   {
+    "label": "Khách tham quan công viên",
+    "value": "5.115",
+    "unit": "",
+    "delta": "−386 · −7,0%",
+    "cls": "dn"
+   },
+   {
+    "label": "Khách khu vui chơi",
+    "value": "1.087",
+    "unit": "",
+    "delta": "−166 · −13,2%",
+    "cls": "dn"
+   },
+   {
+    "label": "Hộ cư dân về ở",
+    "value": "578",
+    "unit": "",
+    "delta": "−2 · −0,3% · giảm bất thường — cần xác minh",
+    "cls": "wn"
+   },
+   {
+    "label": "Bàn giao thấp tầng",
+    "value": "1.186",
+    "unit": "/1.657",
+    "delta": "+2 · 71,6%",
+    "cls": "up"
+   },
+   {
+    "label": "Căn đang thi công (fit-out)",
+    "value": "991",
+    "unit": "",
+    "delta": "+5",
+    "cls": "fl"
+   },
+   {
+    "label": "Căn thi công đã về ở",
+    "value": "122",
+    "unit": "",
+    "delta": "+20 · +19,6%",
+    "cls": "up"
+   }
+  ],
+  "ela": [
+   {
+    "label": "Khách tham quan KĐT",
+    "value": "3.918",
+    "unit": "",
+    "delta": "⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "cls": "wn"
+   },
+   {
+    "label": "Khách khu vui chơi",
+    "value": "240",
+    "unit": "",
+    "delta": "⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "cls": "wn"
+   },
+   {
+    "label": "Bàn giao Eco Bazaar",
+    "value": "58",
+    "unit": "/66",
+    "delta": "⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "cls": "wn"
+   },
+   {
+    "label": "Khai trương Eco Bazaar",
+    "value": "28",
+    "unit": "/66",
+    "delta": "⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "cls": "wn"
+   },
+   {
+    "label": "Nhân sự BQL",
+    "value": "152",
+    "unit": "",
+    "delta": "⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "cls": "wn"
+   },
+   {
+    "label": "Nhà thầu thi công",
+    "value": "30",
+    "unit": "",
+    "delta": "⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "cls": "wn"
+   }
+  ]
+ },
+ "done": {
+  "ecp": [
+   "<b>Bàn giao & thi công:</b> thấp tầng +2 căn (1.186/1.657 · 71,6%); Central Park Residences đứng 618/620; căn fit-out 986 → 991; căn thi công đã về ở 102 → 122.",
+   "<b>⚠ Nội dung công việc lặp W37:</b> các mục ứng phó bão, “Rung Chuông Vàng”, teambuilding Hồ Thiên Nga, đào tạo PCCC/tác phong được in lại nguyên văn — không xác nhận được là hoạt động mới của tuần 38.",
+   "<b>Kỹ thuật:</b> tiếp tục chốt đồng hồ nước bàn giao, xử lý bảo hành với nhà thầu tại The Garden / The Campus / Central Park Residences; chuẩn bị vận hành công viên nước Zone 3."
+  ],
+  "ela": [
+   "<b>⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công.</b> File “Ban QLVH Long An Tuần 38.pdf” (164MB) không trả về lớp text qua Drive connector phiên này — không có mục công việc nào được xác nhận cho tuần 38."
+  ]
+ },
+ "progress": {
+  "ecp": [
+   {
+    "label": "Thấp tầng",
+    "value": "1.186 / 1.657 · 71,6%",
+    "pct": 71.6,
+    "warn": false
+   },
+   {
+    "label": "Tòa Central Park Residences",
+    "value": "618 / 620 · 99,7%",
+    "pct": 99.7,
+    "warn": false
+   },
+   {
+    "label": "Còn phải bàn giao (thấp tầng)",
+    "value": "471 căn",
+    "pct": 28.4,
+    "warn": true
+   }
+  ],
+  "ela": [
+   {
+    "label": "PK1 – Mùa Xuân (đã nhận 37)",
+    "value": "85 / 198 · 42,9% · ⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "pct": 42.9,
+    "warn": true
+   },
+   {
+    "label": "PK3 – Mùa Hạ (đã nhận 15)",
+    "value": "68 / 121 · 56,2% · ⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "pct": 56.2,
+    "warn": true
+   },
+   {
+    "label": "PK4 – Mùa Thu (xây dựng)",
+    "value": "31% · chưa có lịch NT · ⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công",
+    "pct": 31.0,
+    "warn": true
+   }
+  ]
+ },
+ "actions": {
+  "ecp": [
+   {
+    "tag": "VERIFY",
+    "title": "Hộ cư dân về ở giảm 580 → 578",
+    "meta": "Chỉ số tích lũy giảm −2 hộ WoW. Xác nhận có hộ chuyển đi hay lỗi nhập liệu; nếu chuyển đi, cần lý do. <span class=\"own\">Owner: Bộ phận Chăm sóc Cư dân.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Cầu tham quan giảm tuần thứ hai liên tiếp",
+    "meta": "Khách công viên 5.501 → 5.115 (−7,0%), khu vui chơi 1.253 → 1.087 (−13,2%) dù hết tuần bão. Cần mục tiêu tuần thường và chủ sở hữu chỉ số. <span class=\"own\">Owner: BQL + Marketing.</span> <span class=\"freeze\">Treo từ W37.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Báo cáo W38 là bản sao W37 chưa sửa hết",
+    "meta": "Bìa ghi “BÁO CÁO TUẦN 37”, tên file “Bản sao của…”, mục công việc/sự kiện lặp nguyên văn. Yêu cầu cập nhật nội dung thực của tuần và đặt tên file theo chuẩn <i>*ECP*Tuần-N*.pdf</i>. <span class=\"own\">Owner: Ban QLVH Vinh.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "Lộ trình đóng 471 căn thấp tầng chưa bàn giao",
+    "meta": "Tuần này chỉ +2 căn (W37: +3) — ở nhịp +2/tuần sẽ cần ~236 tuần. Cần mốc theo phân khu. <span class=\"own\">Owner: Ban Bàn giao + QLTC.</span> <span class=\"freeze\">Treo từ W37.</span>"
+   }
+  ],
+  "ela": [
+   {
+    "tag": "FILL",
+    "title": "Cung cấp số liệu ELA Tuần 38 dạng có lớp text / Excel",
+    "meta": "File 164MB không bóc tách được. Thiếu toàn bộ: khách tham quan KĐT, khách khu vui chơi, nhân sự BQL, nhà thầu thi công, bàn giao Eco Bazaar x/66, khai trương x/66, nghiệm thu PK1/PK3/PK4. <span class=\"own\">Owner: Ban QLVH Long An.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "Đính chính con số cho thuê + danh sách 38 căn “tối đèn”",
+    "meta": "Khai trương 28/66 đứng ~20 tuần, K23 vừa trả mặt bằng, nhưng vẫn in “cho thuê 100%”. Cần số HĐ còn hiệu lực + danh sách 38 căn (tên khách, ngày ký, cam kết khai trương, tình trạng phí). <span class=\"own\">Owner: KDTM + BQL.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "Chốt cơ chế xử lý căn tối đèn",
+    "meta": "Gia hạn có điều kiện / phạt theo ngày / thu hồi cho thuê lại — quy định có Pháp chế ký. <span class=\"own\">Owner: KDTM + Pháp chế.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Bắt buộc 5 dòng KPI thương mại vào mẫu báo cáo",
+    "meta": "Doanh thu / phải thu phí dịch vụ, bảng aging công nợ, khai trương mới &amp; chấm dứt HĐ trong tuần, footfall theo ngày. <span class=\"own\">Owner: BLĐ + KDTM.</span> <span class=\"freeze\">Treo từ review W21.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "3 căn lưu trú qua đêm (K25, K30, K58) &amp; định biên 152 vs 108",
+    "meta": "Rủi ro PCCC/pháp lý mặt bằng thương mại — nhắc nhiều tuần chưa dứt. Đối chiếu định biên thực tế 152 so duyệt 108. <span class=\"own\">Owner: BQL + AN + Nhân sự.</span>"
+   }
+  ]
+ },
+ "ksnb": [
+  "<b>ECP — tính toàn vẹn báo cáo:</b> file W38 là bản sao W37 (bìa vẫn ghi Tuần 37, nội dung hoạt động lặp nguyên văn), chỉ số hộ về ở giảm −2. Rủi ro báo cáo “điền cho có” — cần người duyệt ký xác nhận trước khi nộp.",
+  "<b>Chủ sở hữu chỉ số cầu (treo từ W37):</b> footfall ECP giảm tuần thứ hai, báo cáo không nêu nguyên nhân hay mục tiêu.",
+  "<b>ELA — mất khả năng giám sát tuần 38:</b> file 164MB (lớn nhất từ trước tới nay, W37 là 127MB), không có lớp text; các điểm treo (28/66 khai trương, “cho thuê 100%”, định biên 152 vs 108) không kiểm tra được tuần này.",
+  "<b>Đặt tên file lệch chuẩn cả hai bên:</b> “190926_Ban QLVH Eco Vinh - Tuần 38.pdf”, “Ban QLVH Long An Tuần 38.pdf” — không khớp mẫu *ECP/ELA*Tuần-N*."
+ ],
+ "legend": [
+  "✓ <b>Đã kiểm chứng</b> — 6 chỉ số ECP đọc từ lớp text của báo cáo gốc W38 phiên này; Δ tính lại bằng mã so với W37.",
+  "~ <b>Nhiều khả năng</b> — gán 1.087 = khách khu vui chơi, 122 = căn thi công về ở, 991 = căn thi công theo bố cục trang (nhãn và số tách dòng khi trích text).",
+  "⚠ <b>Chưa cập nhật</b> — toàn bộ số ELA là giá trị W37 giữ nguyên, cần xác nhận thủ công."
+ ],
+ "sourceNote": "ECP Tuần 37 (11/09) &amp; Tuần 38 (báo cáo ngày 18/09, file “190926_Ban QLVH Eco Vinh - Tuần 38.pdf”) — Ban QLVH Vinh. ELA Tuần 38 (“Ban QLVH Long An Tuần 38.pdf”, 164MB) chưa bóc tách được; số ELA hiển thị là W37 (12/09). Lưu ý so sánh: ECP không có tuần W34–W35; ELA không có tuần W35. Tổng hợp cho KSNB &amp; QTRR."
+}
