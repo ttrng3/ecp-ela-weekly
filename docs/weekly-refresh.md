@@ -83,5 +83,3 @@ conclusion.
 - The Drive standalone-HTML handoff at `93 Knowledge Base/Claude outputs/Weekly Status/`.
 - The PAT at `93 Knowledge Base/_tools/gh_ecpela_pat.txt` and token-in-URL pushes.
 - Editing an artifact first and mirroring it to GitHub. The repo leads now.
-- The claude.ai artifact copy itself, deleted 2026-09-23. GitHub Pages is the
-  only reader; do not recreate one.
