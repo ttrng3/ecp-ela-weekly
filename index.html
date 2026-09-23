@@ -1,118 +1,153 @@
 <!doctype html>
 <html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body>
 <title>Điều Hành Vận Hành ECP × ELA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   TY ARTIFACT STANDARD — Apple HIG, light-committed.
+   Replaces the warm-paper / Be Vietnam Pro treatment, 2026-09-23.
+   System font only: no webfont link, nothing to block render.
+   Markup and the data layer are untouched — this block is style only.
+   ============================================================ */
 :root{
-  --paper:#FFFFFF; --surface:#FAFAF8; --sunk:#F3F3EF; --ink:#1C1C1A; --ink-soft:#44443F;
-  --muted:#6B6B64; --rule:#E4E4DF; --accent:#0F6E52; --accent-bg:#EAF3EF;
-  --critical:#B02418; --warning:#9A6B00;
-  --ecp:#0F6E52; --ela:#8A5A00;
+  --bg:#F2F2F7; --paper:#FFFFFF; --surface:#F2F2F7; --sunk:#F2F2F7;
+  --line:#E5E5EA; --line-soft:#EFEFF2; --rule:#E5E5EA;
+  --ink:#1C1C1E; --ink-soft:#3C3C43; --muted:#8E8E93;
+
+  --blue:#007AFF; --blue-bg:#E8F1FE; --blue-ink:#0060DF; --blue-line:#CFE3FD;
+  --green:#34C759; --green-bg:#E6F7EB; --green-ink:#1E7F3C;
+  --amber:#FF9500; --amber-bg:#FFF4E5; --amber-ink:#8A5200; --amber-line:#F6DFBC;
+  --red:#FF3B30; --red-bg:#FFEBE9; --red-ink:#C4271D; --red-line:#F7D2CE;
+
+  /* Names the rest of the sheet still uses. */
+  --accent:#007AFF; --accent-bg:#E8F1FE;
+  --critical:#C4271D; --warning:#8A5200;
+
+  /* Project identity — NOT status. Two hues that separate under every CVD
+     type, and never reused for a state. */
+  --ecp:#007AFF; --ela:#5856D6;
+
+  --r-card:12px; --r-inner:8px; --r-pill:12px;
+  --sans:-apple-system,BlinkMacSystemFont,"San Francisco","Helvetica Neue",Helvetica,Ubuntu,Roboto,sans-serif;
 }
-*{box-sizing:border-box;}
-body{margin:0;background:#FFFFFF;color:var(--ink);
-  font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.5;-webkit-font-smoothing:antialiased;}
-.wrap{max-width:1120px;margin:0 auto;padding:30px 22px 56px;}
-.num{font-variant-numeric:tabular-nums;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink-soft);font-family:var(--sans);
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:32px 64px}
+.num{font-variant-numeric:tabular-nums}
 
 /* ---- Masthead ---- */
-.eyebrow{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 7px;}
-h1{font-size:25px;line-height:1.18;font-weight:700;color:var(--ink);margin:0 0 6px;letter-spacing:-.01em;}
-.sub{font-size:13px;color:var(--muted);margin:0;}
-.sub b{color:var(--ink-soft);font-weight:600;}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+h1{font-size:28px;line-height:1.2;font-weight:600;color:var(--ink);margin:0 0 8px;letter-spacing:-.021em;text-wrap:balance}
+.sub{font-size:12px;color:var(--muted);margin:0;line-height:1.5}
+.sub b{color:var(--ink-soft);font-weight:600}
 
 /* ---- Verdict ---- */
-.verdict{margin:20px 0 8px;border:1px solid var(--rule);border-left:3px solid var(--accent);
-  background:var(--surface);border-radius:0 10px 10px 0;padding:15px 18px;}
-.verdict .vh{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 6px;}
-.verdict p{margin:0 0 8px;font-size:14px;color:var(--ink-soft);}
-.verdict p:last-child{margin-bottom:0;}
-.verdict b{color:var(--ink);font-weight:600;}
+.verdict{margin:24px 0 8px;border:1px solid var(--blue-line);background:var(--blue-bg);
+  border-radius:var(--r-card);padding:16px 20px}
+.verdict .vh{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-ink);font-weight:600;margin:0 0 6px}
+.verdict p{margin:0 0 8px;font-size:14px;color:var(--ink-soft)}
+.verdict p:last-child{margin-bottom:0}
+.verdict b{color:var(--ink);font-weight:600}
 
 /* ---- Section heads ---- */
-h2{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--ink);text-transform:uppercase;
-  margin:34px 0 4px;padding-bottom:7px;border-bottom:1.5px solid var(--ink);}
-.h2note{font-size:12px;color:var(--muted);margin:0 0 14px;}
+h2{font-size:20px;font-weight:500;letter-spacing:-.012em;color:var(--ink);text-transform:none;
+  margin:32px 0 4px;padding-bottom:0;border-bottom:0;line-height:1.3;text-wrap:balance}
+.h2note{font-size:12px;color:var(--muted);margin:0 0 14px}
 
 /* ---- Two-column duo ---- */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-@media(max-width:760px){.duo{grid-template-columns:1fr;}}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.duo{grid-template-columns:1fr}}
 
-.panel{border:1px solid var(--rule);border-radius:11px;background:var(--paper);overflow:hidden;}
+.panel{border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);overflow:hidden}
 .panel > .ph{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
-  padding:12px 15px;border-bottom:1px solid var(--rule);background:var(--surface);}
-.ph .pname{font-size:14.5px;font-weight:700;color:var(--ink);}
-.ph .ploc{font-size:11.5px;color:var(--muted);}
-.ph.ecp{border-top:3px solid var(--ecp);}
-.ph.ela{border-top:3px solid var(--ela);}
-.pbody{padding:14px 15px;}
+  padding:14px 20px;border-bottom:1px solid var(--line);background:var(--paper)}
+.ph .pname{font-size:16px;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
+.ph .pname::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.ph .ploc{font-size:12px;color:var(--muted)}
+.ph.ecp{border-top:0}
+.ph.ela{border-top:0}
+.ph.ecp .pname::before{background:var(--ecp)}
+.ph.ela .pname::before{background:var(--ela)}
+.pbody{padding:16px 20px}
 
 /* ---- KPI grid ---- */
-.kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
-.kpi{background:var(--surface);border-radius:8px;padding:10px 11px;}
-.kpi .kl{font-size:10.8px;color:var(--muted);text-transform:uppercase;letter-spacing:.02em;margin:0 0 4px;line-height:1.3;min-height:2.1em;}
-.kpi .kv{font-size:21px;font-weight:700;line-height:1.05;color:var(--ink);}
-.kpi .kv .u{font-size:12px;font-weight:500;color:var(--muted);}
-.kpi .kd{font-size:11.5px;margin-top:3px;font-weight:600;}
-.dn{color:var(--critical);} .up{color:var(--accent);} .fl{color:var(--muted);} .wn{color:var(--warning);}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--bg);border-radius:var(--r-inner);padding:12px 14px}
+.kpi .kl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin:0 0 4px;line-height:1.3;min-height:2.1em}
+.kpi .kv{font-size:24px;font-weight:600;line-height:1.15;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .kv .u{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
+.kpi .kd{font-size:12px;margin-top:4px;font-weight:600;font-variant-numeric:tabular-nums}
+.dn{color:var(--red-ink)} .up{color:var(--green-ink)} .fl{color:var(--muted)} .wn{color:var(--amber-ink)}
 
 /* ---- Progress bars ---- */
-.prog{margin:2px 0 0;}
-.prog .row{margin:0 0 10px;}
-.prog .row:last-child{margin-bottom:0;}
-.prog .lab{display:flex;justify-content:space-between;font-size:12px;margin:0 0 4px;color:var(--ink-soft);}
-.prog .lab b{color:var(--ink);font-weight:600;}
-.bar{height:8px;background:var(--sunk);border-radius:20px;overflow:hidden;}
-.bar > span{display:block;height:100%;background:var(--accent);border-radius:20px;}
-.bar.warn > span{background:var(--warning);}
+.prog{margin:2px 0 0}
+.prog .row{margin:0 0 12px}
+.prog .row:last-child{margin-bottom:0}
+.prog .lab{display:flex;justify-content:space-between;font-size:12px;margin:0 0 5px;color:var(--ink-soft)}
+.prog .lab b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--bg);border-radius:20px;overflow:hidden}
+.bar > span{display:block;height:100%;background:var(--green);border-radius:20px}
+.bar.warn > span{background:var(--amber)}
 
 /* ---- Lists (done / todo) ---- */
-ul.clean{list-style:none;margin:0;padding:0;}
-ul.clean li{position:relative;padding:0 0 9px 17px;font-size:12.9px;color:var(--ink-soft);}
-ul.clean li:last-child{padding-bottom:0;}
-ul.clean li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--accent);}
-ul.clean li b{color:var(--ink);font-weight:600;}
+ul.clean{list-style:none;margin:0;padding:0}
+ul.clean li{position:relative;padding:0 0 10px 18px;font-size:13px;color:var(--ink-soft)}
+ul.clean li:last-child{padding-bottom:0}
+ul.clean li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+ul.clean li b{color:var(--ink);font-weight:600}
 
 /* ---- Action items ---- */
-.act{border-top:1px solid var(--rule);padding:10px 0 0;margin:10px 0 0;}
-.act:first-child{border-top:0;padding-top:0;margin-top:0;}
-.act .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;vertical-align:1px;margin-right:7px;}
-.t-decide{background:#F7DED9;color:#8A1D13;}
-.t-fill{background:#FBEED0;color:#7A5300;}
-.t-verify{background:var(--accent-bg);color:var(--accent);}
-.act .atitle{font-size:12.9px;font-weight:600;color:var(--ink);}
-.act .ameta{font-size:11.5px;color:var(--muted);margin:3px 0 0;}
-.act .ameta .own{color:var(--ink-soft);font-weight:600;}
-.freeze{color:var(--critical);font-weight:600;}
+.act{border-top:1px solid var(--line-soft);padding:12px 0 0;margin:12px 0 0}
+.act:first-child{border-top:0;padding-top:0;margin-top:0}
+/* Tag carries a dot and a word: amber and green sit 7.1 dE apart under
+   protanopia, so colour alone does not separate these states. */
+.act .tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;letter-spacing:0;
+  padding:2px 8px;border-radius:var(--r-pill);vertical-align:1px;margin-right:7px;line-height:1.5}
+.act .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.t-decide{background:var(--red-bg);color:var(--red-ink)}
+.t-fill{background:var(--amber-bg);color:var(--amber-ink)}
+.t-verify{background:var(--blue-bg);color:var(--blue-ink)}
+.act .atitle{font-size:13px;font-weight:600;color:var(--ink)}
+.act .ameta{font-size:12px;color:var(--muted);margin:4px 0 0}
+.act .ameta .own{color:var(--ink-soft);font-weight:600}
+.freeze{color:var(--red-ink);font-weight:600}
 
 /* ---- Data-quality callout ---- */
-.ksnb{margin-top:14px;border:1px solid var(--rule);border-left:3px solid var(--warning);
-  background:var(--surface);border-radius:0 10px 10px 0;padding:13px 16px;}
-.ksnb h3{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--warning);font-weight:700;margin:0 0 8px;}
-.ksnb ul{margin:0;padding-left:16px;}
-.ksnb li{font-size:12.6px;color:var(--ink-soft);margin:0 0 6px;}
-.ksnb li:last-child{margin-bottom:0;}
-.ksnb li b{color:var(--ink);font-weight:600;}
+.ksnb{margin-top:16px;border:1px solid var(--amber-line);background:var(--amber-bg);
+  border-radius:var(--r-card);padding:16px 20px}
+.ksnb h3{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber-ink);font-weight:600;margin:0 0 8px}
+.ksnb ul{margin:0;padding-left:18px}
+.ksnb li{font-size:13px;color:var(--ink-soft);margin:0 0 6px}
+.ksnb li:last-child{margin-bottom:0}
+.ksnb li b{color:var(--ink);font-weight:600}
 
 /* ---- Footer ---- */
-.foot{margin-top:30px;border-top:1px solid var(--rule);padding-top:12px;font-size:11px;color:var(--muted);line-height:1.55;}
-.foot b{color:var(--ink-soft);}
-.legend{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 8px;}
-.legend span{font-size:11px;color:var(--muted);}
+.foot{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--muted);line-height:1.55}
+.foot b{color:var(--ink-soft)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 8px}
+.legend span{font-size:12px;color:var(--muted)}
 
-/* ---- Print economy ---- */
+@media (max-width:560px){
+  h1{font-size:24px}
+  .wrap{padding-block:24px 48px}
+  .verdict,.pbody,.ksnb{padding:16px}
+  .panel > .ph{padding:14px 16px}
+  .kpis{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---- Print: this gets photocopied ---- */
 @media print{
-  body{background:#fff;}
-  .wrap{max-width:none;padding:0;}
-  .panel,.verdict,.ksnb,.kpi{background:#fff !important;}
-  .kpi{border:1px solid #ddd;}
-  :root{--muted:#222;--ink-soft:#222;}
-  .panel,.verdict,.ksnb,.act,section{break-inside:avoid;}
-  h2{break-after:avoid;}
-  a{color:inherit;text-decoration:none;}
+  body{background:#FFFFFF;font-size:11pt}
+  :root{--muted:#222;--ink-soft:#222;--bg:#FFFFFF;--line:#BBBBBB;--line-soft:#DDDDDD}
+  .wrap{max-width:none;padding:0}
+  .panel,.verdict,.ksnb,.kpi,.panel > .ph{background:#FFFFFF !important}
+  .panel,.verdict,.ksnb,.kpi{border:1px solid #BBB}
+  .panel,.verdict,.ksnb,.act,section{break-inside:avoid}
+  h2{break-after:avoid}
+  .act .tag{background:#FFFFFF !important;color:#222 !important;border:1px solid #777}
+  .bar > span,.ph .pname::before,ul.clean li::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:#222 !important;text-decoration:underline}
 }
 </style>
 
@@ -124,7 +159,7 @@ ul.clean li b{color:var(--ink);font-weight:600;}
 </div>
 
 <script>
-// Data lives beside the page. Opened from anywhere else (a claude.ai artifact,
+// Data lives beside the page. Opened from anywhere else (a local copy,
 // a local copy) the relative path fails and we fall back to the published copy,
 // so one file works everywhere.
 const DATA_ABS = 'https://ttrng3.github.io/ecp-ela-weekly/data/';
@@ -199,7 +234,7 @@ async function boot(){
 }
 boot().catch(err => {
   document.getElementById('sub').innerHTML =
-    '<b style="color:#B02418">Không nạp được dữ liệu:</b> ' + (err.message || err)
+    '<b style="color:#C4271D">Không nạp được dữ liệu:</b> ' + (err.message || err)
     + ' — nguồn <code>' + DATA_BASE + 'index.json</code>';
 });
 </script>

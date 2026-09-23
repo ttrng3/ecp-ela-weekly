@@ -14,23 +14,22 @@ Google Drive — 07 Weekly Reports (ECP + ELA weekly PDFs)
         ▼
 weekly routine ──writes──▶ data/index.json + data/weeks/W<N>.json
                                    │
-                    ┌──────────────┴──────────────┐
-                    ▼                             ▼
-             GitHub Pages                 claude.ai artifact
-             (index.html)                 (its own copy of data/)
+                                   ▼
+                            GitHub Pages
+                            (index.html)
 ```
 
 `index.html` is a **renderer with no data in it** (~10 KB). It fetches `data/`
 at load — relative first, falling back to the published
 `https://ttrng3.github.io/ecp-ela-weekly/data/` — so the same file works as a
-Pages site, as an artifact, and from a local copy.
+Pages site and from a local copy.
 
 ## Why it changed
 
 The page used to be a single hand-built HTML file. The weekly routine assembled
-it, republished the artifact, saved a standalone copy to Drive, then pushed
-*that file* to GitHub with a PAT — so the published page was downstream of the
-artifact, and every hop carried the whole document.
+it, republished a claude.ai artifact, saved a standalone copy to Drive, then
+pushed *that file* to GitHub with a PAT — so the published page was downstream
+of the artifact, and every hop carried the whole document.
 
 Now the routine writes data and the page renders it. A weekly update is one new
 `data/weeks/W<N>.json` (~9 KB) plus a rewritten `data/index.json` (~0.4 KB).
@@ -47,7 +46,6 @@ comparing the resulting text: **identical, 5,666 characters.**
 | `data/weeks/W<N>.json` | That week's whole briefing: verdict, KPIs, done, progress, actions, KSNB notes, sources. |
 | `data/.last-check` | Heartbeat. Proves the job ran even when there was no new report. |
 | `.github/workflows/freshness-check.yml` | Opens an issue if the job stops, or if the reports go quiet. |
-| `tools/reconcile.py` | Diffs this repo's `data/` against the artifact's copy. Shared with the other dashboards. |
 
 ## Why the heartbeat matters here more than anywhere else
 
@@ -67,3 +65,17 @@ heartbeat says the job ran, `generatedUtc` says it published.
   requires keeping the prior figures, labelling them, and naming exactly which
   indicators are missing — never inventing a number.
 - ELA's PDFs run 100–130 MB and the template changes between weeks.
+
+## Visual standard
+
+The renderer follows the **Ty Artifact Standard**. The skill
+`ty-artifact-standard` holds the full rules and is the only place they live.
+A refresh writes `data/`, never the stylesheet.
+
+## One surface, on purpose
+
+Ty ruled on 2026-09-23 that the repo URL is what gets used internally and that
+the same information must not sit in two places. The claude.ai artifact copy of
+this dashboard was deleted that day, along with `tools/reconcile.py`, which
+existed only to diff this repo against it. **GitHub Pages is the only reader.**
+Do not recreate an artifact copy.

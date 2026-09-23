@@ -70,24 +70,11 @@ that is retired.
 Confirm `main` moved using the sha the write returned. Say plainly if you could
 not reach the live site rather than claiming a success you did not observe.
 
-### 7. Mirror to the artifact
-
-The artifact `https://claude.ai/artifact/CqC4YDArYm9cGfaF1HzV76` carries its
-**own** copy of `data/`, because an artifact cannot fetch across origins.
-Publish only the changed `data/` paths with `url` set — omitted files are kept.
-Title and favicon 🏙️ stay frozen.
-
-**Never republish the artifact's `index.html` here.** If you ever must, publish
-the *fragment* build starting at `<title>` with no doctype/html/head/body: the
-artifact service wraps what you give it, so a complete document nests inside
-another, the inner `<head>` is discarded, and the page renders **blank with no
-console error**.
-
-### 8. Report
+### 7. Report
 
 Three lines: the week updated per project plus 2–3 notable WoW moves; any
 indicator that could not be extracted and needs Ty to confirm; and the write
-result (commit sha, which path, artifact status). No unmarked number in a
+result (commit sha and which path). No unmarked number in a
 conclusion.
 
 ## Retired — do not restore
@@ -95,4 +82,6 @@ conclusion.
 - The `archive/status_<date>.html` series.
 - The Drive standalone-HTML handoff at `93 Knowledge Base/Claude outputs/Weekly Status/`.
 - The PAT at `93 Knowledge Base/_tools/gh_ecpela_pat.txt` and token-in-URL pushes.
-- Editing the artifact first and mirroring it to GitHub. The repo leads now.
+- Editing an artifact first and mirroring it to GitHub. The repo leads now.
+- The claude.ai artifact copy itself, deleted 2026-09-23. GitHub Pages is the
+  only reader; do not recreate one.
