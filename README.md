@@ -68,8 +68,12 @@ heartbeat says the job ran, `generatedUtc` says it published.
 
 ## Visual standard
 
-The renderer follows the **Ty Artifact Standard**. The skill
-`ty-artifact-standard` holds the full rules and is the only place they live.
+The renderer uses Apple HIG light tokens (base sheet) plus an **Apple layer**
+(`<style id="apple-layer">`, 2026-09-24, from the `apple-design` skill): full
+**dark mode** that follows the system or `<html data-theme="light|dark">`, card
+shadows, optical sizing, and the contrast/motion accessibility blocks. Dark is
+screen-only — print always comes out light. The page is **not** light-only any
+more; any new colour must be a token with a dark value, never a raw hex.
 A refresh writes `data/`, never the stylesheet.
 
 ## One surface, on purpose
