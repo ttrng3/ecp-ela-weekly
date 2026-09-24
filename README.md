@@ -69,11 +69,9 @@ heartbeat says the job ran, `generatedUtc` says it published.
 ## Visual standard
 
 The renderer uses Apple HIG light tokens (base sheet) plus an **Apple layer**
-(`<style id="apple-layer">`, 2026-09-24, from the `apple-design` skill): full
-**dark mode** that follows the system or `<html data-theme="light|dark">`, card
-shadows, optical sizing, and the contrast/motion accessibility blocks. Dark is
-screen-only — print always comes out light. The page is **not** light-only any
-more; any new colour must be a token with a dark value, never a raw hex.
+(`<style id="apple-layer">`, 2026-09-24, from the `apple-design` skill): card
+shadows, optical sizing, and the contrast/motion accessibility blocks.
+**Light only — Ty ruled 2026-09-24** (dark mode ran for one morning and was withdrawn): the page stays light whatever the viewer's system setting, and there is no dark theme. Do not add one back. Any new colour must be a token, never a raw hex.
 A refresh writes `data/`, never the stylesheet.
 
 ## One surface, on purpose
