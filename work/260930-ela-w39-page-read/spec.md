@@ -1,7 +1,8 @@
 # Spec: ela-w39-page-read
 
 **Approved:** 2026-09-30
-**Amended:** 2026-09-30, review fixes — NOT yet approved by Ty: (a) the source-folder count on the W39 page corrected from 30 to 35 PDFs (source: Drive API listing 2026-09-29 06:23 UTC, `verification/inbox-weekly-folder.md` check 1); (b) W39 pages read named exactly (2, 3, 9, 16, 19, 20, 21).
+**Amendment approved:** 2026-09-30 by Ty ("approve amendment").
+**Amended:** 2026-09-30, review fixes: (a) the source-folder count on the W39 page corrected from 30 to 35 PDFs (source: Drive API listing 2026-09-29 06:23 UTC, `verification/inbox-weekly-folder.md` check 1); (b) W39 pages read named exactly (2, 3, 9, 16, 19, 20, 21).
 
 **Intent:** accepted 2026-09-30 · **Status:** approved
 
