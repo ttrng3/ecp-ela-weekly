@@ -1,9 +1,9 @@
 {
  "week": "Tuần 39",
- "range": "25–26/09/2026",
+ "range": "25/09/2026",
  "prev": "Tuần 38 (18–19/09)",
  "compiled": "29/09/2026",
- "sub": "So sánh tuần liền kề · <b>Tuần 38 (18–19/09) → Tuần 39 (25–26/09/2026)</b> · tổng hợp 29/09/2026 · nguồn: Báo cáo Vận hành Ban QLVH Vinh (ECP) và Ban QLVH Eco Retreat (ELA). <b>ELA đọc từ ảnh trang báo cáo (không có lớp text), bổ sung 29/09.</b>",
+ "sub": "So sánh tuần liền kề · <b>Tuần 38 (18–19/09) → Tuần 39 (25/09/2026)</b> · tổng hợp 29/09/2026 · nguồn: Báo cáo Vận hành Ban QLVH Vinh (ECP) và Ban QLVH Eco Retreat (ELA). <b>ELA đọc từ ảnh trang báo cáo (không có lớp text), bổ sung 30/09.</b>",
  "verdict": {
   "lead": "Khu vui chơi bật mạnh nhờ Trung thu (1.087 → 1.615, <b>+528 · +48,6%</b>) nhưng <b>khách công viên vẫn giảm tuần thứ ba liên tiếp</b> (5.115 → 4.992, −123 · −2,4%). Hộ cư dân về ở đảo chiều 578 → 613 (<b>+35 · +6,1%</b>) — lớn bất thường ngay sau tuần báo giảm −2. ELA (đọc từ ảnh trang): bàn giao nhà PK1 cho khách đã bắt đầu (5/24), khách KĐT giảm −38,5%. Ba điểm cần lưu ý:",
   "points": "① <b>ECP: hộ về ở nhảy +35 sau khi báo giảm −2</b> — biên độ này gấp ~17 lần nhịp bàn giao thấp tầng tuần này (+6 căn). Hoặc số 578 của W38 nhập sai, hoặc có đợt về ở tập trung; BQL cần đối chiếu lại cả hai tuần, không chỉ tuần 39. ② <b>Tăng trưởng khu vui chơi là tăng theo sự kiện, không phải theo nền</b> — báo cáo ghi sự kiện Trung thu “Trông trăng trẩy hội”; trong khi đó công viên — chỉ số nền — vẫn giảm. Cần tách footfall sự kiện khỏi footfall thường để biết nền thực sự ở đâu. ③ <b>ELA chuyển sang giai đoạn bàn giao</b> — PK1 5/24 khách đã nhận nhà, căn BQL đã nhận +22 trong tuần; nhưng khách tham quan KĐT giảm 3.918 → 2.408 (−38,5%) và số W38 trùng nguyên W37, nên mức giảm thật chưa chắc chắn."
@@ -65,7 +65,7 @@
     "label": "Khách khu vui chơi",
     "value": "1.430",
     "unit": "",
-    "delta": "+1.260 · +741,2% · Trung thu",
+    "delta": "+1.260 · +741,2%",
     "cls": "up"
    },
    {
@@ -111,7 +111,7 @@
    "<b>Nghiệm thu PK1 lần 1: 84 → 90/198 căn (+6)</b>; lần 2 giữ 70; căn BQL đã nhận <b>37 → 59 (+22)</b>.",
    "<b>PK3: căn BQL đã nhận 15 → 21 (+6)</b>; nghiệm thu lần 1 giữ 66/68, lần 2 giữ 53/68.",
    "Đào tạo các bộ phận (An ninh, MTĐT, CSCD) về quy trình nghiệm thu bàn giao; dựng khu đón khách “Mừng bạn về nhà”.",
-   "Khu vui chơi 1.430 khách dịp Trung thu (W38: 170)."
+   "Khu vui chơi 1.430 khách (W38: 170)."
   ]
  },
  "progress": {
@@ -188,7 +188,7 @@
    {
     "tag": "VERIFY",
     "title": "Đối chiếu 3 điểm số liệu trong báo cáo ELA",
-    "meta": "(1) Khách tham quan KĐT W38 = 3.918, <b>trùng khớp tuyệt đối W37</b> — cần số thật của W38. (2) Eco Bazaar: trang tổng hợp ghi <b>54/66</b>, trang chi tiết ghi <b>58</b> (W37: 58/66) — chỉ số tích lũy không thể giảm. (3) Mục lục bản 26/09 vẫn ghi “Báo cáo tuần 38”. Đồng thời đề nghị xuất PDF có lớp text để giảm công bóc tách. <span class=\"own\">Owner: Ban QLVH Long An.</span>"
+    "meta": "(1) Khách tham quan KĐT W38 = 3.918, <b>trùng khớp tuyệt đối W37</b> — cần số thật của W38. (2) Eco Bazaar: trang tổng hợp ghi <b>54/66</b>, trang chi tiết ghi <b>58</b> (W37: 58/66) — chỉ số tích lũy không thể giảm. (3) Mục lục (trang 2) bản 26/09 vẫn ghi “Báo cáo tuần 38”. Đồng thời đề nghị xuất PDF có lớp text để giảm công bóc tách. <span class=\"own\">Owner: Ban QLVH Long An.</span>"
    },
    {
     "tag": "DECIDE",
@@ -208,7 +208,7 @@
    {
     "tag": "VERIFY",
     "title": "3 căn lưu trú qua đêm (K25, K30, K58) &amp; định biên 160 vs 108",
-    "meta": "Định biên BQL nay báo 160 (W37: 152). Các trang báo cáo đã đọc (3, 9, 16, 19–21) không nhắc 3 căn lưu trú qua đêm. <span class=\"own\">Owner: BQL + AN + Nhân sự.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
+    "meta": "Định biên BQL nay báo 160 (W37: 152). Các trang báo cáo đã đọc (2, 3, 9, 16, 19, 20, 21) không nhắc 3 căn lưu trú qua đêm. <span class=\"own\">Owner: BQL + AN + Nhân sự.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
    }
   ]
  },
@@ -224,5 +224,5 @@
   "~ <b>Nhiều khả năng</b> — gán 1.615 = khách khu vui chơi, 124 = căn thi công về ở, 996 = căn thi công theo bố cục trang (nhãn và số tách dòng khi trích text) — cùng bố cục đã dùng cho W38. <b>ELA:</b> số đọc từ ảnh trang báo cáo W38/W39 (không có lớp text) — kiểm tra chéo phương pháp với bản W37 đã công bố: khớp 6/6.",
   "⚠ <b>Cần đối chiếu</b> — điểm tự mâu thuẫn trong báo cáo ELA: khách KĐT W38 trùng W37; Eco Bazaar 54/66 (trang tổng hợp) vs 58 (trang chi tiết)."
  ],
- "sourceNote": "ECP Tuần 39 — “ECP-2026-W39.pdf” (3,5MB, báo cáo ngày 25/09/2026, Ban QLVH Vinh), đọc được lớp text; so sánh với Tuần 38 đã công bố. ELA Tuần 39 — “ELA-2026-W39.pdf” (141,9MB, 55 trang, ngày 26/09/2026) và Tuần 38 — “ELA-2026-W38.pdf” (164,5MB, 58 trang, ngày 19/09/2026): không có lớp text, đọc từ ảnh trang 3, 9, 16, 19–21; Δ so với W38. Nguồn: thư mục hợp nhất <i>00 Inbox/Weekly Reports ECP-ELA</i> (35 PDF, toàn bộ đúng chuẩn tên, không có bản trùng). Lưu ý so sánh: ECP không có tuần W34–W35; ELA không có tuần W35. Tổng hợp cho KSNB &amp; QTRR."
+ "sourceNote": "ECP Tuần 39 — “ECP-2026-W39.pdf” (3,5MB, báo cáo ngày 25/09/2026, Ban QLVH Vinh), đọc được lớp text; so sánh với Tuần 38 đã công bố. ELA Tuần 39 — “ELA-2026-W39.pdf” (141,9MB, 55 trang, ngày 26/09/2026) và Tuần 38 — “ELA-2026-W38.pdf” (164,5MB, 58 trang, ngày 19/09/2026): không có lớp text, đọc từ ảnh trang 2, 3, 9, 16, 19, 20, 21; Δ so với W38. Nguồn: thư mục hợp nhất <i>00 Inbox/Weekly Reports ECP-ELA</i> (35 PDF theo danh sách Drive API 29/09 06:23 UTC, toàn bộ đúng chuẩn tên, không có bản trùng). Lưu ý so sánh: ECP không có tuần W34–W35; ELA không có tuần W35. Tổng hợp cho KSNB &amp; QTRR."
 }

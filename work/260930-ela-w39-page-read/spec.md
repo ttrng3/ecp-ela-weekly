@@ -1,6 +1,7 @@
 # Spec: ela-w39-page-read
 
 **Approved:** 2026-09-30
+**Amended:** 2026-09-30, review fixes — NOT yet approved by Ty: (a) the source-folder count on the W39 page corrected from 30 to 35 PDFs (source: Drive API listing 2026-09-29 06:23 UTC, `verification/inbox-weekly-folder.md` check 1); (b) W39 pages read named exactly (2, 3, 9, 16, 19, 20, 21).
 
 **Intent:** accepted 2026-09-30 · **Status:** approved
 
@@ -16,7 +17,7 @@
 Two JSON files, edited in place, same shape (no new fields). Sources, verified by rendering pages (`pdftoppm -r 50`) and reading them, 2026-09-29/30:
 - W37 deck (12/09) p.3: 3.918 · 152 · 30 · 58/66 · 30 căn KD · 240 — matches published W37 6/6.
 - W38 deck (19/09) p.3: 3.918 · 160 · 25 · 54/66 · 36 · 170; p.9: 58; p.16: Hội thảo/Trung thu; p.19: PK1 84/198, 70/84, 70, 37; PK3 68/121, 66/68, 53/68, 46, 15.
-- W39 deck (26/09) p.3: 2.408 · 160 · 21 · 54/66 + PK1 05/198 · 57 · 1.430; p.9: 58; p.16: PK1 84/198 lịch, 90/198, 70/90, 70, 59; PK3 unchanged, 21; p.19: 24 thư mời, 5/24 nhận; p.21: PK4 31.
+- W39 deck (26/09) p.2: contents slide still titled "Báo cáo tuần 38"; p.20: nghiệm thu plan PK1 90/198, PK3 68/121; p.3: 2.408 · 160 · 21 · 54/66 + PK1 05/198 · 57 · 1.430; p.9: 58; p.16: PK1 84/198 lịch, 90/198, 70/90, 70, 59; PK3 unchanged, 21; p.19: 24 thư mời, 5/24 nhận; p.21: PK4 31.
 
 ## Conflicts
 Loaded: kernel `CLAUDE.md` (incl. "Weekly reports → `00 Inbox/Weekly Reports ECP-ELA/`", "File operation safety", "Drift detection"), artifact mirror contract (memory), entity separation, repo `REVIEW.md` rules, secure-pages. Not loaded: ty-report-standard / apple-design (no page or visual change).
