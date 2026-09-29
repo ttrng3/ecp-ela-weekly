@@ -1,6 +1,8 @@
 # Spec: ela-w39-page-read
 
-**Intent:** accepted 2026-09-30 · **Status:** draft
+**Approved:** 2026-09-30
+
+**Intent:** accepted 2026-09-30 · **Status:** approved
 
 ## Requirements
 1. `data/weeks/W38.json` ELA: 6 KPIs, PK1/PK3/PK4, "done" and the ELA action and KSNB lines carry the W38 deck's figures (19/09), each Δ vs published W37. *(Outcome)*
