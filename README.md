@@ -64,7 +64,7 @@ heartbeat says the job ran, `generatedUtc` says it published.
   cannot be extracted automatically. When a week cannot be read, the runbook
   requires keeping the prior figures, labelling them, and naming exactly which
   indicators are missing — never inventing a number.
-- ELA's PDFs run 100–130 MB and the template changes between weeks.
+- ELA's PDFs run 100–165 MB (Drive listing 2026-09-29) and the template changes between weeks.
 
 ## Visual standard
 

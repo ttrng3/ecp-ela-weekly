@@ -31,7 +31,7 @@
 
 **Repo, `REVIEW.md`:** "What a refresh writes" and "The manifest stays consistent" name the year-form week files.
 
-**Mirror (artifact mirror contract):** step 7 is unchanged. It publishes the changed `data/` paths, now `data/weeks/2026-W<NN>.json`, to the one existing preview. No new artifact.
+**Mirror (artifact mirror contract):** the routine prompt's STEP 7 (the mirror lives only in the private prompt, not in this runbook) is unchanged. It publishes the changed `data/` paths, now `data/weeks/2026-W<NN>.json`, to the one existing preview. No new artifact.
 
 ## Conflicts
 

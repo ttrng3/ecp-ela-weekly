@@ -9,7 +9,8 @@ Drive API listing of the inbox (`mimeType = application/pdf`, both pages): **35 
 - 2 more found in the inbox and renamed 06:22 UTC: `ECP-W39.pdf` → `ECP-2026-W39.pdf` (3,515,692 B) and `ELA-W39.pdf` → `ELA-2026-W39.pdf` (141,917,085 B), both created 2026-09-26.
 - Sample open earlier the same day: `ECP-W38.pdf`, `ECP-W19.pdf` start with `%PDF-` (same file ids).
 
-Pass line: `35/35 year-form, 0 size changes`.
+Pass line (spec): `33/33 renamed, 0 size changes` — **PASS**.
+Also: 2 W39 files renamed to the kernel naming, with no pre-rename size baseline (they were not in the 03:13 listing). Outside the approved 33; disclosed to Ty.
 
 ## 2. Freshness alarm — PASS 2026-09-29
 
@@ -17,8 +18,17 @@ Pass line: `35/35 year-form, 0 size changes`.
 
 ## 3. Routine, fired by hand — pending (after merge)
 
-Expected now that both projects have W39 in the inbox: the run publishes **2026-W39** (`data/weeks/2026-W39.json`, `current` = `"2026-W39"`), heartbeat `ECP-2026-W39/ELA-2026-W39`. ELA-W39 is 141 MB, so ELA figures may come back as `⚠ chưa cập nhật`.
+Spec expectation (both sides at 2026-W38, heartbeat only) **no longer holds**: both projects filed W39 before the check could run. The run is expected to publish **2026-W39** instead (`data/weeks/2026-W39.json`, `current` = `"2026-W39"`, heartbeat `ECP-2026-W39/ELA-2026-W39`). Deviation needs Ty's OK. ELA-W39 is 141 MB, so ELA figures may come back as `⚠ chưa cập nhật`.
 
-## 4. Wait-for-both — pending
+## 4. Wait-for-both, dry fixture — PASS 2026-09-29
 
-Checked against the next run where only one project has filed.
+The step 3 rule applied by hand (`current` = 2026-W38) to three listings:
+- A: `ECP-2026-W39.pdf` only → `no new week — waiting for ELA`
+- B: `ECP-2026-W39.pdf` + `ELA-2026-W39.pdf` → `publish 2026-W39`
+- C: `ECP-2026-W39.pdf` + `Ban QLVH Long An Tuần 39.pdf` (Zalo name) → `publish 2026-W39`
+
+Pass line: A waits, B and C publish — as stated.
+
+## 5. Mirror reaches the preview — pending (after merge)
+
+After the W39 run: the preview's `data/index.json` has `current` = `"2026-W39"` and its `data/weeks/2026-W39.json` exists (Artifact read by path).
