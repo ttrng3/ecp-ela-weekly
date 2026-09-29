@@ -13,7 +13,7 @@ NOW = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 CASES = {
     "ECP-W38/ELA-W38": "false",
     "ECP-2026-W39/ELA-2026-W38": "false",
-    "ECP-none/ELA-W40": "false",
+    "ECP-none/ELA-2026-W40": "false",
     "inbox-unreachable": "true",
     "inbox-empty": "true",
     "ECP-none/ELA-none": "true",

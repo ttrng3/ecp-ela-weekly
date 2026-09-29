@@ -8,7 +8,7 @@
 ## Requirements
 
 1. The routine reads weekly source PDFs from one Drive folder, `00 Inbox/Weekly Reports ECP-ELA/`, by folder id held in the private routine prompt, never the repo. It never searches Drive-wide. *(intent: Outcome 1; Constraints, public repo)*
-2. Standard name: `ECP-<YYYY>-W<NN>.pdf` / `ELA-<YYYY>-W<NN>.pdf`, week zero-padded (`ECP-2026-W39.pdf`). The 33 existing source PDFs are renamed to this form. *(Outcome 1)*
+2. Standard name: `ECP-<YYYY>-W<NN>.pdf` / `ELA-<YYYY>-W<NN>.pdf`, week zero-padded (`ECP-2026-W39.pdf`). The 33 source PDFs moved on 2026-09-29 (Drive API listing of the inbox, 2026-09-29 03:13 UTC) are renamed to this form. *(Outcome 1)*
 3. Newest is decided by (year, week), so `2027-W01` is newer than `2026-W52`. *(Outcome 1)*
 4. A file with a Zalo name is still read: project from `ECP` / `Eco Vinh` / `Eco Central Park` / `Central Park` or `ELA` / `Long An` / `Eco Retreat`; week from `W`, `Week`, `Tuần`, `Tuan`; year from the name, else the file's Drive `createdTime` year (a week ≥ 50 created in January counts as the previous year; a week ≤ 2 created in December counts as the next). Every such file is listed in the report so Ty can rename it. A PDF with no project, both projects or no readable week is listed and not used. *(Outcome 2)*
 5. A new week N is published only when **both** ECP and ELA have a file for (year, N), and (year, N) is newer than `current`. If several such weeks exist, the newest one is published. A week only one project filed is never published. *(Outcome 3)*
@@ -18,7 +18,7 @@
 
 ## Design
 
-**Drive (done by API, verified by re-listing, per "File operation safety"):** rename the 33 PDFs `ECP-W19.pdf` → `ECP-2026-W19.pdf` etc. All current files are 2026 (Verified: the history runs W18–W38, created May–Sep 2026).
+**Drive (done by API, verified by re-listing, per "File operation safety"):** rename the 33 PDFs `ECP-W19.pdf` → `ECP-2026-W19.pdf` etc. All current files are 2026 (Verified: Drive API listing of the inbox, 2026-09-29 03:13 UTC; the history runs W18–W38 with createdTime May–Sep 2026).
 
 **Repo, `docs/weekly-refresh.md` steps 1–3:** rewrite to requirements 1–8. This replaces the earlier draft of this PR's "publish when either side files" and "one side filing nothing is normal" rules.
 

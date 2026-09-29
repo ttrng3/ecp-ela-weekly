@@ -30,9 +30,10 @@ space, then `newest-source=<value>` — and commit it, even when there is no new
 report. It is the **first write** of the run, and there is **exactly one**
 heartbeat commit per run. Do the step 2 search first (it only reads), then
 commit the heartbeat before any `data/weeks/` or `data/index.json` write. If
-the Drive call errors or has not returned after a few minutes, commit the
-heartbeat as `inbox-unreachable` **at once**, before retrying or doing anything
-else, so a run that dies in the Drive step still leaves its heartbeat.
+the Drive call errors or has not returned after a few minutes, **do not
+retry**: commit the heartbeat as `inbox-unreachable` at once and stop (step 3).
+The next scheduled run tries again. This keeps one heartbeat per run and
+leaves a heartbeat even when the Drive step hangs.
 
 `newest-source` is one of:
 
@@ -64,7 +65,9 @@ zero-padded, e.g. `ECP-2026-W39.pdf`.
 `Layout kinh doanh`. A title ending ` (1)` or ` 2` is a duplicate **only if** a
 file with the same title minus that suffix is also in the folder (so
 "Tuần 2.pdf" is not skipped). **Every skipped PDF is listed in the report.**
-Match every token below as a whole word, case-insensitive. For the rest:
+Match the project tokens below as whole words, case-insensitive. A week token
+may be followed directly by its digits (`W38`, `Tuần38`) or by a space or
+hyphen (`Tuần 38`, `Tuần-38`). For the rest:
 
 - **Project:** `ECP`, `Eco Vinh`, `Eco Central Park` or `Central Park` → ECP;
   `ELA`, `Long An` or `Eco Retreat` → ELA.
