@@ -10,7 +10,7 @@ decision from BLĐ.
 ## How this repo is the source of truth
 
 ```
-Google Drive — 07 Weekly Reports (ECP + ELA weekly PDFs)
+Google Drive — 00 Inbox/Weekly Reports ECP-ELA (ECP-W<N>.pdf, ELA-W<N>.pdf)
         ▼
 weekly routine ──writes──▶ data/index.json + data/weeks/W<N>.json
                                    │

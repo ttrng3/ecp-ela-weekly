@@ -36,10 +36,26 @@ identical from outside. It also exercises the GitHub write path every week.
 
 ### 2. Find the newest weekly reports
 
-Google Drive connector:
+Since 2026-09-29 both projects' reports live in **one** Drive folder:
+`Claude Workspace/00 Inbox/Weekly Reports ECP-ELA/`, folder id
+`1HClu60khhkzQk2AC6yo99CF5n65HcP1m`. Search by the id
+(`parentId = '1HClu60khhkzQk2AC6yo99CF5n65HcP1m'`): it survives the folder
+being renamed or moved, and a path does not. The old
+`01 Eco Central Park - ECP/07 Weekly Reports/` and
+`02 Eco Retreat Long An - ELA/07 Weekly Reports/` folders no longer exist.
 
-- ECP — `Claude Workspace/01 Eco Central Park - ECP/07 Weekly Reports/`, named `*ECP*Tuần-<N>*.pdf`
-- ELA — `Claude Workspace/02 Eco Retreat Long An - ELA/07 Weekly Reports/`, named `*ELA*Tuần-<N>*.pdf`
+Naming, for the source PDFs Ty saves from Zalo:
+
+- ECP — `ECP-W<N>.pdf` (e.g. `ECP-W39.pdf`)
+- ELA — `ELA-W<N>.pdf` (e.g. `ELA-W39.pdf`)
+
+Be tolerant when reading. A file may still arrive under its Zalo name. Match the
+project from `ECP` or `Eco Vinh` (→ ECP) and from `ELA` or `Long An` (→ ELA), and
+the week from `W<N>`, `Week <N>` or `Tuần <N>` (with or without a hyphen). Skip
+`.docx` outputs and anything matching `Layout vận hành` / `Layout kinh doanh`.
+If the folder holds a PDF that fits neither project, list its title in the
+report rather than guessing. Only if the folder search returns no PDFs at all,
+fall back to a Drive-wide title search on the same tokens and say so.
 
 Ignore duplicates suffixed `(1)` or ` 2`. Find the newest `N` on each side and
 the week before it, for the WoW comparison.
