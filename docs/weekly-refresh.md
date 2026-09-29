@@ -28,18 +28,18 @@ prompts say "call it directly" keep their previews in sync.)
 Write `data/.last-check` — one line, current UTC as `%Y-%m-%dT%H:%M:%SZ`, a
 space, then `newest-source=<value>` — and commit it, even when there is no new
 report. It is the **first write** of the run, and there is **exactly one**
-heartbeat commit per run. Do the step 2 search first (it only reads) so the
-value is known, then commit the heartbeat before any `data/weeks/` or
-`data/index.json` write.
+heartbeat commit per run. Do the step 2 search first (it only reads), then
+commit the heartbeat before any `data/weeks/` or `data/index.json` write.
 
-`newest-source` takes one of these values. `freshness.py` alarms on the last two,
-and also on `ECP-none/ELA-none` if that is ever written by mistake.
+`newest-source` is one of:
 
-- `ECP-W<N>/ELA-W<M>` — the newest week found on each side (normal, including a quiet week).
-  A side with no matched PDF at all is written `none`, e.g. `ECP-none/ELA-W40`.
-  If **both** sides would be `none`, write `inbox-empty` instead.
-- `inbox-unreachable` — the Drive call failed (wrong id, access revoked, connector error)
-- `inbox-empty` — the call worked but no PDF matched a project on either side
+- `ECP-<YYYY>-W<NN>/ELA-<YYYY>-W<NN>` — the newest file found on each side, e.g.
+  `ECP-2026-W39/ELA-2026-W38`. A side with no file at all is `none`.
+- `inbox-unreachable` — the Drive call failed (wrong id, access revoked, connector error).
+- `inbox-empty` — the call worked but no PDF matched either project.
+
+`freshness.py` raises the stale-data issue on `inbox-unreachable`,
+`inbox-empty` and `ECP-none/ELA-none`.
 
 This matters more here than on the other dashboards, because a quiet week is
 **normal**: ECP and ELA file on their own cadence and some weeks are missing
@@ -51,59 +51,47 @@ identical from outside. It also exercises the GitHub write path every week.
 Since 2026-09-29 both projects' reports live in **one** Drive folder:
 `Claude Workspace/00 Inbox/Weekly Reports ECP-ELA/`. Search it by its folder
 id, which the routine prompt holds (this repo is public, so the id is not
-written here). The id survives the folder being renamed or moved, and a path
-does not. The old `01 Eco Central Park - ECP/07 Weekly Reports/` and
-`02 Eco Retreat Long An - ELA/07 Weekly Reports/` folders no longer exist.
-Never search Drive-wide.
+written here). The old per-project `07 Weekly Reports/` folders no longer
+exist. Never search Drive-wide.
 
-Naming, for the source PDFs Ty saves from Zalo:
+**Standard name:** `ECP-<YYYY>-W<NN>.pdf` / `ELA-<YYYY>-W<NN>.pdf`, week
+zero-padded, e.g. `ECP-2026-W39.pdf`.
 
-- ECP — `ECP-W<N>.pdf` (e.g. `ECP-W39.pdf`)
-- ELA — `ELA-W<N>.pdf` (e.g. `ELA-W39.pdf`)
+**Zalo names are still read.** Skip `.docx` files, `Layout vận hành` /
+`Layout kinh doanh`, and duplicates suffixed `(1)` or ` 2`. For the rest:
 
-Be tolerant when reading, inside that folder only. A file may still arrive
-under its Zalo name.
-
-- **Project:** `ECP`, `Eco Vinh` or `Eco Central Park` / `Central Park` → ECP;
+- **Project:** `ECP`, `Eco Vinh`, `Eco Central Park` or `Central Park` → ECP;
   `ELA`, `Long An` or `Eco Retreat` → ELA.
-- **Week:** the number after `W`, `Week`, `Tuần` or `Tuan` (hyphen or space).
-- Skip `.docx` outputs, anything matching `Layout vận hành` / `Layout kinh doanh`,
-  and duplicates suffixed `(1)` or ` 2`.
-- Any PDF with no project, both projects, or no readable week is **listed by
-  title in the report** and not used.
+- **Week:** the number after `W`, `Week`, `Tuần` or `Tuan`.
+- **Year:** from the name. If the name has none, the year of the file's Drive
+  `createdTime`, except that a week ≥ 50 created in January belongs to the year
+  before.
+- A file matched this way is used, and **listed in the report** so Ty can
+  rename it. A PDF with no project, both projects or no readable week is
+  listed and not used.
 
-**Newest means the highest week number on that side.** `current` in
-`data/index.json` is a string like `"W38"`; compare on its number. The previous
-week (for WoW) is that side's next-lower `N` that exists. The order files were
-saved in does not matter, so saving a missing older week late changes nothing.
+Order every week by (year, week). `current` in `data/index.json` is either
+`"2026-W39"` or, for the two older keys, `"W37"` / `"W38"`, which are 2026.
 
-**No year in the names.** A January `W1` will rank below December's `W52`
-and look like "nothing new". That is deliberate: no guessing. The 24-day
-stale-data alarm in `freshness.py` fires, and Ty picks a naming for the new year
-(e.g. `ECP-2027-W01.pdf`) and updates this step.
+### 3. Publish only a week both projects have filed
 
-**Outcomes:**
+The **new week** is the newest (year, week) that has a file on **both** sides
+and is newer than `current`. A week only one project has filed is never
+published on its own (Ty, 2026-09-29: "wait for both").
 
-- Drive call fails → heartbeat `inbox-unreachable`, report it as a **failure**
+- **Drive call fails** → heartbeat `inbox-unreachable`, report it as a failure
   in the first line, stop.
-- No PDF matched to either side → heartbeat `inbox-empty`, list the titles seen,
-  stop.
-- A side whose newest `N` is at or below `current` **filed nothing new**. That
-  is normal (one side often skips weeks), never an error.
-- At least one side above `current` → the new week is the highest `N` found.
-  A side that filed nothing keeps its previous values, labelled as step 4 says,
-  and the report names which project filed nothing.
-- A side whose newest `N` is above `current` but below the new week (e.g.
-  `current` W38, ECP-W40, ELA-W39): use that side's newest file, show its own
-  week number beside its figures ("ELA: số liệu Tuần 39"), and name it in the
-  report. `data/weeks/W39.json` is not written; only the new week's file is.
-- Neither side above `current` → step 3.
+- **No PDF matched either project** → heartbeat `inbox-empty`, list the titles
+  seen, stop.
+- **No new week** → the heartbeat is the only write. Report "chưa có báo cáo
+  tuần mới — đang chờ <ECP|ELA|cả hai> Tuần <NN>", naming the side(s) behind,
+  and stop.
+- **New week found** → go on to step 4 with that week's two files.
 
-### 3. Stop if nothing is new
-
-If **no** side's newest `N` is above `current` (including one side level and
-the other behind), the heartbeat is all that is written. Report "chưa có báo cáo tuần mới" and
-finish. Do not touch the week file.
+**WoW baseline** is the published week, `data/weeks/<current>.json`, not a
+second PDF. If the new week is not the one right after `current` (a side
+skipped a week), the new file's `prev` names the week it compares with, and
+the report says which weeks were skipped.
 
 ### 4. Extract — and report rather than fake
 
@@ -129,10 +117,14 @@ unattended run; the MCP calls are not, so they are the primary path. **No PAT,
 no token-in-URL** — the old routine read a PAT from Drive and pushed with it;
 that is retired.
 
-- `data/weeks/W<N>.json` — the whole briefing for that week. Recompute every Δ
-  in code; do not copy a delta from the report.
-- `data/index.json` — set `current` to the new week, add it to `weeks`, set
-  `generatedUtc` to now.
+- `data/weeks/<YYYY>-W<NN>.json` (e.g. `2026-W39.json`) — the whole briefing
+  for that week. Its `week` field stays the display label ("Tuần 39"). Recompute
+  every Δ in code; do not copy a delta from the report. Never overwrite an
+  existing week file.
+- `data/index.json` — set `current` to `"<YYYY>-W<NN>"`, add
+  `"<YYYY>-W<NN>": "<YYYY>-W<NN>"` to `weeks`, set `generatedUtc` to now. The
+  renderer resolves `weeks[current]` to the file name, so `index.html` does not
+  change.
 
 ### 6. Verify, do not assume
 
