@@ -41,10 +41,14 @@ if run_age is None or run_age > RUN_MAX:
     state, why = "stale", (
         "the weekly job has not run" if run_age is None
         else f"the weekly job last ran {run_age} days ago")
-elif source in ("inbox-unreachable", "inbox-empty"):
+elif source == "inbox-unreachable":
     state, why = "stale", (
         f"the job ran {run_age}d ago but could not read the Drive inbox "
-        f"(newest-source={source}) — check the folder id and its access")
+        f"— check the folder id in the routine prompt and the folder's access")
+elif source == "inbox-empty":
+    state, why = "stale", (
+        f"the job ran {run_age}d ago and read the Drive inbox, but no PDF matched "
+        f"ECP or ELA — check the file names")
 elif data_age > DATA_MAX:
     state, why = "stale", (
         f"the job is running (last run {run_age}d ago) but no new week has been "

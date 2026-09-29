@@ -34,7 +34,8 @@ value is known, then commit the heartbeat before any `data/weeks/` or
 
 `newest-source` takes one of these values. `freshness.py` alarms on the last two.
 
-- `ECP-W<N>/ELA-W<M>` — the newest week found on each side (normal, including a quiet week)
+- `ECP-W<N>/ELA-W<M>` — the newest week found on each side (normal, including a quiet week).
+  A side with no matched PDF at all is written `none`, e.g. `ECP-none/ELA-W40`.
 - `inbox-unreachable` — the Drive call failed (wrong id, access revoked, connector error)
 - `inbox-empty` — the call worked but no PDF matched a project on either side
 
@@ -69,15 +70,17 @@ under its Zalo name.
 - Any PDF with no project, both projects, or no readable week is **listed by
   title in the report** and not used.
 
-**Newest means most recently created, not highest `N`.** Rank each side's
-matched PDFs by Drive `createdTime`; the newest is the top one, the previous
-week is the next one down. The week number is read from that file's title. The
-names carry no year, so ranking by `N` would pick W52 over a January W1.
+**Newest means the highest week number on that side.** `current` in
+`data/index.json` is a string like `"W38"`; compare on its number. The previous
+week (for WoW) is that side's next-lower `N` that exists. The order files were
+saved in does not matter, so saving a missing older week late changes nothing.
 
-**Year rollover guard.** If the newest file's `N` is lower than
-`data/index.json`'s `current`, a new year has started. Write the heartbeat
-only, do not touch `data/weeks/` (W<N>.json from the previous year would be
-overwritten), and report "tuần mới năm mới — cần Ty quyết định cách đặt tên".
+**Year rollover guard.** File names carry no year. If any matched PDF has
+`N ≤ 5` **and** its Drive `createdTime` is later than the file holding that
+side's highest `N`, a new year has started. Write the heartbeat only, do not
+touch `data/weeks/` (the previous year's W<N>.json would be overwritten), and
+report "tuần mới năm mới — cần Ty quyết định cách đặt tên". Nothing else
+triggers this guard.
 
 **Outcomes:**
 
@@ -85,10 +88,12 @@ overwritten), and report "tuần mới năm mới — cần Ty quyết định c
   in the first line, stop.
 - No PDF matched to either side → heartbeat `inbox-empty`, list the titles seen,
   stop.
-- Only one side has a week newer than `current` → carry on. The other side keeps
-  its previous values, labelled as step 4 says, and the report names which
-  project filed nothing.
-- Both sides at `current` → step 3.
+- A side whose newest `N` is at or below `current` **filed nothing new**. That
+  is normal (one side often skips weeks), never an error.
+- At least one side above `current` → the new week is the highest `N` found.
+  A side that filed nothing keeps its previous values, labelled as step 4 says,
+  and the report names which project filed nothing.
+- Neither side above `current` → step 3.
 
 ### 3. Stop if nothing is new
 
