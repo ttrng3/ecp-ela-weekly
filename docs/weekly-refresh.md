@@ -36,6 +36,7 @@ value is known, then commit the heartbeat before any `data/weeks/` or
 
 - `ECP-W<N>/ELA-W<M>` — the newest week found on each side (normal, including a quiet week).
   A side with no matched PDF at all is written `none`, e.g. `ECP-none/ELA-W40`.
+  If **both** sides would be `none`, write `inbox-empty` instead.
 - `inbox-unreachable` — the Drive call failed (wrong id, access revoked, connector error)
 - `inbox-empty` — the call worked but no PDF matched a project on either side
 
@@ -75,12 +76,10 @@ under its Zalo name.
 week (for WoW) is that side's next-lower `N` that exists. The order files were
 saved in does not matter, so saving a missing older week late changes nothing.
 
-**Year rollover guard.** File names carry no year. If any matched PDF has
-`N ≤ 5` **and** its Drive `createdTime` is later than the file holding that
-side's highest `N`, a new year has started. Write the heartbeat only, do not
-touch `data/weeks/` (the previous year's W<N>.json would be overwritten), and
-report "tuần mới năm mới — cần Ty quyết định cách đặt tên". Nothing else
-triggers this guard.
+**No year in the names.** A January `W1` will rank below December's `W52`
+and look like "nothing new". That is deliberate: no guessing. The 24-day
+stale-data alarm in `freshness.py` fires, and Ty picks a naming for the new year
+(e.g. `ECP-2027-W01.pdf`) and updates this step.
 
 **Outcomes:**
 
@@ -97,8 +96,8 @@ triggers this guard.
 
 ### 3. Stop if nothing is new
 
-If `data/index.json`'s `current` already equals the newest week on both sides,
-the heartbeat is all that is written. Report "chưa có báo cáo tuần mới" and
+If **no** side's newest `N` is above `current` (including one side level and
+the other behind), the heartbeat is all that is written. Report "chưa có báo cáo tuần mới" and
 finish. Do not touch the week file.
 
 ### 4. Extract — and report rather than fake

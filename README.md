@@ -45,7 +45,7 @@ comparing the resulting text: **identical, 5,666 characters.**
 | `data/index.json` | `generatedUtc`, `current` week, project names, `weeks` manifest. |
 | `data/weeks/W<N>.json` | That week's whole briefing: verdict, KPIs, done, progress, actions, KSNB notes, sources. |
 | `data/.last-check` | Heartbeat. Proves the job ran even when there was no new report. |
-| `.github/workflows/freshness-check.yml` | Opens an issue if the job stops, or if the reports go quiet. |
+| `.github/workflows/freshness-check.yml` | Opens an issue if the job stops, if the reports go quiet, or if the Drive inbox is unreachable or empty. |
 
 ## Why the heartbeat matters here more than anywhere else
 

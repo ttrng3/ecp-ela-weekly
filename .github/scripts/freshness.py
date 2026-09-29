@@ -45,7 +45,7 @@ elif source == "inbox-unreachable":
     state, why = "stale", (
         f"the job ran {run_age}d ago but could not read the Drive inbox "
         f"— check the folder id in the routine prompt and the folder's access")
-elif source == "inbox-empty":
+elif source in ("inbox-empty", "ECP-none/ELA-none"):
     state, why = "stale", (
         f"the job ran {run_age}d ago and read the Drive inbox, but no PDF matched "
         f"ECP or ELA — check the file names")
