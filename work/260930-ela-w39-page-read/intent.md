@@ -1,6 +1,6 @@
 # Intent: publish ELA's W38 and W39 figures, read from the report page images
 
-**Status:** draft
+**Status:** accepted 2026-09-30
 **Source:** chat, 2026-09-29/30 (Ty: "Force read to extract info from what we have", then "do both")
 
 **Problem.** The published W38 and W39 weeks show ELA figures from W37 (12/09) with ⚠, because ELA's PDFs are slides exported as images and the routine read no text. On 2026-09-29 the W38 (19/09) and W39 (26/09) decks were rendered page by page and read as images; the same method on the W37 deck matched all 6 published W37 figures.
