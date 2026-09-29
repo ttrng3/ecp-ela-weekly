@@ -29,7 +29,10 @@ Write `data/.last-check` — one line, current UTC as `%Y-%m-%dT%H:%M:%SZ`, a
 space, then `newest-source=<value>` — and commit it, even when there is no new
 report. It is the **first write** of the run, and there is **exactly one**
 heartbeat commit per run. Do the step 2 search first (it only reads), then
-commit the heartbeat before any `data/weeks/` or `data/index.json` write.
+commit the heartbeat before any `data/weeks/` or `data/index.json` write. If
+the Drive call errors or has not returned after a few minutes, commit the
+heartbeat as `inbox-unreachable` **at once**, before retrying or doing anything
+else, so a run that dies in the Drive step still leaves its heartbeat.
 
 `newest-source` is one of:
 
@@ -57,15 +60,18 @@ exist. Never search Drive-wide.
 **Standard name:** `ECP-<YYYY>-W<NN>.pdf` / `ELA-<YYYY>-W<NN>.pdf`, week
 zero-padded, e.g. `ECP-2026-W39.pdf`.
 
-**Zalo names are still read.** Skip `.docx` files, `Layout vận hành` /
-`Layout kinh doanh`, and duplicates suffixed `(1)` or ` 2`. For the rest:
+**Zalo names are still read.** Skip `.docx` files and `Layout vận hành` /
+`Layout kinh doanh`. A title ending ` (1)` or ` 2` is a duplicate **only if** a
+file with the same title minus that suffix is also in the folder (so
+"Tuần 2.pdf" is not skipped). **Every skipped PDF is listed in the report.**
+Match every token below as a whole word, case-insensitive. For the rest:
 
 - **Project:** `ECP`, `Eco Vinh`, `Eco Central Park` or `Central Park` → ECP;
   `ELA`, `Long An` or `Eco Retreat` → ELA.
 - **Week:** the number after `W`, `Week`, `Tuần` or `Tuan`.
 - **Year:** from the name. If the name has none, the year of the file's Drive
-  `createdTime`, except that a week ≥ 50 created in January belongs to the year
-  before.
+  `createdTime`, except: a week ≥ 50 created in January belongs to the year
+  before, and a week ≤ 2 created in December belongs to the year after.
 - A file matched this way is used, and **listed in the report** so Ty can
   rename it. A PDF with no project, both projects or no readable week is
   listed and not used.

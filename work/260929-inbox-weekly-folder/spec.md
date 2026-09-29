@@ -1,6 +1,7 @@
 # Spec: inbox-weekly-folder
 
 **Approved:** 2026-09-29
+**Amended:** 2026-09-29, review fixes with no change of scope: week ≤ 2 in December → next year (req 4); `REVIEW.md` week-file lines updated to the year form (Design).
 
 **Intent:** accepted 2026-09-29 · **Status:** approved
 
@@ -9,7 +10,7 @@
 1. The routine reads weekly source PDFs from one Drive folder, `00 Inbox/Weekly Reports ECP-ELA/`, by folder id held in the private routine prompt, never the repo. It never searches Drive-wide. *(intent: Outcome 1; Constraints, public repo)*
 2. Standard name: `ECP-<YYYY>-W<NN>.pdf` / `ELA-<YYYY>-W<NN>.pdf`, week zero-padded (`ECP-2026-W39.pdf`). The 33 existing source PDFs are renamed to this form. *(Outcome 1)*
 3. Newest is decided by (year, week), so `2027-W01` is newer than `2026-W52`. *(Outcome 1)*
-4. A file with a Zalo name is still read: project from `ECP` / `Eco Vinh` / `Eco Central Park` / `Central Park` or `ELA` / `Long An` / `Eco Retreat`; week from `W`, `Week`, `Tuần`, `Tuan`; year from the name, else the file's Drive `createdTime` year (a week ≥ 50 created in January counts as the previous year). Every such file is listed in the report so Ty can rename it. A PDF with no project, both projects or no readable week is listed and not used. *(Outcome 2)*
+4. A file with a Zalo name is still read: project from `ECP` / `Eco Vinh` / `Eco Central Park` / `Central Park` or `ELA` / `Long An` / `Eco Retreat`; week from `W`, `Week`, `Tuần`, `Tuan`; year from the name, else the file's Drive `createdTime` year (a week ≥ 50 created in January counts as the previous year; a week ≤ 2 created in December counts as the next). Every such file is listed in the report so Ty can rename it. A PDF with no project, both projects or no readable week is listed and not used. *(Outcome 2)*
 5. A new week N is published only when **both** ECP and ELA have a file for (year, N), and (year, N) is newer than `current`. If several such weeks exist, the newest one is published. A week only one project filed is never published. *(Outcome 3)*
 6. WoW compares week N with the currently published week, read from `data/weeks/<current>.json`, not with a second PDF. If they are not consecutive, the page's `prev` says which week it compares with and the report names the gap. *(Outcome 3, "Report, don't fake")*
 7. The heartbeat is written once per run as the first write. `newest-source` is `ECP-<YYYY>-W<NN>/ELA-<YYYY>-W<NN>` (a side with no file is `none`), `inbox-unreachable` or `inbox-empty`. The last two, and `ECP-none/ELA-none`, raise the stale-data issue. *(Outcome 4; "The heartbeat stays")*
@@ -19,13 +20,15 @@
 
 **Drive (done by API, verified by re-listing, per "File operation safety"):** rename the 33 PDFs `ECP-W19.pdf` → `ECP-2026-W19.pdf` etc. All current files are 2026 (Verified: the history runs W18–W38, created May–Sep 2026).
 
-**Repo, `docs/weekly-refresh.md` steps 1–3:** rewrite to requirements 1–8. This replaces PR #4's "publish when either side files" and "one side filing nothing is normal" rules.
+**Repo, `docs/weekly-refresh.md` steps 1–3:** rewrite to requirements 1–8. This replaces the earlier draft of this PR's "publish when either side files" and "one side filing nothing is normal" rules.
 
 **Repo, week files:** new weeks are written `data/weeks/2026-W39.json` with `data/index.json` → `"current": "2026-W39"` and `"weeks": {…, "2026-W39": "2026-W39"}`. The renderer already resolves `IDX.weeks[IDX.current]` to a file name (`index.html:268`) and shows the label from the file's own `week` field ("Tuần 39"), so `index.html` does not change. The existing `W37`/`W38` keys stay and are read as 2026. `.pages-allow` already covers `data/weeks/*.json`. Without this, `W37.json` would be overwritten in September 2027.
 
-**Repo, `.github/scripts/freshness.py` + `test_freshness.py`:** as in PR #4 (alarm on `inbox-unreachable`, `inbox-empty`, `ECP-none/ELA-none`; five-case test). The test adds a year-form case.
+**Repo, `.github/scripts/freshness.py` + `test_freshness.py`:** as in PR #4 (alarm on `inbox-unreachable`, `inbox-empty`, `ECP-none/ELA-none`; six-case test including a year-form case).
 
 **Routine prompt (private):** it holds the folder id and points to runbook steps 1–3. Its heartbeat example changes to the year form.
+
+**Repo, `REVIEW.md`:** "What a refresh writes" and "The manifest stays consistent" name the year-form week files.
 
 **Mirror (artifact mirror contract):** step 7 is unchanged. It publishes the changed `data/` paths, now `data/weeks/2026-W<NN>.json`, to the one existing preview. No new artifact.
 
@@ -67,4 +70,4 @@ Verdict: safe to ship
 - Renaming the `.docx` analysis files in the folder (they already follow `YYMMDD_PROJ_Type_Desc`).
 - Renaming the existing `data/weeks/W37.json` / `W38.json`.
 - Any change to `index.html`, the stylesheet or the page's look.
-- Reading the 164 MB ELA PDFs (a separate, known extraction problem).
+- Reading the large ELA PDFs (a separate, known extraction problem; ELA-W38 is 164,495,308 bytes per the Drive listing of 2026-09-29).
