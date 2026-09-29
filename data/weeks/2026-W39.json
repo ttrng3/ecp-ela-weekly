@@ -1,6 +1,6 @@
 {
  "week": "Tuần 39",
- "range": "25/09/2026",
+ "range": "25–26/09/2026",
  "prev": "Tuần 38 (18–19/09)",
  "compiled": "29/09/2026",
  "sub": "So sánh tuần liền kề · <b>Tuần 38 (18–19/09) → Tuần 39 (25–26/09/2026)</b> · tổng hợp 29/09/2026 · nguồn: Báo cáo Vận hành Ban QLVH Vinh (ECP) và Ban QLVH Eco Retreat (ELA). <b>ELA đọc từ ảnh trang báo cáo (không có lớp text), bổ sung 29/09.</b>",
@@ -150,7 +150,7 @@
    },
    {
     "label": "PK4 – Mùa Thu (xây dựng)",
-    "value": "31 · ±0 · chưa có lịch NT",
+    "value": "31% · ±0 · chưa có lịch NT",
     "pct": 31.0,
     "warn": false
    }
@@ -192,7 +192,7 @@
    },
    {
     "tag": "DECIDE",
-    "title": "Đính chính con số cho thuê + danh sách 38 căn “tối đèn”",
+    "title": "Đính chính con số cho thuê + danh sách căn “tối đèn”",
     "meta": "Báo cáo W38–W39 không còn dòng “khai trương x/66”; chỉ còn “căn đang hoạt động kinh doanh” (W37 30 → W38 36 → W39 57). Cần xác nhận hai chỉ số này có cùng định nghĩa không, cùng số HĐ còn hiệu lực + danh sách căn “tối đèn”. <span class=\"own\">Owner: KDTM + BQL.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
    },
    {
@@ -207,8 +207,8 @@
    },
    {
     "tag": "VERIFY",
-    "title": "3 căn lưu trú qua đêm (K25, K30, K58) &amp; định biên 152 vs 108",
-    "meta": "Định biên BQL nay báo 160 (W37: 152). Các trang báo cáo đã đọc (1–23) không nhắc 3 căn lưu trú qua đêm. <span class=\"own\">Owner: BQL + AN + Nhân sự.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
+    "title": "3 căn lưu trú qua đêm (K25, K30, K58) &amp; định biên 160 vs 108",
+    "meta": "Định biên BQL nay báo 160 (W37: 152). Các trang báo cáo đã đọc (3, 9, 16, 19–21) không nhắc 3 căn lưu trú qua đêm. <span class=\"own\">Owner: BQL + AN + Nhân sự.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
    }
   ]
  },
@@ -221,8 +221,8 @@
  ],
  "legend": [
   "✓ <b>Đã kiểm chứng</b> — 6 chỉ số ECP đọc từ lớp text của “ECP-2026-W39.pdf” phiên này; mọi Δ tính lại bằng mã so với W38 đã công bố.",
-  "~ <b>Nhiều khả năng</b> — gán 1.615 = khách khu vui chơi, 124 = căn thi công về ở, 996 = căn thi công theo bố cục trang (nhãn và số tách dòng khi trích text) — cùng bố cục đã dùng cho W38.",
-  "⚠ <b>Cần đối chiếu</b> — số ELA đọc từ ảnh trang báo cáo W38/W39 (không có lớp text), kiểm tra chéo với bản W37 đã công bố: khớp 6/6. Các điểm tự mâu thuẫn trong báo cáo gắn ⚠."
+  "~ <b>Nhiều khả năng</b> — gán 1.615 = khách khu vui chơi, 124 = căn thi công về ở, 996 = căn thi công theo bố cục trang (nhãn và số tách dòng khi trích text) — cùng bố cục đã dùng cho W38. <b>ELA:</b> số đọc từ ảnh trang báo cáo W38/W39 (không có lớp text) — kiểm tra chéo phương pháp với bản W37 đã công bố: khớp 6/6.",
+  "⚠ <b>Cần đối chiếu</b> — điểm tự mâu thuẫn trong báo cáo ELA: khách KĐT W38 trùng W37; Eco Bazaar 54/66 (trang tổng hợp) vs 58 (trang chi tiết)."
  ],
  "sourceNote": "ECP Tuần 39 — “ECP-2026-W39.pdf” (3,5MB, báo cáo ngày 25/09/2026, Ban QLVH Vinh), đọc được lớp text; so sánh với Tuần 38 đã công bố. ELA Tuần 39 — “ELA-2026-W39.pdf” (141,9MB, 55 trang, ngày 26/09/2026) và Tuần 38 — “ELA-2026-W38.pdf” (164,5MB, 58 trang, ngày 19/09/2026): không có lớp text, đọc từ ảnh trang 3, 9, 16, 19–21; Δ so với W38. Nguồn: thư mục hợp nhất <i>00 Inbox/Weekly Reports ECP-ELA</i> (35 PDF, toàn bộ đúng chuẩn tên, không có bản trùng). Lưu ý so sánh: ECP không có tuần W34–W35; ELA không có tuần W35. Tổng hợp cho KSNB &amp; QTRR."
 }
