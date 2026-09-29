@@ -37,7 +37,7 @@ When unsure between two levels, pick the higher one and say why.
 - [ ] **Verify before you assert:** every number in a doc or page has a source named beside it or in its section.
 
 ## Repo-specific rules
-Rules specific to ecp-ela-weekly. **Every standing ruling in the README and in `docs/weekly-refresh.md` (the runbook, which outranks the routine prompt) applies as well; a PR that breaks one is High.** The lines below are the ones most often at risk.
+Rules specific to ecp-ela-weekly. **Every standing ruling in the README and in `docs/weekly-refresh.md` (the runbook, which outranks the routine prompt) applies as well; a PR that breaks one is at least High, and Critical where a line below says so.** The lines below are the ones most often at risk.
 
 - **The renderer holds no data.** `index.html` fetches `data/` at load (README, "How this repo is the source of truth"). A number, a week or a KPI typed into `index.html` is High.
 - **What a refresh writes.** Only `data/.last-check`, `data/index.json` and `data/weeks/W<N>.json`. A refresh never writes the stylesheet (README, "Visual standard"); mixed into a data change, a style change is High.
