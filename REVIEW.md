@@ -43,11 +43,11 @@ Rules specific to ecp-ela-weekly. **Every standing ruling in the README and in `
 - **What a refresh writes.** Only `data/.last-check`, `data/index.json` and `data/weeks/W<N>.json`. A refresh never writes the stylesheet (README, "Visual standard"); mixed into a data change, a style change is High.
 - **Deltas are computed, never copied.** Every Δ is recomputed in code from the two weeks' values (runbook, step 5). A delta copied from a report is High.
 - **Report, don't fake.** An unreadable figure keeps last week's value, carries the label `⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công`, and is listed by name (runbook, step 4). An inferred number, or a carried value without that label, is High.
-- **The manifest stays consistent.** `current` must be one of `weeks`, and every listed week needs its `data/weeks/W<N>.json`. A broken manifest is High.
-- **The heartbeat stays.** A quiet week is normal here, so `data/.last-check` is what tells a quiet week from a dead routine (README, "Why the heartbeat matters"). A diff that stops writing it, or removes `freshness-check.yml`, is High.
+- **The manifest stays consistent.** A new week sets `current` and is added to `weeks` (runbook, step 5), and every listed week needs its `data/weeks/W<N>.json`. A broken manifest is High.
+- **The heartbeat stays.** A quiet week is normal here, so `data/.last-check` is what tells a quiet week from a dead routine (README, "Why the heartbeat matters here more than anywhere else"). A diff that stops writing it, or removes `freshness-check.yml`, is High.
 - **Retired, do not restore** (runbook, "Retired"): the `archive/status_<date>.html` series, the Drive standalone-HTML handoff, the Drive PAT and token-in-URL pushes, and artifact-first publishing. Bringing any back is High; a token in any file is **Critical**.
 - **The Artifact tool is attached: call it directly** (runbook). A routine instruction that makes the mirror step depend on a ToolSearch hit is High.
 - **Light only, ruled 2026-09-24 by Ty.** No dark theme; any new colour is a token, never a raw hex (README, "Visual standard").
 - **One address, one preview.** `https://ttrng3.github.io/ecp-ela-weekly/` is the only link. A Cowork preview URL or artifact id anywhere in the repo is **Critical** (the repo is public).
-- **Don't widen what is published.** A new path in `.pages-allow`, or a new kind of data in `data/`, is High and needs Ty.
-- **Entity separation.** This repo covers Eco Central Park (Vinh) and Eco Retreat (Long An) only. Data from another project or entity is **Critical**.
+- **Don't widen what is published.** A new path in `.pages-allow`, or a new kind of data in `data/`, is High and needs Ty. (Carried from Omni-TMDV's REVIEW.md; not stated in this repo's own files.)
+- **Entity separation.** The template rule in Pass 3 applies. This repo's files don't say which entity owns it (it covers Eco Central Park, Vinh, and Eco Retreat, Long An), so until Ty rules, data from another project or entity is at least High and flagged for Ty.
