@@ -23,11 +23,20 @@ prompts say "call it directly" keep their previews in sync.)
 
 ## Steps
 
-### 1. Heartbeat, always, before anything else
+### 1. Heartbeat, every run, as the first write
 
 Write `data/.last-check` — one line, current UTC as `%Y-%m-%dT%H:%M:%SZ`, a
-space, then `newest-source=<what you found>` — and commit it, even when there is
-no new report.
+space, then `newest-source=<value>` — and commit it, even when there is no new
+report. It is the **first write** of the run, and there is **exactly one**
+heartbeat commit per run. Do the step 2 search first (it only reads) so the
+value is known, then commit the heartbeat before any `data/weeks/` or
+`data/index.json` write.
+
+`newest-source` takes one of these values. `freshness.py` alarms on the last two.
+
+- `ECP-W<N>/ELA-W<M>` — the newest week found on each side (normal, including a quiet week)
+- `inbox-unreachable` — the Drive call failed (wrong id, access revoked, connector error)
+- `inbox-empty` — the call worked but no PDF matched a project on either side
 
 This matters more here than on the other dashboards, because a quiet week is
 **normal**: ECP and ELA file on their own cadence and some weeks are missing
@@ -42,32 +51,50 @@ id, which the routine prompt holds (this repo is public, so the id is not
 written here). The id survives the folder being renamed or moved, and a path
 does not. The old `01 Eco Central Park - ECP/07 Weekly Reports/` and
 `02 Eco Retreat Long An - ELA/07 Weekly Reports/` folders no longer exist.
+Never search Drive-wide.
 
 Naming, for the source PDFs Ty saves from Zalo:
 
 - ECP — `ECP-W<N>.pdf` (e.g. `ECP-W39.pdf`)
 - ELA — `ELA-W<N>.pdf` (e.g. `ELA-W39.pdf`)
 
-Be tolerant when reading **inside that folder only**. A file may still arrive
-under its Zalo name. Match the project from `ECP`, `Eco Vinh` or
-`Eco Central Park` / `Central Park` (→ ECP), and from `ELA`, `Long An` or
-`Eco Retreat` (→ ELA). Match the week from `W<N>`, `Week <N>` or `Tuần <N>`
-(with or without a hyphen). Skip `.docx` outputs and anything matching
-`Layout vận hành` / `Layout kinh doanh`. A PDF that fits neither project, or
-fits both, is listed in the report and not used.
+Be tolerant when reading, inside that folder only. A file may still arrive
+under its Zalo name.
 
-If the folder returns no PDFs at all, **do not search Drive-wide and do not
-write `data/weeks/`**. Commit the heartbeat with `newest-source=inbox-empty`,
-report the folder as empty or unreachable, and stop.
+- **Project:** `ECP`, `Eco Vinh` or `Eco Central Park` / `Central Park` → ECP;
+  `ELA`, `Long An` or `Eco Retreat` → ELA.
+- **Week:** the number after `W`, `Week`, `Tuần` or `Tuan` (hyphen or space).
+- Skip `.docx` outputs, anything matching `Layout vận hành` / `Layout kinh doanh`,
+  and duplicates suffixed `(1)` or ` 2`.
+- Any PDF with no project, both projects, or no readable week is **listed by
+  title in the report** and not used.
 
-Ignore duplicates suffixed `(1)` or ` 2`. Find the newest `N` on each side and
-the week before it, for the WoW comparison.
+**Newest means most recently created, not highest `N`.** Rank each side's
+matched PDFs by Drive `createdTime`; the newest is the top one, the previous
+week is the next one down. The week number is read from that file's title. The
+names carry no year, so ranking by `N` would pick W52 over a January W1.
+
+**Year rollover guard.** If the newest file's `N` is lower than
+`data/index.json`'s `current`, a new year has started. Write the heartbeat
+only, do not touch `data/weeks/` (W<N>.json from the previous year would be
+overwritten), and report "tuần mới năm mới — cần Ty quyết định cách đặt tên".
+
+**Outcomes:**
+
+- Drive call fails → heartbeat `inbox-unreachable`, report it as a **failure**
+  in the first line, stop.
+- No PDF matched to either side → heartbeat `inbox-empty`, list the titles seen,
+  stop.
+- Only one side has a week newer than `current` → carry on. The other side keeps
+  its previous values, labelled as step 4 says, and the report names which
+  project filed nothing.
+- Both sides at `current` → step 3.
 
 ### 3. Stop if nothing is new
 
 If `data/index.json`'s `current` already equals the newest week on both sides,
-commit just the heartbeat, report "chưa có báo cáo tuần mới", and finish. Do
-not touch the week file.
+the heartbeat is all that is written. Report "chưa có báo cáo tuần mới" and
+finish. Do not touch the week file.
 
 ### 4. Extract — and report rather than fake
 

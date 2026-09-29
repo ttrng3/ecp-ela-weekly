@@ -31,14 +31,20 @@ beat = pathlib.Path("data/.last-check")
 if beat.exists():
     m = re.match(r"(\S+)", beat.read_text(encoding="utf-8").strip())
     run_stamp = m.group(1) if m else None
+    src = re.search(r"newest-source=(\S+)", beat.read_text(encoding="utf-8"))
+    source = src.group(1) if src else None
 else:
-    run_stamp = None
+    run_stamp, source = None, None
 run_age = age_days(run_stamp) if run_stamp else None
 
 if run_age is None or run_age > RUN_MAX:
     state, why = "stale", (
         "the weekly job has not run" if run_age is None
         else f"the weekly job last ran {run_age} days ago")
+elif source in ("inbox-unreachable", "inbox-empty"):
+    state, why = "stale", (
+        f"the job ran {run_age}d ago but could not read the Drive inbox "
+        f"(newest-source={source}) — check the folder id and its access")
 elif data_age > DATA_MAX:
     state, why = "stale", (
         f"the job is running (last run {run_age}d ago) but no new week has been "
