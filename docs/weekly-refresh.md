@@ -32,7 +32,8 @@ heartbeat commit per run. Do the step 2 search first (it only reads) so the
 value is known, then commit the heartbeat before any `data/weeks/` or
 `data/index.json` write.
 
-`newest-source` takes one of these values. `freshness.py` alarms on the last two.
+`newest-source` takes one of these values. `freshness.py` alarms on the last two,
+and also on `ECP-none/ELA-none` if that is ever written by mistake.
 
 - `ECP-W<N>/ELA-W<M>` — the newest week found on each side (normal, including a quiet week).
   A side with no matched PDF at all is written `none`, e.g. `ECP-none/ELA-W40`.
@@ -92,6 +93,10 @@ stale-data alarm in `freshness.py` fires, and Ty picks a naming for the new year
 - At least one side above `current` → the new week is the highest `N` found.
   A side that filed nothing keeps its previous values, labelled as step 4 says,
   and the report names which project filed nothing.
+- A side whose newest `N` is above `current` but below the new week (e.g.
+  `current` W38, ECP-W40, ELA-W39): use that side's newest file, show its own
+  week number beside its figures ("ELA: số liệu Tuần 39"), and name it in the
+  report. `data/weeks/W39.json` is not written; only the new week's file is.
 - Neither side above `current` → step 3.
 
 ### 3. Stop if nothing is new
