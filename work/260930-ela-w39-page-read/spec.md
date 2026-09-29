@@ -2,6 +2,7 @@
 
 **Approved:** 2026-09-30
 **Amendment approved:** 2026-09-30 by Ty ("approve amendment").
+**Amendment 2:** 2026-09-30, final-review fixes — NOT yet approved by Ty: requirement 4 and the intent name a third ⚠ (PK1 NT1 85 → 84); the method check stated as 5/6. Follow-up outside this folder: W37.json still shows "khai trương 28/66", which the W37 deck does not contain.
 **Amended:** 2026-09-30, review fixes: (a) the source-folder count on the W39 page corrected from 30 to 35 PDFs (source: Drive API listing 2026-09-29 06:23 UTC, `verification/inbox-weekly-folder.md` check 1); (b) W39 pages read named exactly (2, 3, 9, 16, 19, 20, 21).
 
 **Intent:** accepted 2026-09-30 · **Status:** approved
@@ -10,7 +11,7 @@
 1. `data/weeks/W38.json` ELA: 6 KPIs, PK1/PK3/PK4, "done" and the ELA action and KSNB lines carry the W38 deck's figures (19/09), each Δ vs published W37. *(Outcome)*
 2. `data/weeks/2026-W39.json` ELA: the same, from the W39 deck (26/09), each Δ vs requirement 1's W38 values. *(Outcome)*
 3. Every Δ can be recomputed from the two published week files, except "Căn đang hoạt động kinh doanh" W37 = 30, which has no W37 field; its source (W37 deck p.3) is written beside it. *(Constraints: "Deltas are computed")*
-4. The legend labels ELA figures "đọc từ ảnh trang"; ⚠ marks only the two contradictions (W38 visitors = W37; Eco Bazaar 54 vs 58). *(Outcome)*
+4. The legend labels ELA figures "đọc từ ảnh trang"; ⚠ marks only the three problems in ELA's own decks (W38 visitors = W37; Eco Bazaar 54 vs 58; PK1 NT1 85 → 84 on W38). *(Outcome)*
 5. "Khai trương x/66" is replaced by "Căn đang hoạt động kinh doanh"; the definition question stays in the DECIDE item. *(Constraints)*
 6. After merge, the Cowork preview gets both files (by hand; the routine mirrors only on its own runs). *(artifact mirror contract)*
 
