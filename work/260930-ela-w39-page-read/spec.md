@@ -25,7 +25,7 @@ Loaded: kernel `CLAUDE.md` (incl. "Weekly reports → `00 Inbox/Weekly Reports E
 
 | Rule (by name) | What in the design breaks it | Resolution, or question for Ty |
 |---|---|---|
-| "Report, don't fake" (REVIEW.md) | Image reading can misread a digit. | Method checked on W37 (6/6). Every figure's slide is named in `sourceNote`; the two conflicting figures stay ⚠. |
+| "Report, don't fake" (REVIEW.md) | Image reading can misread a digit. | Method checked on W37 (5/6; the sixth published W37 figure is not in the deck). Every figure's slide is named in `sourceNote`; the two conflicting figures stay ⚠. |
 | "Deltas are computed, never copied" (REVIEW.md) | The "hoạt động KD" W37 value (30) is not in `W37.json`. | Written beside the Δ with its slide; W37.json not edited (out of scope). |
 | "What a refresh writes" (REVIEW.md) | A correction to a past week (W38), not a new-week refresh. | Only `data/weeks/*.json`; no manifest change; named here. |
 | Artifact mirror contract | The preview shows the old figures until mirrored. | Requirement 6: mirror by hand after merge, read back. |
