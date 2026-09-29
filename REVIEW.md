@@ -50,4 +50,4 @@ Rules specific to ecp-ela-weekly. **Every standing ruling in the README and in `
 - **Light only, ruled 2026-09-24 by Ty.** No dark theme; any new colour is a token, never a raw hex (README, "Visual standard").
 - **One address, one preview.** `https://ttrng3.github.io/ecp-ela-weekly/` is the only link. A Cowork preview URL or artifact id anywhere in the repo is **Critical** (the repo is public).
 - **Don't widen what is published.** A new path in `.pages-allow`, or a new kind of data in `data/`, is High and needs Ty. (Carried from Omni-TMDV's REVIEW.md; not stated in this repo's own files.)
-- **Entity separation.** The template rule in Pass 3 applies. This repo's files don't say which entity owns it (it covers Eco Central Park, Vinh, and Eco Retreat, Long An), so until Ty rules, data from another project or entity is at least High and flagged for Ty.
+- **Entity separation.** This is an OMNI repo (Ty ruled 2026-09-29). Any ECOPM data (a person's or a client's name, a number, or a file from the ECOPM side) is **Critical**. The entity label itself isn't.
