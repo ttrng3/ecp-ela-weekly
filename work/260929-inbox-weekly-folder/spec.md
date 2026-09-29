@@ -1,7 +1,8 @@
 # Spec: inbox-weekly-folder
 
 **Approved:** 2026-09-29
-**Amended:** 2026-09-29, review fixes with no change of scope: week ≤ 2 in December → next year (req 4); `REVIEW.md` week-file lines updated to the year form (Design).
+**Amendment approved:** 2026-09-29 by Ty ("approve amendment").
+**Amended:** 2026-09-29, review fixes: week ≤ 2 in December → next year (req 4); `REVIEW.md` week-file lines updated to the year form (Design).
 
 **Intent:** accepted 2026-09-29 · **Status:** approved
 
