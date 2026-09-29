@@ -10,9 +10,9 @@ decision from BLĐ.
 ## How this repo is the source of truth
 
 ```
-Google Drive — 07 Weekly Reports (ECP + ELA weekly PDFs)
+Google Drive — 00 Inbox/Weekly Reports ECP-ELA (ECP-2026-W39.pdf, ELA-2026-W39.pdf)
         ▼
-weekly routine ──writes──▶ data/index.json + data/weeks/W<N>.json
+weekly routine ──writes──▶ data/index.json + data/weeks/<YYYY>-W<NN>.json
                                    │
                                    ▼
                             GitHub Pages
@@ -32,7 +32,7 @@ pushed *that file* to GitHub with a PAT — so the published page was downstream
 of the artifact, and every hop carried the whole document.
 
 Now the routine writes data and the page renders it. A weekly update is one new
-`data/weeks/W<N>.json` (~9 KB) plus a rewritten `data/index.json` (~0.4 KB).
+`data/weeks/<YYYY>-W<NN>.json` (~9 KB) plus a rewritten `data/index.json` (~0.4 KB).
 
 The split was verified by rendering both the old page and the new one and
 comparing the resulting text: **identical, 5,666 characters.**
@@ -43,9 +43,9 @@ comparing the resulting text: **identical, 5,666 characters.**
 | --- | --- |
 | `index.html` | Renderer only. No data. |
 | `data/index.json` | `generatedUtc`, `current` week, project names, `weeks` manifest. |
-| `data/weeks/W<N>.json` | That week's whole briefing: verdict, KPIs, done, progress, actions, KSNB notes, sources. |
+| `data/weeks/<YYYY>-W<NN>.json` (W37, W38 without year) | That week's whole briefing: verdict, KPIs, done, progress, actions, KSNB notes, sources. |
 | `data/.last-check` | Heartbeat. Proves the job ran even when there was no new report. |
-| `.github/workflows/freshness-check.yml` | Opens an issue if the job stops, or if the reports go quiet. |
+| `.github/workflows/freshness-check.yml` | Opens an issue if the job stops, if the reports go quiet, or if the Drive inbox is unreachable or empty. |
 
 ## Why the heartbeat matters here more than anywhere else
 
@@ -64,7 +64,7 @@ heartbeat says the job ran, `generatedUtc` says it published.
   cannot be extracted automatically. When a week cannot be read, the runbook
   requires keeping the prior figures, labelling them, and naming exactly which
   indicators are missing — never inventing a number.
-- ELA's PDFs run 100–130 MB and the template changes between weeks.
+- ELA's PDFs run 100–165 MB (Drive listing 2026-09-29) and the template changes between weeks.
 
 ## Visual standard
 
