@@ -1,6 +1,8 @@
 # Spec: ela-page-images
 
-**Intent:** accepted 2026-09-30 · **Status:** draft
+**Approved:** 2026-09-30 ("approve all"; scope = known slides, the recommended option, since Ty did not choose — changes on his word)
+
+**Intent:** accepted 2026-09-30 · **Status:** approved
 
 ## Requirements
 1. In runbook step 4, when a source PDF returns empty text, the run downloads it through the Drive connector and renders pages to images (`pdftoppm`, installed with `apt-get install -y poppler-utils` if missing). *(Outcome)*
@@ -19,7 +21,7 @@ Loaded: kernel `CLAUDE.md` ("Strategic objective" — cloud-only, "Drift detecti
 |---|---|---|
 | "Strategic objective" — unattended, Drive connector only | A 140 MB download and a package install inside the cloud run are unproven. | **Feasibility test before building** (Promise 1). If either fails, the fallback stays ⚠ and this spec is revised. |
 | "Report, don't fake" | Image reading can misread. | Label + page numbers + ⚠ on anything unread; checked against a known week (Promise 2). |
-| Scope: known slides vs whole deck | **Ty's call (open question from the intent):** known slides (search the first 25 pages for the 5 titles; recommended: fast, and a missing slide is reported, not guessed) or scan every page each week. | — |
+| Scope: known slides vs whole deck | Known slides: search the first 25 pages for the 5 titles; a missing slide is reported, not guessed. | Resolved 2026-09-30: known slides (recommended option; Ty approved without choosing). |
 | Run time / cost | Rendering and reading ~10 images adds minutes to a weekly run. | Acceptable at one run a week; stated in the runbook. |
 
 ## Security
