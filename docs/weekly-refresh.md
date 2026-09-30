@@ -51,7 +51,8 @@ leaves a heartbeat even when the Drive step hangs.
 
 The line is **exactly** `<UTC> newest-source=<value>` and nothing after the
 value: no counts, file names, folder ids, notes or explanation. This repo is
-public, so anything appended is published in the file and its history.
+public, so anything appended is public in the repo and its history (Pages does
+not serve the heartbeat).
 Observations go in the run's report (step 3's when the run stops there, step 7
 otherwise), never in the heartbeat.
 
