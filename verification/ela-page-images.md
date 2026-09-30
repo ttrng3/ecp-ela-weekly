@@ -9,7 +9,12 @@ Caveat: the source had been hydrated by a manual `cat` minutes earlier, so rende
 Pass line: `30/30 + done`.
 
 ### 1b. Cold file under launchd — FAILS 2026-09-30 02:23 UTC (open)
-After the review fixes the job re-ran on W39, which Drive had evicted again (0 KB on disk): `cat` → "Resource deadlock avoided". A one-off launchd test confirmed it: an already-downloaded file (W38) reads fine; a cloud-only one (W39) does not. **A background job cannot make Drive for Desktop download a file.** Setting `com.apple.fileprovider.pinned#PX` on the folder had no effect and was removed. Fix needed: the inbox folder kept downloaded ("Available offline" in Google Drive), so the job only ever reads local files.
+After the review fixes the job re-ran on W39, which Drive had evicted again (0 KB on disk): `cat` → "Resource deadlock avoided". A one-off launchd test confirmed it: an already-downloaded file (W38) reads fine; a cloud-only one (W39) does not. **A background job cannot make Drive for Desktop download a file.** Setting `com.apple.fileprovider.pinned#PX` on the folder had no effect and was removed. Fix: Ty set the inbox folder to "Available offline" (one-time, 2026-09-30), so the job only reads local files.
+
+### 1c. Job renders with the folder offline — PASS 2026-09-30 02:41 UTC
+Drive downloaded the folder (W39 on disk in 120 s, folder ~1,9 GB). launchd run, no manual step: `rendered ELA-2026-W39: 30 of 55 pages`; `done` = `pages_rendered=30 source_pages=55 source_bytes=141917085`; folder `_pages/ELA-2026-W39-141917085/`. Installed script sha256 = repo script sha256 (`14f381094ba3…`).
+
+Pass line: `30/30 + done`, no human step.
 
 ## 2. Cloud run reads the images — PASS 2026-09-30 02:17–02:19 UTC
 Test routine (read-only): found `_pages/ELA-2026-W39/`, `done` present, 30 images p-01…p-30. Downloaded p-03 (137,274 B, size matches Drive) and p-16 (152,775 B), and read:
