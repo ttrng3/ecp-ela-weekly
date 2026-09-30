@@ -7,6 +7,10 @@ Canonical. If the routine prompt and this file disagree, **this file wins**.
 Any cloud session with the Google Drive connector and the GitHub MCP file
 tools. Both are account-level, so this runs with the Mac shut.
 
+**One exception:** ELA's figures come from page images that a Mac helper
+renders (step 4a). If the helper has not run since ELA filed, the run still
+works, but ELA's figures get ⚠ with that reason.
+
 ## The Artifact tool is attached: call it directly
 
 The routine prompt says to call ToolSearch for any tool that isn't in the
@@ -105,19 +109,59 @@ the report says which weeks were skipped.
 
 ### 4. Extract — and report rather than fake
 
-**ECP's report is usually an image-only PDF with no text layer. ELA's runs
-100–165 MB (Drive listing 2026-09-29).** If a figure cannot be read this run:
+**ECP's report has a text layer (ECP-2026-W39.pdf: 3,515,692 B, Drive listing
+2026-09-29); read it as text. ELA's decks are slides exported as images
+(100–165 MB for the W33–W39 decks, Drive listing 2026-09-29): no text, and the
+Drive connector refuses downloads over 10 MB.**
+
+#### 4a. Image-only PDF: read the pages as images
+
+**Under 10 MB:** download it with the connector and render it in the sandbox
+(`pdftoppm -r 60 -jpeg -f 1 -l 30`), then go on at 2.
+
+**Over 10 MB:** a Mac helper (`tools/ela-pages.sh`, launchd, hourly) renders
+pages 1–30 of every new PDF over 10 MB into the inbox subfolder
+`_pages/<file stem>-<file bytes>/` as `p-01.jpg` … `p-30.jpg` (~140 KB each)
+and writes `done` last (`pages_rendered`, `source_pages`, `source_bytes`). The
+byte count in the folder name must equal the PDF's current `fileSize`; a
+re-filed report gets a new folder.
+
+1. List `_pages/<stem>-<bytes>/` inside the inbox folder with the Drive
+   connector. No folder, or no `done` → the pages are not ready: fall back to
+   4b with the reason "Mac render job has not run".
+2. Download the images (each is under 10 MB) and open them with the Read tool.
+   The connector returns an image as base64 that overflows the tool result and
+   is saved to a side file; decode it there
+   (`jq -r .content <file> | tr -d '\n' | base64 -d > /tmp/p-NN.jpg`) and check
+   the byte size against Drive's `fileSize`. Look pages up by exact title
+   (`title = 'p-03.jpg'`): the folder listing's page tokens can overlap.
+   Find these slides by title, not page number (it moves week to week):
+   - "Thông tin chung": khách tham quan KĐT, nhân sự BQL, nhà thầu thi công,
+     báo cáo bàn giao, căn đang hoạt động kinh doanh, khách khu vui chơi
+   - "Eco Bazaar – cập nhật tiến độ": bàn giao BQL → BKD
+   - "Công tác nghiệm thu bàn giao": PK1 / PK3 (lịch QLXD, lần 1, lần 2,
+     chuyển bước, đã nhận)
+   - "Công tác bàn giao nhà": thư mời / đã nhận nhà
+   - "Khảo sát và đánh giá tiến độ xây dựng": PK4
+3. Label every figure read this way "đọc từ ảnh trang" in the legend and name
+   the page numbers in `sourceNote`. When two slides disagree (e.g. summary
+   54/66 vs detail 58), show both and mark ⚠; don't pick one. A slide not found
+   → ⚠ for its figures, saying "not in the first 30 of N pages" (N from
+   `done`) when the deck is longer than 30.
+
+#### 4b. When a figure still cannot be read
 
 - keep the previous week's value,
 - label it `⚠ chưa cập nhật (nguồn ảnh/quá lớn) — cần xác nhận thủ công`,
-- and list the exact missing indicators in the notification.
+- and list the exact missing indicators, and why, in the notification.
 
 Never infer, never carry a number forward silently.
 
 Indicators — **ECP**: khách tham quan CV, khách khu vui chơi, hộ cư dân về ở,
 bàn giao thấp tầng x/1657, Central Park Residences x/620, căn thi công về ở.
 **ELA**: khách tham quan KĐT, khách khu vui chơi, nhân sự BQL, nhà thầu thi
-công, bàn giao Eco Bazaar x/66, khai trương x/66, nghiệm thu PK1/PK3/PK4.
+công, bàn giao Eco Bazaar (BQL→BKD) x/66, căn đang hoạt động kinh doanh,
+nghiệm thu PK1/PK3/PK4.
 
 ### 5. Write two files via the GitHub MCP file tools
 

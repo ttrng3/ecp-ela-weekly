@@ -60,11 +60,14 @@ heartbeat says the job ran, `generatedUtc` says it published.
 
 ## Data caveats
 
-- **ECP publishes its weekly report as images** (no text layer), so its numbers
-  cannot be extracted automatically. When a week cannot be read, the runbook
-  requires keeping the prior figures, labelling them, and naming exactly which
-  indicators are missing — never inventing a number.
-- ELA's PDFs run 100–165 MB (Drive listing 2026-09-29) and the template changes between weeks.
+- **ECP's report has a text layer** (ECP-2026-W39.pdf, 3,515,692 B) and is read as text.
+- **ELA's decks are slides exported as images** (100–165 MB for W33–W39, Drive
+  listing 2026-09-29; W24–W25 were 660–690 MB). The Drive connector refuses
+  downloads over 10 MB, so a Mac helper renders their pages to images the
+  routine can read (runbook step 4a). When a figure still cannot be read, the
+  runbook requires keeping the prior figure, labelling it, and naming exactly
+  which indicators are missing, never inventing a number.
+- The ELA template changes between weeks; slides are found by title.
 
 ## Visual standard
 
