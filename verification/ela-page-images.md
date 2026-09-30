@@ -24,4 +24,9 @@ All equal the hand-read W39 values published in `data/weeks/2026-W39.json`.
 
 Pass line: all values match.
 
+### 2b. Cloud run follows the byte-keyed lookup — PASS 2026-09-30 02:46–02:47 UTC
+Test routine, read-only, runbook 4a as written: `ELA-2026-W39.pdf` fileSize 141917085 → `_pages/ELA-2026-W39-141917085/` found by exact title → `done` read (`pages_rendered=30 source_pages=55 source_bytes=141917085`, bytes match) → `p-03.jpg` (137,274 B) and `p-16.jpg` (152,775 B) looked up by exact title, base64 decoded from the spill file, sizes match Drive. Values: 2.408 · 160 · 21 · Eco Bazaar 54/66 + PK1 05/198 · 57 · 1.430; PK1 lần 1 90/198, PK1 đã nhận 59, PK3 đã nhận 21 — all equal the hand-read W39.
+
+Pass line: all values match.
+
 ## 3. Scheduled run — pending, Sun 2026-10-04 21:00 Hanoi
