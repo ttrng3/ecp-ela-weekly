@@ -7,7 +7,7 @@
 
 ## Commands run 2026-09-30
 - manifest check: passes
-- `python3 tools/build-fragment.py /tmp/ecp-frag.html`: exit 0, 14,206 bytes
+- `python3 tools/build-fragment.py /tmp/ecp-frag.html`: exit 0, 14,206 bytes; re-run as listed (no argument): writes `build/artifact.html` (tracked), 14,206 bytes, `git status` clean (byte-identical to main)
 - `python3 tools/reconcile.py data <copy>`: IN SYNC, exit 0
 - `python3 .github/scripts/freshness.py`: exit 0, `stale=false`
 - `python3 .github/scripts/test_freshness.py`: 6/6 ok, exit 0
