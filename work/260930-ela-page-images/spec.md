@@ -44,7 +44,7 @@ Loaded: kernel `CLAUDE.md` ("Strategic objective", "File operation safety", "Dri
 | Public repo | The script is public, and the Drive mount path contains the account email. | The script finds the mount at run time (`GoogleDrive-*` glob) and names no account; the folder id stays in the private prompt. An earlier push of the branch contained the path; that history was rewritten on 2026-09-30. |
 
 ## Security
-Secrets: none added. The script names no account or mount folder. Pages allowlist unchanged (`tools/` not served). Rendered images live in Drive, never in the repo. Verdict: safe to ship.
+Secrets: none added. The script names no account or mount folder. Pages allowlist unchanged (`tools/` not served). Rendered images live in Drive, never in the repo. Findings: none.
 
 ## Promise
 1. **Mac job:** after install, within one hour `_pages/ELA-2026-W39-141917085/` exists with 30 images and `done`; sizes match the local render. Pass line: `30/30 + done`.

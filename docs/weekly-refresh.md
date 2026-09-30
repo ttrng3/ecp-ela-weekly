@@ -132,8 +132,10 @@ byte count in the folder name must equal the PDF's current `fileSize`; a
 re-filed report gets a new folder.
 
 1. List `_pages/<stem>-<bytes>/` inside the inbox folder with the Drive
-   connector. No folder, or no `done` → the pages are not ready: fall back to
-   4b with the reason "Mac render job has not run".
+   connector. If the exact title misses, list `_pages/` and match a folder
+   ending `-<bytes>` whose stem equals the PDF's (both NFC-normalised, ignoring
+   a " (1)"-style suffix). Still no folder, or no `done` → the pages are not
+   ready: fall back to 4b with the reason "Mac render job has not run".
 2. Download the images (each is under 10 MB) and open them with the Read tool.
    The connector returns an image as base64 that overflows the tool result and
    is saved to a side file; decode it there

@@ -60,7 +60,7 @@ heartbeat says the job ran, `generatedUtc` says it published.
 
 ## Data caveats
 
-- **ECP's report has a text layer** (ECP-2026-W39.pdf, 3,515,692 B) and is read as text.
+- **ECP's report has a text layer** (ECP-2026-W39.pdf, 3,515,692 B, Drive listing 2026-09-29) and is read as text.
 - **ELA's decks are slides exported as images** (100–165 MB for W33–W39, Drive
   listing 2026-09-29; W24–W25 were 660–690 MB, same listing). The Drive connector refuses
   downloads over 10 MB, so a Mac helper renders their pages to images the

@@ -6,9 +6,12 @@
 # Needs the inbox folder set to "Available offline" in Google Drive: a launchd
 # job cannot make Drive for Desktop download a cloud-only file.
 # Runs hourly from launchd (tools/com.ty.ela-pages.plist).
-# Install / update after a merge:
-#   cp tools/ela-pages.sh ~/.local/bin/ela-pages.sh
-#   ~/.local/bin/ela-pages.sh --seed   # first install only: skip existing PDFs
+# Install (first time), from the repo root:
+#   mkdir -p ~/.local/bin && cp tools/ela-pages.sh ~/.local/bin/ela-pages.sh
+#   ~/.local/bin/ela-pages.sh --seed      # skip reports of already-published weeks
+#   cp tools/com.ty.ela-pages.plist ~/Library/LaunchAgents/
+#   launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.ty.ela-pages.plist
+# Update after a merge: cp tools/ela-pages.sh ~/.local/bin/ela-pages.sh
 set -u
 LIMIT=10485760
 LOG="$HOME/Library/Logs/ela-pages.log"
@@ -23,24 +26,32 @@ for d in "$HOME"/Library/CloudStorage/GoogleDrive-*/"My Drive/Claude Workspace/0
 done
 [ -n "$INBOX" ] || { log "inbox not mounted, skip"; exit 0; }
 
-# Keys already handled ("<stem> <bytes>"). `--seed` records every PDF present at
-# install without rendering, so only new or re-filed reports are rendered later.
+# Keys already handled ("<stem> <bytes>"). `--seed` records, without rendering,
+# only PDFs whose week is already published on the live page (week <= `current`
+# in data/index.json); anything newer, or any name it cannot parse, is left to
+# render. So a report filed just before an install is still rendered.
 SEEN="$HOME/.local/state/ela-pages.seen"
 mkdir -p "$(dirname "$SEEN")"; touch "$SEEN"
 
 shopt -s nullglob nocaseglob
 if [ "${1:-}" = "--seed" ]; then
+  cur=$(curl -fsS https://ttrng3.github.io/ecp-ela-weekly/data/index.json | python3 -c '
+import json,sys,re
+c=json.load(sys.stdin)["current"]; m=re.match(r"(?:(\d{4})-)?W(\d+)$",c)
+print(int(m.group(1) or 2026)*100+int(m.group(2)))') || { log "seed: cannot read published week, nothing seeded"; exit 1; }
   for pdf in "$INBOX"/*.pdf; do
-    b=$(basename "$pdf"); echo "${b%.*} $(stat -f %z "$pdf")" >> "$SEEN"
+    b=$(basename "$pdf"); stem="${b%.*}"
+    wk=$(echo "$stem" | sed -nE 's/^(ECP|ELA)-([0-9]{4})-W([0-9]{2})$/\2\3/p')
+    [ -n "$wk" ] && [ "$wk" -le "$cur" ] && echo "$stem $(stat -f %z "$pdf")" >> "$SEEN"
   done
-  log "seeded $(wc -l < "$SEEN" | tr -d ' ') keys"; exit 0
+  log "seeded up to week $cur: $(wc -l < "$SEEN" | tr -d ' ') keys"; exit 0
 fi
 for pdf in "$INBOX"/*.pdf; do
   size=$(stat -f %z "$pdf" 2>/dev/null) || continue
   [ "$size" -gt "$LIMIT" ] || continue
   b=$(basename "$pdf"); stem="${b%.*}"
   key="$stem $size"
-  grep -qxF "$key" "$SEEN" && continue
+  grep -qxF -e "$key" "$SEEN" && continue
   # A re-filed report with the same name but new bytes gets a new folder.
   out="$INBOX/_pages/$stem-$size"
   [ -f "$out/done" ] && { echo "$key" >> "$SEEN"; continue; }
