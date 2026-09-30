@@ -22,14 +22,14 @@ Test routine run 2026-09-29 17:09 UTC: `download_file_content` on ELA-2026-W39.p
 
 ## Requirements
 1. A Mac background job (launchd, hourly) finds any PDF in the inbox over 10 MB that has no rendered pages yet, renders pages 1–30 to JPEG (`pdftoppm -r 60 -jpeg -jpegopt quality=80`), and writes them to `00 Inbox/Weekly Reports ECP-ELA/_pages/<file stem>-<file bytes>/p-NN.jpg`, then a `done` marker last (pages rendered, source pages, source bytes). Measured on W39: 30 pages, 5,4 s, 4,2 MB total, ~140 KB each.
-2. It writes to a local temp folder first, copies to the Drive mount, and checks each copy's size before writing `done` ("File operation safety"). It never deletes, moves or renames anything.
+2. It writes to a local temp folder first, copies to the Drive mount, and checks each copy's size before writing `done` ("File operation safety"). It never deletes, moves or renames a report; it only overwrites its own unfinished page files on retry.
 3. The routine, when a source PDF returns no text: under 10 MB it downloads and renders it in the sandbox; over 10 MB it reads `_pages/<stem>-<bytes>/` through the Drive connector (each image is under 10 MB), finds the 5 known slides by title ("Thông tin chung", "Eco Bazaar – cập nhật tiến độ", "Công tác nghiệm thu bàn giao", "Công tác bàn giao nhà", "Khảo sát và đánh giá tiến độ xây dựng"), and reads the figures.
-4. Figures read this way are labelled "đọc từ ảnh trang" with page numbers; contradictions inside the deck get ⚠ with both values; a slide not found gets ⚠. No `_pages/<stem>/done` yet → ⚠ with the reason "Mac render job has not run", as today.
+4. Figures read this way are labelled "đọc từ ảnh trang" with page numbers; contradictions inside the deck get ⚠ with both values; a slide not found gets ⚠. No `_pages/<stem>-<bytes>/done` yet → ⚠ with the reason "Mac render job has not run", as today.
 5. Nothing changes for ECP (text PDFs).
 
 ## Design
 - `tools/ela-pages.sh` (repo; no secrets or personal data: it finds the Drive mount at run time, because the mount folder's name contains the account's email address) + `tools/com.ty.ela-pages.plist` (launchd agent, StartInterval 3600, installed to `~/Library/LaunchAgents`).
-- `docs/weekly-refresh.md` step 4 gains "Large or image-only PDF: read `_pages/<stem>/`".
+- `docs/weekly-refresh.md` step 4 gains "4a. Image-only PDF: read the pages as images".
 - Routine prompt STEP 4 points to that sub-step.
 
 ## Conflicts
@@ -47,8 +47,8 @@ Loaded: kernel `CLAUDE.md` ("Strategic objective", "File operation safety", "Dri
 Secrets: none added. The script names no account or mount folder. Pages allowlist unchanged (`tools/` not served). Rendered images live in Drive, never in the repo. Verdict: safe to ship.
 
 ## Promise
-1. **Mac job:** after install, within one hour `_pages/ELA-2026-W39/` exists with 30 images and `done`; sizes match the local render. Pass line: `30/30 + done`.
-2. **Cloud read:** a hand-fired run of the test routine downloads `_pages/ELA-2026-W39/p-03.jpg` via the connector and reads the six "Thông tin chung" values. Pass line: `2.408 · 160 · 21 · 54/66 · 57 · 1.430`.
+1. **Mac job:** after install, within one hour `_pages/ELA-2026-W39-141917085/` exists with 30 images and `done`; sizes match the local render. Pass line: `30/30 + done`.
+2. **Cloud read:** a hand-fired run of the test routine downloads `_pages/ELA-2026-W39-141917085/p-03.jpg` via the connector and reads the six "Thông tin chung" values. Pass line: `2.408 · 160 · 21 · 54/66 · 57 · 1.430`.
 3. **Scheduled:** the Sun 2026-10-04 run publishes W40 with ELA read from images (or, if W40 is not filed on both sides, reports that and writes only the heartbeat).
 
 ## Out of scope

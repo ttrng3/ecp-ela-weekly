@@ -62,7 +62,7 @@ heartbeat says the job ran, `generatedUtc` says it published.
 
 - **ECP's report has a text layer** (ECP-2026-W39.pdf, 3,515,692 B) and is read as text.
 - **ELA's decks are slides exported as images** (100–165 MB for W33–W39, Drive
-  listing 2026-09-29; W24–W25 were 660–690 MB). The Drive connector refuses
+  listing 2026-09-29; W24–W25 were 660–690 MB, same listing). The Drive connector refuses
   downloads over 10 MB, so a Mac helper renders their pages to images the
   routine can read (runbook step 4a). When a figure still cannot be read, the
   runbook requires keeping the prior figure, labelling it, and naming exactly

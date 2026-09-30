@@ -1,9 +1,14 @@
 #!/bin/bash
 # Renders pages 1-30 of any new weekly-report PDF over 10 MB in the Drive inbox
-# to small JPEGs in _pages/<stem>-<bytes>/, so the cloud routine (10 MB download
-# cap on the Drive connector) can read them. Write-new-only: never moves,
-# renames or deletes. Runs hourly from launchd (tools/com.ty.ela-pages.plist).
-# Install / update after a merge: copy this file to ~/.local/bin/ela-pages.sh.
+# to small JPEGs in _pages/<stem>-<bytes>/p-NN.jpg, so the cloud routine (10 MB
+# download cap on the Drive connector) can read them. Never deletes, moves or
+# renames a report; it only overwrites its own unfinished page files on retry.
+# Needs the inbox folder set to "Available offline" in Google Drive: a launchd
+# job cannot make Drive for Desktop download a cloud-only file.
+# Runs hourly from launchd (tools/com.ty.ela-pages.plist).
+# Install / update after a merge:
+#   cp tools/ela-pages.sh ~/.local/bin/ela-pages.sh
+#   ~/.local/bin/ela-pages.sh --seed   # first install only: skip existing PDFs
 set -u
 LIMIT=10485760
 LOG="$HOME/Library/Logs/ela-pages.log"
@@ -18,17 +23,22 @@ for d in "$HOME"/Library/CloudStorage/GoogleDrive-*/"My Drive/Claude Workspace/0
 done
 [ -n "$INBOX" ] || { log "inbox not mounted, skip"; exit 0; }
 
-# Keys already handled ("<stem> <bytes>"). Seeded at install with every PDF then
-# present, so only new or re-filed reports are rendered (each render pulls the
-# whole 100-700 MB PDF through Drive for Desktop).
+# Keys already handled ("<stem> <bytes>"). `--seed` records every PDF present at
+# install without rendering, so only new or re-filed reports are rendered later.
 SEEN="$HOME/.local/state/ela-pages.seen"
 mkdir -p "$(dirname "$SEEN")"; touch "$SEEN"
 
-shopt -s nullglob
+shopt -s nullglob nocaseglob
+if [ "${1:-}" = "--seed" ]; then
+  for pdf in "$INBOX"/*.pdf; do
+    b=$(basename "$pdf"); echo "${b%.*} $(stat -f %z "$pdf")" >> "$SEEN"
+  done
+  log "seeded $(wc -l < "$SEEN" | tr -d ' ') keys"; exit 0
+fi
 for pdf in "$INBOX"/*.pdf; do
   size=$(stat -f %z "$pdf" 2>/dev/null) || continue
   [ "$size" -gt "$LIMIT" ] || continue
-  stem=$(basename "$pdf" .pdf)
+  b=$(basename "$pdf"); stem="${b%.*}"
   key="$stem $size"
   grep -qxF "$key" "$SEEN" && continue
   # A re-filed report with the same name but new bytes gets a new folder.
@@ -44,6 +54,13 @@ for pdf in "$INBOX"/*.pdf; do
   if ! pdftoppm -r 60 -jpeg -jpegopt quality=80 -f 1 -l 30 "$tmp/src.pdf" "$tmp/p" 2>>"$LOG"; then
     log "render failed: $stem (retry next hour)"; rm -rf "$tmp"; continue
   fi
+  # pdftoppm pads page numbers to the document's page count (p-001 for 100+
+  # pages); normalise to p-NN so the routine's lookups are stable.
+  for f in "$tmp"/p-*.jpg; do
+    num=$(basename "$f" .jpg); num=$((10#${num#p-}))
+    mv "$f" "$tmp/p-$(printf %02d "$num").tmp"
+  done
+  for f in "$tmp"/p-*.tmp; do mv "$f" "${f%.tmp}.jpg"; done
   mkdir -p "$out" || { log "cannot create $out"; rm -rf "$tmp"; continue; }
   ok=1; n=0
   for f in "$tmp"/p-*.jpg; do

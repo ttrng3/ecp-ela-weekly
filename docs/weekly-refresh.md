@@ -8,8 +8,11 @@ Any cloud session with the Google Drive connector and the GitHub MCP file
 tools. Both are account-level, so this runs with the Mac shut.
 
 **One exception:** ELA's figures come from page images that a Mac helper
-renders (step 4a). If the helper has not run since ELA filed, the run still
-works, but ELA's figures get ⚠ with that reason.
+renders (step 4a). It needs the Mac awake some time between ELA filing and the
+run, and the inbox folder set to "Available offline" in Google Drive (a
+background job cannot make Drive download a cloud-only file). Its log is
+`~/Library/Logs/ela-pages.log` on the Mac. If the helper has not run, the run
+still works, but ELA's figures get ⚠ with that reason.
 
 ## The Artifact tool is attached: call it directly
 
@@ -117,11 +120,13 @@ Drive connector refuses downloads over 10 MB.**
 #### 4a. Image-only PDF: read the pages as images
 
 **Under 10 MB:** download it with the connector and render it in the sandbox
-(`pdftoppm -r 60 -jpeg -f 1 -l 30`), then go on at 2.
+(`pdftoppm -r 60 -jpeg -f 1 -l 30`), open the rendered images with the Read
+tool, and go on at the slide list in 2.
 
 **Over 10 MB:** a Mac helper (`tools/ela-pages.sh`, launchd, hourly) renders
 pages 1–30 of every new PDF over 10 MB into the inbox subfolder
-`_pages/<file stem>-<file bytes>/` as `p-01.jpg` … `p-30.jpg` (~140 KB each)
+`_pages/<file stem>-<file bytes>/` as `p-01.jpg` … `p-30.jpg` (~140 KB each, W39
+render 2026-09-30)
 and writes `done` last (`pages_rendered`, `source_pages`, `source_bytes`). The
 byte count in the folder name must equal the PDF's current `fileSize`; a
 re-filed report gets a new folder.
