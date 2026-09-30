@@ -56,8 +56,9 @@ for pdf in "$INBOX"/*.pdf; do
   out="$INBOX/_pages/$stem-$size"
   [ -f "$out/done" ] && { echo "$key" >> "$SEEN"; continue; }
   tmp=$(mktemp -d)
-  # cat, not cp: cp's fcopyfile hits "Resource deadlock avoided" on a cold Drive
-  # placeholder; a plain byte stream hydrates it. Size must match.
+  # Stream with cat into a temp file and check the size. From launchd neither cp
+  # nor cat can read a cloud-only file ("Resource deadlock avoided"), which is
+  # why the inbox must stay Available offline (verification/ela-page-images.md).
   if ! cat "$pdf" > "$tmp/src.pdf" 2>>"$LOG" || [ "$(stat -f %z "$tmp/src.pdf" 2>/dev/null)" != "$size" ]; then
     log "copy of source failed or incomplete: $stem (retry next hour)"; rm -rf "$tmp"; continue
   fi
