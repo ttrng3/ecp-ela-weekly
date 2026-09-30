@@ -51,9 +51,9 @@ leaves a heartbeat even when the Drive step hangs.
 
 The line is **exactly** `<UTC> newest-source=<value>` and nothing after the
 value: no counts, file names, folder ids, notes or explanation. This repo is
-public, so anything appended is published in the file and its history (the
-2026-09-30 run appended a Drive folder id). Observations go in the step 7
-report, never in the heartbeat.
+public, so anything appended is published in the file and its history.
+Observations go in the run's report (step 3's when the run stops there, step 7
+otherwise), never in the heartbeat.
 
 `freshness.py` raises the stale-data issue on `inbox-unreachable`,
 `inbox-empty` and `ECP-none/ELA-none`.

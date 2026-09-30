@@ -5,7 +5,7 @@
 **Intent:** accepted 2026-09-30 · **Status:** approved
 
 ## Requirements
-1. `docs/weekly-refresh.md` step 1: the line is exactly `<UTC> newest-source=<value>`; nothing after the value; observations go in the step 7 report.
+1. `docs/weekly-refresh.md` step 1: the line is exactly `<UTC> newest-source=<value>`; nothing after the value; observations go in the run's report (step 3's when the run stops there, step 7 otherwise).
 2. `data/.last-check` on main: the text after `newest-source=ECP-2026-W39/ELA-2026-W39` is removed; timestamp and value kept byte for byte.
 
 ## Design
