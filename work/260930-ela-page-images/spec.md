@@ -1,36 +1,53 @@
 # Spec: ela-page-images
 
-**Approved:** 2026-09-30 ("approve all"; scope = known slides, the recommended option, since Ty did not choose — changes on his word)
+**Approved:** 2026-09-30 (original design; superseded below)
+**Revision 2:** 2026-09-30, after the feasibility test — **pending Ty's approval**.
 
-**Intent:** accepted 2026-09-30 · **Status:** approved
+**Intent:** accepted 2026-09-30 (constraint amended, pending) · **Status:** draft (revision 2)
+
+## What the test showed
+Test routine run 2026-09-29 17:09 UTC: `download_file_content` on ELA-2026-W39.pdf → "File too large for download, over limit of 10 MB". `pdftoppm` is already installed in the cloud sandbox. So the cloud run can render and read images, but cannot fetch a 126–165 MB PDF.
+
+## Options checked (every path, before asking Ty)
+| Path | Human step | Result |
+|---|---|---|
+| Drive connector download | none | ✗ 10 MB cap (tested) |
+| Drive connector text read | none | ✗ empty (no text layer) |
+| Cloud run calls the Drive API directly (no cap) | **one-time**: Ty creates a Google Cloud credential (only his login can) | ✓ fully cloud; held as the upgrade path |
+| GitHub Action with the same credential | same one-time step; public repo logs | ✗ worse than the row above |
+| ELA sends a text-layer PDF | a request to Long An each week | ✗ depends on another team |
+| Ty saves screenshots | weekly human step | ✗ what Ty asked to avoid |
+| **Mac helper renders pages into Drive; cloud run reads the images** | **none** | ✓ chosen: works this week, no credential, no weekly step |
 
 ## Requirements
-1. In runbook step 4, when a source PDF returns empty text, the run downloads it through the Drive connector and renders pages to images (`pdftoppm`, installed with `apt-get install -y poppler-utils` if missing). *(Outcome)*
-2. It finds the needed slides by their titles and reads the figures from the images: "Thông tin chung" (6 KPIs), "Eco Bazaar – cập nhật tiến độ" (BQL→BKD), "Công tác nghiệm thu bàn giao" (PK1/PK3), "Công tác bàn giao nhà" (khách nhận), "Khảo sát và đánh giá tiến độ xây dựng" (PK4). *(Outcome; open question 3)*
-3. Figures read this way are labelled "đọc từ ảnh trang" in the legend, and `sourceNote` names the page numbers. A slide it cannot find or read falls back to ⚠, as today. The report lists the pages read. *(Outcome; "Report, don't fake")*
-4. If the download fails or the renderer can't be installed, the run falls back to ⚠ and says which step failed. It never searches Drive-wide or mounts a machine. *(Constraints)*
-5. Contradictions inside a deck (e.g. summary vs detail slide) are flagged ⚠ with both values, never resolved by the run. *(Constraints)*
+1. A Mac background job (launchd, hourly) finds any PDF in the inbox over 10 MB that has no rendered pages yet, renders pages 1–30 to JPEG (`pdftoppm -r 60 -jpeg -jpegopt quality=80`), and writes them to `00 Inbox/Weekly Reports ECP-ELA/_pages/<file stem>/p-NN.jpg`, then a `done` marker last. Measured on W39: 30 pages, 5,4 s, 4,2 MB total, ~140 KB each.
+2. It writes to a local temp folder first, copies to the Drive mount, and checks each copy's size before writing `done` ("File operation safety"). It never deletes, moves or renames anything.
+3. The routine, when a source PDF is over 10 MB or returns no text, reads `_pages/<stem>/` through the Drive connector (each image is under 10 MB), finds the 5 known slides by title ("Thông tin chung", "Eco Bazaar – cập nhật tiến độ", "Công tác nghiệm thu bàn giao", "Công tác bàn giao nhà", "Khảo sát và đánh giá tiến độ xây dựng"), and reads the figures.
+4. Figures read this way are labelled "đọc từ ảnh trang" with page numbers; contradictions inside the deck get ⚠ with both values; a slide not found gets ⚠. No `_pages/<stem>/done` yet → ⚠ with the reason "Mac render job has not run", as today.
+5. Nothing changes for ECP (text PDFs).
 
 ## Design
-`docs/weekly-refresh.md` step 4 gains a sub-step "No text layer: read the page images" with the slide list above, the render command (`pdftoppm -r 50 -jpeg`), a scan limit, and the fallback. The routine prompt's STEP 4 line about ELA being "the real blocker" changes to point to that sub-step. No change to data shape, renderer or stylesheet.
+- `tools/ela-pages.sh` (repo, no secrets: it names only the inbox path on the mount) + `tools/com.ty.ela-pages.plist` (launchd agent, StartInterval 3600, installed to `~/Library/LaunchAgents`).
+- `docs/weekly-refresh.md` step 4 gains "Large or image-only PDF: read `_pages/<stem>/`".
+- Routine prompt STEP 4 points to that sub-step.
 
 ## Conflicts
-Loaded: kernel `CLAUDE.md` ("Strategic objective" — cloud-only, "Drift detection"), artifact mirror contract, entity separation, repo `REVIEW.md`, secure-pages. Not loaded: ty-report-standard / apple-design (no visual change).
+Loaded: kernel `CLAUDE.md` ("Strategic objective", "File operation safety", "Drift detection"), artifact mirror contract, entity separation, repo `REVIEW.md`, secure-pages.
 
-| Rule (by name) | What in the design breaks it | Resolution, or question for Ty |
+| Rule (by name) | What in the design breaks it | Resolution |
 |---|---|---|
-| "Strategic objective" — unattended, Drive connector only | A 140 MB download and a package install inside the cloud run are unproven. | **Feasibility test before building** (Promise 1). If either fails, the fallback stays ⚠ and this spec is revised. |
-| "Report, don't fake" | Image reading can misread. | Label + page numbers + ⚠ on anything unread; checked against a known week (Promise 2). |
-| Scope: known slides vs whole deck | Known slides: search the first 25 pages for the 5 titles; a missing slide is reported, not guessed. | Resolved 2026-09-30: known slides (recommended option; Ty approved without choosing). |
-| Run time / cost | Rendering and reading ~10 images adds minutes to a weekly run. | Acceptable at one run a week; stated in the runbook. |
+| "Strategic objective" — no dependency on the Mac | The render step runs on the Mac: if it is off or asleep all weekend, ELA falls back to ⚠. | Flagged as debt. The fully cloud upgrade (Drive API credential, one-time Ty login) is recorded above; the rest of the design does not change when it lands. |
+| "File operation safety" | The job writes new files onto the Drive mount. | Write-new-only, temp → copy → size check → `done` marker; no move/rename/delete. |
+| "Report, don't fake" | Image reading can misread. | Label + page numbers + ⚠, as PR #6; checked against the hand-read W39. |
+| Public repo | The script is public. | It holds no id, token or personal data; the folder id stays in the private prompt. |
 
 ## Security
-Same repo, same result as 2026-09-30: secrets 0 (tree and history), PUBLIC — PASS, Pages allowlist unchanged, Supabase N/A. The downloaded PDF stays in the run's `/tmp` and is never committed. Verdict: safe to ship.
+Secrets: none added. The script holds a mount path only. Pages allowlist unchanged (`tools/` not served). Rendered images live in Drive, never in the repo. Verdict: safe to ship.
 
 ## Promise
-1. **Feasibility, before building:** a one-off test routine (or a hand-fired run with a test prompt) downloads `ELA-2026-W39.pdf` via the Drive connector and runs `pdftoppm` on page 3. Pass line: `downloaded 141917085 B, rendered p.3`.
-2. **Accuracy:** a hand-fired run against W39 produces ELA values equal to the hand-read W39 (2.408 · 1.430 · 58 · 57 · 160 · 21 · PK1 90/198 & 59 · PK3 66/68 & 21 · PK4 31). Pass line: `11/11 match`.
-3. **Scheduled:** the Sun 2026-10-04 run reports the pages it read and writes no ⚠ except the flagged contradictions.
+1. **Mac job:** after install, within one hour `_pages/ELA-2026-W39/` exists with 30 images and `done`; sizes match the local render. Pass line: `30/30 + done`.
+2. **Cloud read:** a hand-fired run of the test routine downloads `_pages/ELA-2026-W39/p-03.jpg` via the connector and reads the six "Thông tin chung" values. Pass line: `2.408 · 160 · 21 · 54/66 · 57 · 1.430`.
+3. **Scheduled:** the Sun 2026-10-04 run publishes W40 with ELA read from images (or, if W40 is not filed on both sides, reports that and writes only the heartbeat).
 
 ## Out of scope
-Asking ELA for a text-layer export (a separate human request); ECP (its PDF has text); any page redesign.
+The Drive API credential (recorded as the upgrade path); ECP; asking Long An for text-layer PDFs.

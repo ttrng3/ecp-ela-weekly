@@ -9,7 +9,9 @@
 
 **Who and what is affected.** `docs/weekly-refresh.md` step 4, possibly the routine prompt, the cloud run's time and tool use. The page, renderer and data shape do not change.
 
-**Constraints.** Cloud-only: no Mac, no mount ("never mount a machine"). "Report, don't fake": a number the run is unsure of is labelled, never guessed. Contradictions inside ELA's own deck are flagged, not resolved. Nothing new is published; the repo stays public, no folder id in it.
+**Constraints.** No human step each week (Ty, 2026-09-30: "eliminate human interference as much as possible and only ask me when you don't have a solution after going through all the possibilities"). The routine itself stays cloud-only ("never mount a machine"); a Mac helper is allowed only as a stated, flagged dependency when no cloud path exists without a new credential. "Report, don't fake": a number the run is unsure of is labelled, never guessed. Contradictions inside ELA's own deck are flagged, not resolved. Nothing new is published; the repo stays public, no folder id in it.
+
+**Amended 2026-09-30** (pending Ty): constraint above changed after the feasibility test showed the Drive connector refuses downloads over 10 MB.
 
 **Open questions.**
 - Can the cloud run get a 140 MB PDF at all? The Drive connector's download may have a size limit; if it cannot, the fallback is ⚠ plus a request to ELA for a text-layer export.
