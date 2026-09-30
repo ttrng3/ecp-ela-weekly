@@ -13,7 +13,7 @@ Weekly ops briefing for Eco Central Park (Vinh) and Eco Retreat (Long An), entit
 
 ## Layout
 - `index.html` is a renderer holding no data. A refresh never touches it or its stylesheet.
-- Data: `data/index.json` (`generatedUtc`, `current`, `weeks` manifest), `data/weeks/<YYYY>-W<NN>.json` (one briefing per week), `data/.last-check` (heartbeat, not published).
+- Data: `data/index.json` (`generatedUtc`, `current`, project names, `weeks` manifest), `data/weeks/<YYYY>-W<NN>.json` (one briefing per week), `data/.last-check` (heartbeat, not published).
 - `.pages-allow` lists what Pages publishes; `.github/workflows/pages.yml` deploys only that. A new kind of file under `data/` needs Ty's say-so and its own `.pages-allow` line in its own PR first.
 - `tools/ela-pages.sh` + `tools/com.ty.ela-pages.plist`: the Mac helper that renders ELA's image-only decks into `_pages/` on Drive (runbook step 4a).
 - `README.md` explains the data model; `REVIEW.md` holds the reviewer's rules; `verification/` records each change's checks.
