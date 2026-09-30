@@ -2,7 +2,7 @@
 
 **Approved:** 2026-09-30 (original design; superseded below)
 **Revision 2 approved:** 2026-09-30 by Ty ("approve"), after the feasibility test.
-**Amended:** 2026-09-30, review fixes — pending Ty: (a) pages folder keyed by source bytes (`<stem>-<bytes>`) so a re-filed report is re-rendered; (b) PDFs under 10 MB that are image-only are rendered in the cloud sandbox; (c) the runbook's ELA indicator list follows PR #6's approved replacement ("khai trương x/66" → "căn đang hoạt động kinh doanh", spec `ela-w39-page-read` requirement 5); (d) README data caveats corrected (ECP has text, ELA is image-only).
+**Amendment approved:** 2026-09-30 by Ty ("approve amendment for PR#7"): review fixes — (a) pages folder keyed by source bytes (`<stem>-<bytes>`) so a re-filed report is re-rendered; (b) PDFs under 10 MB that are image-only are rendered in the cloud sandbox; (c) the runbook's ELA indicator list follows PR #6's approved replacement ("khai trương x/66" → "căn đang hoạt động kinh doanh", spec `ela-w39-page-read` requirement 5); (d) README data caveats corrected (ECP has text, ELA is image-only).
 
 **Intent:** accepted 2026-09-30 (constraint amendment approved 2026-09-30) · **Status:** approved (revision 2)
 
@@ -38,6 +38,7 @@ Loaded: kernel `CLAUDE.md` ("Strategic objective", "File operation safety", "Dri
 | Rule (by name) | What in the design breaks it | Resolution |
 |---|---|---|
 | "Strategic objective" — no dependency on the Mac | The render step runs on the Mac: if it is off or asleep all weekend, ELA falls back to ⚠. | Flagged as debt. The fully cloud upgrade (Drive API credential, one-time Ty login) is recorded above; the rest of the design does not change when it lands. |
+| Drive for Desktop placeholders | A launchd job cannot make Drive download a cloud-only file ("Resource deadlock avoided", tested 2026-09-30). | The inbox folder is set to Available offline (Ty, one-time, 2026-09-30), so the job only reads local files. |
 | "File operation safety" | The job writes new files onto the Drive mount. | Write-new-only, temp → copy → size check → `done` marker; no move/rename/delete. |
 | "Report, don't fake" | Image reading can misread. | Label + page numbers + ⚠, as PR #6; checked against the hand-read W39. |
 | Public repo | The script is public, and the Drive mount path contains the account email. | The script finds the mount at run time (`GoogleDrive-*` glob) and names no account; the folder id stays in the private prompt. An earlier push of the branch contained the path; that history was rewritten on 2026-09-30. |
