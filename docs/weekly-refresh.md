@@ -49,6 +49,12 @@ leaves a heartbeat even when the Drive step hangs.
 - `inbox-unreachable` — the Drive call failed (wrong id, access revoked, connector error).
 - `inbox-empty` — the call worked but no PDF matched either project.
 
+The line is **exactly** `<UTC> newest-source=<value>` and nothing after the
+value: no counts, file names, folder ids, notes or explanation. This repo is
+public, so anything appended is published in the file and its history (the
+2026-09-30 run appended a Drive folder id). Observations go in the step 8
+report, never in the heartbeat.
+
 `freshness.py` raises the stale-data issue on `inbox-unreachable`,
 `inbox-empty` and `ECP-none/ELA-none`.
 
