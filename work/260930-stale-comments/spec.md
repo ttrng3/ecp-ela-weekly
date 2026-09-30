@@ -1,6 +1,8 @@
 # Spec: stale-comments
 
-**Intent:** see intent.md · **Status:** draft
+**Approved:** 2026-09-30
+
+**Intent:** accepted 2026-09-30 · **Status:** approved
 
 ## Requirements
 1. `.pages-allow` header lines 8–9 say Pages runs from Actions since 2026-09-29 and when a run would be a dry run (intent Problem 1).
