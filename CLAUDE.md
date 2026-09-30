@@ -5,7 +5,7 @@ Weekly ops briefing for Eco Central Park (Vinh) and Eco Retreat (Long An), entit
 **If you are the scheduled routine:** follow the files your prompt names, `docs/weekly-refresh.md` and `README.md`. They outrank this file. This file adds no step to a run.
 
 ## Commands
-- Check `current` is in the `weeks` manifest: `python3 -c "import json;d=json.load(open('data/index.json'));assert d['current'] in d['weeks']"`
+- Check the manifest: `current` is in `weeks` and every week listed has its file: `python3 -c "import json,os;d=json.load(open('data/index.json'));assert d['current'] in d['weeks'];assert all(os.path.exists('data/weeks/'+v+'.json') for v in d['weeks'].values())"`
 - Build the Cowork preview page, only when `index.html` changed: `python3 tools/build-fragment.py` (rewrites the tracked `build/artifact.html`; commit it with the renderer change)
 - Compare two `data/` trees: `python3 tools/reconcile.py <dir-a> <dir-b>` (exit 0 = same)
 - Freshness check, as the daily Action runs it: `python3 .github/scripts/freshness.py`; its tests: `python3 .github/scripts/test_freshness.py`
@@ -27,10 +27,9 @@ Weekly ops briefing for Eco Central Park (Vinh) and Eco Retreat (Long An), entit
 
 ## Known mistakes
 - ELA's decks are slides saved as images, with no text layer (100–165 MB for W33–W39; W24–W25 were 660–690 MB, README "Data caveats") and the Drive connector refuses downloads over 10 MB. They are read from rendered page images, not skipped (runbook 4a, 30/09).
-- A background job cannot make Drive for Desktop download a cloud-only file: from launchd, `cp` and `cat` both fail with "Resource deadlock avoided". So the inbox stays "Available offline" (`verification/ela-page-images.md`, 30/09).
-- On a file that is already local, scripts read it with `cat` into a temp file and size-check it, not `cp`: `cp` also hit the deadlock on a cold placeholder (`tools/ela-pages.sh`, 30/09).
+- From launchd, a cloud-only Drive file cannot be read at all: `cp` and `cat` both failed with "Resource deadlock avoided" until Ty set the inbox "Available offline" (30/09). That setting must stay. The helper copies each PDF with `cat` into a temp file and checks the size before rendering (`verification/ela-page-images.md`, `tools/ela-pages.sh`).
 - The local Drive mount path contains a personal account name; `tools/ela-pages.sh` finds it with a `GoogleDrive-*` glob. Never spell the path out in code, docs or a branch (30/09).
 - ELA's own slides can contradict each other (Eco Bazaar summary 54/66 vs detail 58; W38 visitors identical to W37). Show both and mark ⚠; never pick one (runbook 4a.3, `data/weeks/W38.json`, 30/09).
-- ECP's weekly file can be a copy of the previous week with only the figures block updated (W38's cover still said "BÁO CÁO TUẦN 37"). Its events text may repeat last week's word for word (`data/weeks/W38.json`, Sep 2026).
+- ECP's weekly file can be a copy of the previous week with only the figures block updated (W38's cover still said "BÁO CÁO TUẦN 37"). Its events text may repeat last week's word for word (`data/weeks/W38.json`, 22/09).
 - The two oldest week keys, `W37` and `W38`, carry no year and mean 2026. Don't rename them; new weeks use `<YYYY>-W<NN>` (runbook steps 2 and 5, 29/09).
-- Publishing `index.html` as the Cowork preview nests one document inside another and renders blank. Build the fragment, and send data files and the page in separate calls (`tools/build-fragment.py`, 23/09).
+- Publishing `index.html` as the Cowork preview nests one document inside another and renders blank; `tools/build-fragment.py` builds the fragment the preview needs, and its output notes the data-first publishing order (23/09).
