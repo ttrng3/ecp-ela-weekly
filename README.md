@@ -7,6 +7,9 @@ A weekly executive briefing comparing **Eco Central Park** (Vinh) and
 self-contained read: KPIs, what was done, handover progress, and what needs a
 decision from BLĐ.
 
+**Public on purpose (Ty, 2026-10-04):** the repo and the Pages site are public,
+weekly operating figures included, and the address isn't circulated.
+
 ## How this repo is the source of truth
 
 ```
