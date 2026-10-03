@@ -9,6 +9,8 @@ Branch `work/preview-wrapper`, run on the Mac on 2026-10-04. `tools/preview_matc
 | unknown-head | `<!doctype html>` changed to `<!DOCTYPE html>` | head not pinned | 1 |
 | trailing-newline | a `\n` appended (a save that adds one) | tail not exact | 1 |
 | empty-build | an empty build file | no match | 1 |
+| 355-head | the Pipeline Wiring preview (355-byte skeleton, saved the same day) vs that repo's fresh build | match, `skeleton_head` 355 | 0 |
+| missing-build | a build path that doesn't exist | JSON with `error`, no match | 1 |
 
 ```
 real exit=0 {"skeleton_head_pinned": true, "skeleton_head": 537, "skeleton_tail_exact": true, "match": true}
@@ -16,6 +18,8 @@ one-byte exit=1 {"skeleton_head_pinned": true, "skeleton_head": 537, "skeleton_t
 unknown-head exit=1 {"skeleton_head_pinned": false, "skeleton_head": null, "skeleton_tail_exact": true, "match": false}
 trailing-newline exit=1 {"skeleton_head_pinned": true, "skeleton_head": 537, "skeleton_tail_exact": false, "match": false}
 empty-build exit=1 {"skeleton_head_pinned": true, "skeleton_head": 537, "skeleton_tail_exact": true, "match": false}
+355-head exit=0 {"skeleton_head_pinned": true, "skeleton_head": 355, "skeleton_tail_exact": true, "match": true}
+missing-build exit=1 {"match": false, "error": "unreadable: <scratch>/does-not-exist.html"}
 ```
 
 Step 1 (`tools/verify_live.py`) on the branch after the change: `"pass": true`, 12/12.
