@@ -19,7 +19,7 @@ LIVE = "https://ttrng3.github.io/ecp-ela-weekly/"
 # Tracked but never served (.pages-allow); each must exist on main and answer 404 live.
 PRIVATE = ["README.md", "CLAUDE.md", "REVIEW.md", "data/.last-check", "docs/weekly-refresh.md",
            "tools/build-fragment.py", "tools/reconcile.py", "tools/ela-pages.sh", "tools/com.ty.ela-pages.plist",
-           "tools/verify_live.py", "verification/weekly.md", "build/artifact.html", "archive/status_20260915.html",
+           "tools/verify_live.py", "tools/preview_matches.py", "verification/weekly.md", "build/artifact.html", "archive/status_20260915.html",
            ".github/scripts/freshness.py", ".pages-allow"]
 # Storage links, full email addresses, bare handles ("name@"), and the Drive mount folder name.
 TRACES = re.compile(r"/personal/|sharepoint\.com|1drv\.ms|[\w.+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}|\b[a-z][a-z0-9._-]{2,}@(?![\w-])|GoogleDrive-[\w.@-]+", re.I)
