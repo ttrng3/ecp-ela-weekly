@@ -57,7 +57,7 @@ Loaded: kernel `standing-instructions.md` and root `CLAUDE.md` (Read tool), the 
 |---|---|---|
 | Artifact mirror contract | Step 4 reads the preview | Read-only (`Artifact list`/`read`), found by title; no id or URL written; nothing published or deleted |
 | Artifact mirror contract: every pipeline change is also a Pipeline Wiring change | A protocol could count as a change | It changes no run, schedule or preview. The 7 protocols of 1–2 Oct added no wiring entry. Same here |
-| OWNERSHIP line (routine prompt; handoff note) | Owner session tytr3-50 is gone | Handoff note: the next session takes ownership by reading it (done 2026-10-04). The prompt isn't touched |
+| OWNERSHIP line (routine prompt; handoff note) | The previous owner session is gone | Handoff note: the next session takes ownership by reading it (done 2026-10-04). The prompt isn't touched |
 | Entity separation | The forbidden list holds the other entity's name | Passed at run time, never written; the script prints counts, not values |
 | Never by value (REVIEW.md) | Traces and folder id | Reported by count and file; the id comes from the prompt at run time |
 | Changes reach `main` through a PR and Ty's ship (CLAUDE.md) | Two new files | One PR, the reviewer first, then the ship phrase; not merged 13:30–15:00 UTC Sunday |
