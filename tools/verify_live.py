@@ -81,7 +81,7 @@ def main():
     weeks = d.get("weeks") if isinstance(d.get("weeks"), dict) else {}
     keys = list(weeks)
 
-    v["manifest_consistent"] = (bool(keys) and d.get("current") in weeks and keys[-1] == d.get("current") and
+    v["manifest_consistent"] = (bool(keys) and isinstance(d.get("current"), str) and d.get("current") in weeks and keys[-1] == d.get("current") and
                                 all((ROOT / f"data/weeks/{f}.json").exists() for f in weeks.values()))
     order = [week_order(k) for k in keys]
     info["bad_keys"] = [k for k, o in zip(keys, order) if o is None]
@@ -95,6 +95,8 @@ def main():
         try:
             w = json.loads((ROOT / f"data/weeks/{f}.json").read_text(encoding="utf-8"))
         except (OSError, ValueError):
+            w = None
+        if not isinstance(w, dict):
             info["one_sided"].append(f"{k}:unreadable")
             continue
         for s in SECTIONS:
@@ -115,7 +117,8 @@ def main():
         del info[p]
 
     work = sorted(glob.glob(str(ROOT / "work/*/intent.md")))[:1]  # any one work file, found at run time
-    private = PRIVATE + [str(pathlib.Path(w).relative_to(ROOT)) for w in work]
+    protocols = sorted(glob.glob(str(ROOT / "verification/*.md")))  # every protocol, found at run time
+    private = sorted(set(PRIVATE) | {str(pathlib.Path(f).relative_to(ROOT)) for f in work + protocols})
     info["private_status"] = {p: get(p)[0] for p in private}
     info["private_missing_on_main"] = [p for p in private if not (ROOT / p).exists()] + ([] if work else ["work/*/intent.md"])
     v["private_not_served"] = all(s == 404 for s in info["private_status"].values()) and not info["private_missing_on_main"]
@@ -125,8 +128,9 @@ def main():
     info["data_age_days"] = age_days(str(d.get("generatedUtc", "")))
     # -1 allows clock skew; a stamp in the future (a wrong year) would otherwise pass forever.
     v["heartbeat_fresh"] = info["heartbeat_age_days"] is not None and -1 <= info["heartbeat_age_days"] <= HEARTBEAT_MAX
-    # The 30/09 rule (PR #12): the line is the stamp and newest-source=<value>, nothing after it.
-    v["heartbeat_bare"] = re.fullmatch(r"\S+Z newest-source=\S+", beat_line) is not None
+    v["heartbeat_bare"] = re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z newest-source="
+                                       r"(ECP-(\d{4}-W\d{2}|none)/ELA-(\d{4}-W\d{2}|none)|inbox-unreachable|inbox-empty)",
+                                       beat_line) is not None  # the three shapes of runbook step 1, nothing after
     v["data_fresh"] = info["data_age_days"] is not None and -1 <= info["data_age_days"] <= DATA_MAX
 
     # Every served path, live and on main, plus every other tracked text file on main. Only this script
@@ -138,11 +142,16 @@ def main():
     info["unreadable"] = [] if ls.returncode == 0 and tracked else ["(git ls-files failed or listed nothing)"]
     for p in tracked:
         try:
-            texts[f"main:{p}"] = (ROOT / p).read_text(encoding="utf-8")
-        except UnicodeDecodeError:
-            pass  # binary file
+            raw = (ROOT / p).read_bytes()
         except OSError:
             info["unreadable"].append(p)
+            continue
+        try:
+            texts[f"main:{p}"] = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            # Not UTF-8: still scanned (a non-UTF-8 text file could hide an id), and listed.
+            texts[f"main:{p}"] = raw.decode("utf-8", "replace")
+            info.setdefault("not_utf8", []).append(p)
     v["all_tracked_read"] = not info["unreadable"]
     hits = {p: len(TRACES.findall(t)) for p, t in texts.items() if p != "main:tools/verify_live.py"}
     info["traces"] = {p: n for p, n in hits.items() if n}
