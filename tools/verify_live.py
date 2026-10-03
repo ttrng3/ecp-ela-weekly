@@ -2,11 +2,12 @@
 """Machine half of verification/weekly.md: is the live page what main says, and is main sound?
 
 Run from an up-to-date checkout of main, outside the Sunday run (14:00 UTC):
-  git pull --ff-only && python3 tools/verify_live.py --forbid WORD [WORD ...]
+  git pull --ff-only && python3 tools/verify_live.py --forbid WORD [...] --forbid-anywhere WORD [...]
 
---forbid takes the other entity's name and the inbox folder id (from the routine prompt). The runner
-supplies them at run time so the repo never holds them. Without them the check fails rather than
-passing unchecked.
+--forbid takes words that must not be served (the other entity's name; docs may name it).
+--forbid-anywhere takes words that must not appear in any served or tracked file (the inbox folder
+id, from the routine prompt). The runner supplies both at run time so the repo never holds them.
+Without both, the check fails rather than passing unchecked.
 
 Prints one JSON object of verdicts and exits 0 only when every verdict is true.
 Matches are reported by count and file, never by value.
@@ -65,7 +66,10 @@ def norm(t):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--forbid", nargs="*", default=[])
-    forbid = [norm(w) for w in ap.parse_args().forbid if w.strip()]
+    ap.add_argument("--forbid-anywhere", nargs="*", default=[])
+    args = ap.parse_args()
+    forbid = [norm(w) for w in args.forbid if w.strip()]
+    anywhere = [norm(w) for w in args.forbid_anywhere if w.strip()]
 
     v, info, live = {}, {}, {}
     try:
@@ -84,7 +88,8 @@ def main():
     v["weeks_ordered"] = bool(keys) and not info["bad_keys"] and order == sorted(order) and len(set(order)) == len(order)
     v["legacy_keys_kept"] = all(weeks.get(k) == k for k in LEGACY)
 
-    # Wait-for-both (runbook step 3): every published week carries both projects in every section.
+    # Wait-for-both (runbook step 3): every published week was filed by both projects, so both carry KPIs.
+    # The other sections must exist for both sides but may be empty (a week with nothing to decide).
     info["one_sided"] = []
     for k, f in weeks.items():
         try:
@@ -94,11 +99,11 @@ def main():
             continue
         for s in SECTIONS:
             for side in ("ecp", "ela"):
-                if not (isinstance(w.get(s), dict) and isinstance(w[s].get(side), list) and w[s][side]):
+                if not (isinstance(w.get(s), dict) and isinstance(w[s].get(side), list) and (w[s][side] or s != "kpis")):
                     info["one_sided"].append(f"{k}:{s}.{side}")
     v["both_projects_every_week"] = bool(keys) and not info["one_sided"]
 
-    served = ["index.html", "data/index.json"] + [f"data/weeks/{f}.json" for f in weeks.values()]
+    served = ["index.html", "data/index.json"] + sorted({f"data/weeks/{f}.json" for f in weeks.values()})
     for p in served:
         st, body = get(p)
         live[p] = body
@@ -125,11 +130,12 @@ def main():
     v["data_fresh"] = info["data_age_days"] is not None and -1 <= info["data_age_days"] <= DATA_MAX
 
     # Every served path, live and on main, plus every other tracked text file on main. Only this script
-    # is left out of the trace check, because it spells out the patterns; the forbidden words are
-    # checked everywhere.
+    # is left out of the trace check, because it spells out the patterns.
     texts = {f"live:{p}": b.decode("utf-8", "replace") for p, b in live.items()}
-    tracked = [p for p in subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True).stdout.split("\0") if p]
-    info["unreadable"] = []
+    ls = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True)
+    tracked = [p for p in ls.stdout.split("\0") if p]
+    # A failed or empty listing must not read as "nothing to scan".
+    info["unreadable"] = [] if ls.returncode == 0 and tracked else ["(git ls-files failed or listed nothing)"]
     for p in tracked:
         try:
             texts[f"main:{p}"] = (ROOT / p).read_text(encoding="utf-8")
@@ -141,10 +147,12 @@ def main():
     hits = {p: len(TRACES.findall(t)) for p, t in texts.items() if p != "main:tools/verify_live.py"}
     info["traces"] = {p: n for p, n in hits.items() if n}
     v["no_personal_traces"] = not info["traces"]
-    info["forbid_checked"] = len(forbid)
-    # Forbidden words on what is served only: docs may name the other entity's label (REVIEW.md allows it).
-    info["forbidden_in"] = sorted({k for k, t in texts.items() if k.split(":", 1)[1] in served for w in forbid if w in norm(t)})
-    v["no_forbidden_words"] = bool(forbid) and not info["forbidden_in"]
+    info["forbid_checked"], info["forbid_anywhere_checked"] = len(forbid), len(anywhere)
+    # --forbid on what is served only (docs may name the other entity's label, REVIEW.md allows it);
+    # --forbid-anywhere on every served and tracked file.
+    info["forbidden_in"] = sorted({k for k, t in texts.items() for w in forbid if k.split(":", 1)[1] in served and w in norm(t)} |
+                                  {k for k, t in texts.items() for w in anywhere if w in norm(t)})
+    v["no_forbidden_words"] = bool(forbid) and bool(anywhere) and not info["forbidden_in"]
 
     print(json.dumps({"pass": all(v.values()), "verdicts": v, "info": info}, ensure_ascii=False, indent=1))
     sys.exit(0 if all(v.values()) else 1)

@@ -2,7 +2,7 @@
 
 ## Promise
 
-Every file https://ttrng3.github.io/ecp-ela-weekly/ serves (the page, `data/index.json`, every week file the manifest lists) is byte-identical to `main`, and the listed private files and one `work/` file answer 404. The manifest holds together: `current` is the last week listed, every week has its file, weeks run in (year, week) order, and the legacy `W37`/`W38` keys are kept. Every published week carries both ECP and ELA in every section (wait-for-both, runbook step 3). The routine ran within its 9-day watchdog, its heartbeat line carries nothing after its value, and the data is under 24 days old. No storage link, email address, handle, Drive mount name or forbidden word is served or tracked. In the browser the current week renders both projects with no error. The Cowork preview carries the page fragment and either `main`'s data or the last run's. The repo and the site are public on purpose (README, Ty 2026-10-04).
+Every file https://ttrng3.github.io/ecp-ela-weekly/ serves (the page, `data/index.json`, every week file the manifest lists) is byte-identical to `main`, and the listed private files and one `work/` file answer 404. The manifest holds together: `current` is the last week listed, every week has its file, weeks run in (year, week) order, and the legacy `W37`/`W38` keys are kept. Every published week carries both ECP and ELA in every section (wait-for-both, runbook step 3). The routine ran within its 9-day watchdog, its heartbeat line carries nothing after its value, and the data is under 24 days old. No storage link, email address, handle, Drive mount name or inbox folder id is served or tracked, and the other entity's name is not served. In the browser the current week renders both projects with no error. The Cowork preview carries the page fragment and either `main`'s data or the last run's. The repo and the site are public on purpose (README, Ty 2026-10-04).
 
 ## Clean state
 
@@ -13,10 +13,10 @@ Run after a Sunday run (`0 14 * * 0` UTC = 21:00 Hanoi, per pipeline-wiring's `c
 
 ## Steps
 
-1. **Repo and live site.** `python3 tools/verify_live.py --forbid <words>` → exit 0 and `"pass": true`. The words are the other entity's name and the inbox folder id, which the runner reads at run time from the routine prompt (`RemoteTrigger get` on the ECP × ELA routine). Never write either here. Without `--forbid`, `no_forbidden_words` fails on purpose.
+1. **Repo and live site.** `python3 tools/verify_live.py --forbid <entity name> --forbid-anywhere <inbox folder id>` → exit 0 and `"pass": true`. The runner reads the folder id at run time from the routine prompt (`RemoteTrigger get` on the ECP × ELA routine). Never write either word here. Without both flags, `no_forbidden_words` fails on purpose.
 2. **Live page in Chrome.** Open https://ttrng3.github.io/ecp-ela-weekly/ and run the script under Invariants. Expected: all values true.
 3. **Console.** Reload, then read errors for `TypeError|ReferenceError|Uncaught|SyntaxError`. Expected: none.
-4. **Preview.** Find the preview by its title with `Artifact list` (the runner may not have `RemoteTrigger get`; never write its id here). `Artifact list` its files, and `Artifact read` `index.html` and `data/index.json`. Expected: `index.html`, equal to `build/artifact.html` on `main` or at `$c` (below; the fragment is rebuilt only when `index.html` changes, CLAUDE.md), plus the data files `main` or the last run's commit holds, nothing else. Find that commit with `c=$(git log --first-parent --format='%h %s' -- data/index.json | /usr/bin/grep -v ' (#[0-9]*)$' | /usr/bin/grep -v '^[0-9a-f]* Merge ' | head -1 | cut -d' ' -f1)`. Each file read has the sha256 of `main`'s copy (`shasum -a 256 <path>`) or `$c`'s (`git show $c:<path> | shasum -a 256`). Matching `$c` and not `main` means PRs changed data since the run: behind by design until the next run.
+4. **Preview.** Find the preview by its title with `Artifact list` (the runner may not have `RemoteTrigger get`; never write its id here). `Artifact list` its files, and `Artifact read` `index.html` and `data/index.json`. First `python3 tools/build-fragment.py && git diff --exit-code build/artifact.html` must exit 0: the committed fragment is current (CLAUDE.md: it is rebuilt and committed with any `index.html` change). Expected: `index.html`, equal to `build/artifact.html` on `main` or at `$c` (below), plus the data files `main` or the last run's commit holds, nothing else. Find that commit with `c=$(git log --first-parent --format='%h %s' -- data/index.json | /usr/bin/grep -v ' (#[0-9]*)$' | /usr/bin/grep -v '^[0-9a-f]* Merge ' | head -1 | cut -d' ' -f1)`. Each file read has the sha256 of `main`'s copy (`shasum -a 256 <path>`) or `$c`'s (`git show $c:<path> | shasum -a 256`). If `$c` is empty (`[ -n "$c" ] || echo "no routine commit found"`), stop the step and report it; an empty `$c` would hash the index copy instead. Matching `$c` and not `main` means PRs changed data since the run: behind by design until the next run.
 
 The run-time checks of each change stay where they are, and this protocol doesn't repeat them:
 - `verification/inbox-weekly-folder.md`: the inbox, year names, wait-for-both at run time, and the preview mirror;
@@ -56,8 +56,8 @@ All of them must be true. The page has no week picker: it renders only `current`
 
 ## Adversary
 
-- **A stranger on the public page.** The page is public on purpose; nothing beyond the page and its data is. `private_not_served`: README, CLAUDE.md, REVIEW.md, the heartbeat, the runbook, the `tools/` files, this protocol, the preview build, the retired archive page, `freshness.py`, `.pages-allow` and one `work/` file found at run time all exist on `main` and answer 404. `no_personal_traces` reads every served and tracked file for storage links, email addresses, bare handles and the Drive mount folder name, which contains a personal account (CLAUDE.md, 30/09). `no_forbidden_words` keeps the other entity's name and the inbox folder id off what is served.
-- **A week published with one project missing** (the rule is wait-for-both). `both_projects_every_week` in the files, and `both_projects` and `kpis_match` in the page.
+- **A stranger on the public page.** The page is public on purpose; nothing beyond the page and its data is. `private_not_served`: README, CLAUDE.md, REVIEW.md, the heartbeat, the runbook, the `tools/` files, this protocol, the preview build, the retired archive page, `freshness.py`, `.pages-allow` and one `work/` file found at run time all exist on `main` and answer 404. `no_personal_traces` reads every served and tracked file for storage links, email addresses, bare handles and the Drive mount folder name, which contains a personal account (CLAUDE.md, 30/09). `no_forbidden_words` keeps the other entity's name off what is served and the inbox folder id off every served and tracked file.
+- **A week published with one project missing** (the rule is wait-for-both). `both_projects_every_week`: both sides carry KPIs, and every other section exists for both (it may be empty, as when one project has nothing to decide). In the page, `both_projects` and `kpis_match`.
 - **A rename of the legacy keys, or a week out of order.** `legacy_keys_kept`, `weeks_ordered`.
 - **A manifest pointing at a file that isn't there, or a `current` that isn't the newest.** `manifest_consistent`.
 - **A routine that stopped running.** `heartbeat_fresh`. **A routine that runs but publishes nothing:** `data_fresh`.
@@ -66,21 +66,20 @@ All of them must be true. The page has no week picker: it renders only `current`
 
 ## Sanctioned substitutes
 
-- The forbidden words are passed on the command line, so the list changes without a PR and the repo never names them. This proves no served file holds those words; it can't catch one nobody listed. Docs may name the other entity's label (REVIEW.md allows it), so the word check reads served files only, while the trace check reads every tracked text file too (the script excepted: it spells out the patterns).
+- The forbidden words are passed on the command line, so the list changes without a PR and the repo never names them. This proves those words are absent; it can't catch one nobody listed. Docs may name the other entity's label (REVIEW.md allows it), so `--forbid` reads served files only; `--forbid-anywhere` and the trace check read every tracked text file too (the script excepted from the trace check: it spells out the patterns).
 - The preview can't be fetched by a script, so step 4 is done by the runner with `Artifact list` and `Artifact read`.
 
 ## Evidence
 
 - The JSON from step 1 and the JSON from step 2.
 - A screenshot (`save_to_disk: true`) of the page.
-- For step 4: the preview's file list and the hashes read.
+- For step 4: file names and hashes only; never the preview's id, URL or raw `Artifact list` output (the PR is public).
 
 ## Not covered
 
 - Whether a figure matches the deck it came from, or carries ⚠ where the deck contradicts itself (runbook 4a.3). That is read by eye against the PDFs.
 - Whether a week that should have been published was (both projects filed but the run skipped it). The heartbeat's `newest-source` names what the run saw; compare it with the inbox by hand.
-- The Mac helper and the inbox setting (`ela-pages.md` covers them).
-- The inbox folder id inside docs: the word check reads served files only. `verification/260930-heartbeat-rule.md` greps the tree for it.
+- The Mac helper and the inbox setting (`verification/ela-page-images.md` covers them).
 
 ## Traps
 
