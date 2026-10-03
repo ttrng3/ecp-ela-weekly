@@ -82,7 +82,7 @@ After merge and after the Sunday 2026-10-04 21:00 Hanoi run, from a clean `main`
 - The leftover open items in the ECP × ELA handoff: the test routine to delete, the GitHub Support purge, the W37 "khai trương" follow-up, and the `_pages/` leftover.
 
 ## Changes during the build
-Found in review rounds on PR #13, after approval. The approved text above stands as Ty approved it; Ty's ship phrase accepts these too.
+Found in review rounds on PR #13, after approval. The approved text above stands as Ty approved it. **Ty accepted changes 1 and 2 explicitly on 2026-10-04** ("Accept both changes"); changes 3–5 only tighten or drop unused text.
 1. **Two forbidden-word flags.** `--forbid` (the other entity's name) reads served files only, because docs may name the entity's label (REVIEW.md). `--forbid-anywhere` (the inbox folder id) reads every served and tracked file, so Requirement 7 holds for the id. Both flags are required. The Promise command is `verify_live.py --forbid <entity> --forbid-anywhere <folder id>`.
 2. **Non-KPI sections may be empty.** `both_projects_every_week` requires non-empty `kpis` for both sides; `done`, `progress` and `actions` must exist for both but may be empty. A week where one project has nothing to decide is still filed by both, and runbook step 3 is about filing, not section contents.
 3. **No fixed KPI count.** Step 2 compares the page's `.kpi` count with the week file's, so the Design's "2 × 6" is not used.
