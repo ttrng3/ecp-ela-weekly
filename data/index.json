@@ -1,6 +1,6 @@
 {
- "generatedUtc": "2026-09-29T16:36:01Z",
- "current": "2026-W39",
+ "generatedUtc": "2026-10-04T14:20:31Z",
+ "current": "2026-W40",
  "projects": {
   "ecp": {
    "name": "Eco Central Park",
@@ -14,7 +14,8 @@
  "weeks": {
   "W37": "W37",
   "W38": "W38",
-  "2026-W39": "2026-W39"
+  "2026-W39": "2026-W39",
+  "2026-W40": "2026-W40"
  },
  "pages": "https://ttrng3.github.io/ecp-ela-weekly/",
  "repo": "https://github.com/ttrng3/ecp-ela-weekly"
