@@ -1,0 +1,290 @@
+{
+ "week": "Tuần 43",
+ "range": "23/10/2026",
+ "prev": "Tuần 41 (09/10/2026)",
+ "compiled": "01/11/2026",
+ "sub": "So sánh với tuần đã công bố gần nhất · <b>Tuần 41 (09/10/2026) → Tuần 43 (23/10/2026)</b> · tổng hợp 01/11/2026 · nguồn: Báo cáo Vận hành Ban QLVH Vinh (ECP) và Ban QLVH Long An (ELA). <b>Tuần 42 không được công bố: ECP không nộp báo cáo W42</b> (ELA có nộp), nên mọi Δ dưới đây là <b>biến thiên hai tuần</b>, không phải một tuần. <b>ELA đọc từ ảnh trang báo cáo (không có lớp text).</b>",
+ "verdict": {
+  "lead": "<b>Bàn giao chạy thật ở cả hai dự án — nhưng mẫu số thì vỡ.</b> ELA đẩy được <b>căn BQL đã nhận PK1+PK3 từ 110 lên 143 (+33 · +30,0%)</b> và số căn khách đã nhận nhà PK1 từ 11 lên <b>32 (+21)</b>; ECP bàn giao thêm <b>17 căn thấp tầng</b> và <b>+7 căn thi công đã về ở</b>. Đó là phần tốt, và nó có thật. Phần còn lại là chất lượng báo cáo, và tuần này nó xấu hơn mọi tuần kể từ W37: <b>trang 19 của ELA công bố “Phân khu 1 — đã nghiệm thu lần 1: 238/198 căn”, tức 120,2% — một tỷ lệ không thể tồn tại.</b> Ba điểm phải chốt trước khi dùng bất kỳ số PK1 nào:",
+  "points": "① <b>ELA dùng ba mẫu số khác nhau cho cùng một Phân khu 1, trong cùng một bản báo cáo.</b> Trang 3 ghi <b>31/198</b>; trang 22 ghi <b>32/96</b> (mẫu số = số thư mời); trang 23 ghi <b>238/299</b>; trang 19 ghi <b>238/198</b>. Trang 10 — slide phạm vi của chính ELA — ghi <b>“Phân khu Mùa Xuân (299 căn)”</b>, nên 299 là con số khớp với phạm vi công bố và <b>198 là mẫu số cũ chưa được thay</b>; ghép tử số mới 238 lên mẫu số cũ 198 là nguồn gốc của tỷ lệ 120,2%. <b>Đây là suy luận từ bốn trang, không phải xác nhận của ELA</b> — cho tới khi ELA phát hành lại, không dùng bất kỳ % tiến độ PK1 nào. Kèm theo là lệch 1 quen thuộc: trang 3 ghi 31 căn đã nhận nhà, trang 22 ghi 32 — cùng loại lỗi với W41 (12 vs 11), chưa sửa. ② <b>ECP: hai chỉ số bìa đứng im tuyệt đối trong hai tuần, trong khi mọi thứ bên dưới đều chạy.</b> Khách khu vui chơi <b>989 → 989</b> và hộ cư dân về ở <b>641 → 641</b>, giống W41 đến từng đơn vị, giữa lúc bàn giao thấp tầng +17, căn fit-out +16 và căn thi công đã về ở +7. Riêng khách công viên thì nhảy <b>5.025 → 7.077 (+2.052 · +40,8%)</b> nhờ chuỗi sự kiện 20/10 — tức trang bìa <i>có</i> được cập nhật, chỉ hai ô này là không. Thêm một dấu hiệu: trang chi tiết ghi <b>“343 căn về ở – 1.258 cư dân”</b>, trong khi W41 phân rã 641 = 302 thấp tầng + 339 CPR; 343 lớn hơn 339 nhưng tổng vẫn y nguyên 641. <b>Phải đối chiếu, không được coi là đã ổn định.</b> ③ <b>ELA: căn đang hoạt động kinh doanh lần đầu nhúc nhích sau năm tuần — và đi xuống.</b> 57 → <b>53 (−4 · −7,0%)</b> sau chuỗi W39 57 → W40 57 → W41 57. Bốn căn tắt đèn, không một dòng giải thích, trong khi Eco Bazaar vẫn kẹt ở 58/66 (trang chi tiết) và 54/66 (trang tổng hợp) — <b>mâu thuẫn sang tuần thứ năm</b>. Cơ chế xử lý căn tối đèn đã treo từ W38 giờ không còn là việc phòng ngừa."
+ },
+ "kpis": {
+  "ecp": [
+   {
+    "label": "Khách tham quan công viên",
+    "value": "7.077",
+    "unit": "",
+    "delta": "+2.052 · +40,8% · chuỗi sự kiện 20/10; đỉnh ngày 18/10 đạt 2.725 lượt",
+    "cls": "up"
+   },
+   {
+    "label": "Khách khu vui chơi",
+    "value": "989",
+    "unit": "",
+    "delta": "±0 · ⚠ trùng khít W41 (989) trong khi khách công viên +40,8% — cần đối chiếu",
+    "cls": "wn"
+   },
+   {
+    "label": "Hộ cư dân về ở",
+    "value": "641",
+    "unit": "",
+    "delta": "±0 · ⚠ đứng im hai tuần dù bàn giao +17 và căn thi công về ở +7; trang chi tiết ghi 343 căn về ở",
+    "cls": "wn"
+   },
+   {
+    "label": "Bàn giao thấp tầng",
+    "value": "1.219",
+    "unit": "/1.923",
+    "delta": "+17 · +1,4% · 63,4% · mẫu số 1.923 giữ nguyên nhưng vẫn chưa ai giải thích (treo từ W41)",
+    "cls": "wn"
+   },
+   {
+    "label": "Căn đang thi công (fit-out)",
+    "value": "1.035",
+    "unit": "",
+    "delta": "+16 · +1,6% · 649 thấp tầng + 386 cao tầng",
+    "cls": "up"
+   },
+   {
+    "label": "Căn thi công đã về ở",
+    "value": "135",
+    "unit": "",
+    "delta": "+7 · +5,5% · 116 thấp tầng + 19 cao tầng (khớp)",
+    "cls": "up"
+   }
+  ],
+  "ela": [
+   {
+    "label": "Khách tham quan KĐT",
+    "value": "1.695",
+    "unit": "",
+    "delta": "+453 · +36,5% · hồi lại sau cú sụp −44,8% của W41, vẫn dưới nền W40 (2.250) −24,7%",
+    "cls": "up"
+   },
+   {
+    "label": "Khách khu vui chơi",
+    "value": "602",
+    "unit": "",
+    "delta": "+82 · +15,8% · vẫn thấp hơn nền W40 (1.440) −58,2%",
+    "cls": "up"
+   },
+   {
+    "label": "Bàn giao Eco Bazaar (BQL→BKD)",
+    "value": "58",
+    "unit": "/66",
+    "delta": "±0 · ⚠ trang tổng hợp vẫn ghi 54/66, trang chi tiết 58 — mâu thuẫn sang tuần thứ năm",
+    "cls": "wn"
+   },
+   {
+    "label": "Căn đang hoạt động kinh doanh",
+    "value": "53",
+    "unit": "",
+    "delta": "−4 · −7,0% · ⚠ lần đầu đổi sau năm tuần đứng ở 57 — và là giảm, không có lý do",
+    "cls": "dn"
+   },
+   {
+    "label": "Nhân sự BQL",
+    "value": "161",
+    "unit": "",
+    "delta": "−5 · −3,0% · giảm trong lúc khối lượng bàn giao tăng mạnh",
+    "cls": "dn"
+   },
+   {
+    "label": "Nhà thầu thi công",
+    "value": "33",
+    "unit": "",
+    "delta": "+17 · +106,2% · đảo chiều mức −5 của W41; cần xác nhận đây là nhà thầu mới hay cách đếm khác",
+    "cls": "up"
+   }
+  ]
+ },
+ "done": {
+  "ecp": [
+   "<b>Bàn giao &amp; thi công:</b> thấp tầng 1.202 → <b>1.219/1.923 (+17 · 63,4%)</b>, số căn còn phải bàn giao giảm 721 → <b>704</b>; CPR giữ <b>618/620 (99,7%)</b> — ±0 bảy tuần liền. Căn fit-out 1.019 → 1.035 (+16); căn thi công đã về ở 128 → 135 (+7). Hoàn cọc <b>506/512</b> (W41: 502/508), còn 06 căn đang nghiệm thu.",
+   "<b>CT02 – Seaview Residences, lần đầu có bảng số hai tuần liền kề trong chính báo cáo:</b> tòa S1 (381 căn) nghiệm thu XD lần 1 197 → <b>211 (+14)</b>, XD lần 2 đạt 136 → <b>146 (+10)</b>, ME lần 1 207 → <b>224 (+17)</b>, ME lần 2 đạt 158 → <b>162 (+4)</b>, hành lang MEP lần 1 2 → <b>5 (+3)</b>. Tòa S2 (383 căn): XD lần 1 267 → <b>277 (+10)</b>, XD lần 2 đạt 218 → <b>231 (+13)</b>, ME lần 1 253 → <b>269 (+16)</b>, ME lần 2 đạt 201 → <b>216 (+15)</b>, hành lang MEP lần 1 12 → <b>17 (+5)</b>. Trong tuần nghiệm thu thêm 45 lượt căn S1 và 54 lượt căn S2.",
+   "<b>CT02 bắt đầu chuyển sang vận hành:</b> MTĐT nhận 25 căn trong tuần, lũy kế <b>49/764 căn</b> (S1 24 + S2 25 = 49 ✓); An ninh đã tiếp nhận chìa khóa <b>49 căn</b> tính đến 22/10.",
+   "<b>✓ Hai trong ba lỗi số học của W41 đã hết:</b> nhắc nhở đậu đỗ CT01 nay ghi 66 lượt và 44 + 22 = <b>66 ✓</b> (W41: 118 ≠ 41 + 78 = 119); cao tầng 22 + 364 = <b>386 ✓</b>; căn thi công về ở 116 + 19 = <b>135 ✓</b>; MTĐT 24 + 25 = <b>49 ✓</b>. <b>Nhưng lỗi lệch 8 thì y nguyên</b> — xem mục hành động.",
+   "<b>Bàn giao theo phân khu (KT ghi nhận):</b> Campus 1 <b>239/239 (100%)</b>; Central Plaza <b>158/401</b>; PK3.2 <b>11/146</b>; Central Island A <b>99/99 (100%)</b>. NTNB Central Plaza (435 căn): lần 1 188 – lần 2 84. NTNB Central Bay PK3: lần 1 78 – lần 2 <b>38/304</b>.",
+   "<b>Sự kiện là nguồn của mức +40,8%:</b> 05 đoàn tổ chức sự kiện tại bãi cỏ CV Hồ Thiên Nga và Quảng trường Ánh Sáng trong chuỗi 20/10 (Viettel Nghệ An, đoàn Lê Thị Dần, cư dân, đoàn Cao Huy Linh, Nha khoa Hoàng Dung), tất cả hoàn thành an toàn; ngày 18/10 đạt <b>2.725 lượt — cao nhất tuần</b>.",
+   "<b>Kỹ thuật, có định danh:</b> xử lý thấm ngấm 05 căn có mã (QT-56, CV-59, TG9-29, HV-73, QT3-15), lũy kế <b>đang xử lý 20/58 căn</b> (W41: 16/57); bảo hành lan can 02 căn (TG10-03, QT-32); trụ cấp nước PCCC <b>44/44 hoạt động</b>; nghiệm thu hệ thống thoát nước thải khu Biệt thự Đảo.",
+   "<b>Năng lượng tăng đồng loạt, có giải thích:</b> công viên <b>12.851 kWh (+1.507)</b> — báo cáo nêu rõ do nhiều hoạt động sự kiện; The Garden <b>11.105 kWh (+571)</b>, nêu lý do chuyển giờ bật tắt mùa đông; The Campus 1.657 kWh (+57); CPR 27.862 kWh (+983, ĐHKK 7.137) + 863 m³ nước. <i>Các Δ này là so với tuần 42 theo chính báo cáo, không phải so với W41 đã công bố.</i>",
+   "<b>An ninh &amp; cư dân:</b> quân số <b>128/218 vị trí (58,7%)</b> — ±0 so W41, vẫn thiếu 90 vị trí; camera Block 1 <b>125/125</b> (W41: 118/118), CT01 <b>442/443</b> (+1); kiểm soát thi công 96 căn hoàn thiện, 68 nhà thầu, 296 công nhân; app cư dân thấp tầng <b>705 căn (+15)</b>; thỏa thuận nước cao tầng 242/620, thấp tầng 121 căn; đào tạo an ninh 09 buổi (20/10–22/10)."
+  ],
+  "ela": [
+   "<b>✓ Bàn giao tăng tốc thật, cả hai phân khu:</b> căn BQL đã nhận <b>PK1 70 → 90 (+20 · +28,6%)</b> và <b>PK3 40 → 53 (+13 · +32,5%)</b>, tổng <b>110 → 143 (+33 · +30,0%)</b> — nối tiếp mức +30 của W41, tức hai kỳ liên tiếp phá nút thắt.",
+   "<b>✓ Khâu khách nhận nhà chạy mạnh nhất từ trước tới nay:</b> thư mời PK1 57 → <b>96 căn (+39)</b>, đã nhận nhà 11 → <b>32 căn (+21 · +190,9%)</b>; tỷ lệ nhận trên thư mời tăng <b>19,3% → 33,3%</b>. Đây là lần đầu cả hai vế (mời và nhận) cùng chạy.",
+   "<b>PK3 đẩy sang bước kế tiếp:</b> đang chuyển bước HK, AN <b>46 → 63 căn (+17 · +37,0%)</b>; nghiệm thu lần 1 và lần 2 giữ đủ <b>68/68</b>; lịch QLXD giữ <b>68/121 (56,2%)</b>.",
+   "<b>⚠ PK1 — số liệu tự mâu thuẫn ở mức không thể bỏ qua:</b> trang 19 ghi “theo lịch nghiệm thu từ Ban QLXD: <b>238/198 căn</b>” và “đã nghiệm thu lần 1: <b>238/198 căn</b>” — tử số lớn hơn mẫu số, tức <b>120,2%</b>. Trang 23 cùng bản ghi <b>238/299</b> (79,6%). Nghiệm thu lần 2 giữ <b>90/98</b> (±0), đang chuyển bước HK, AN 90 căn, đã nhận 90 căn.",
+   "<b>⚠ Khảo sát tiến độ xây dựng đứng im hoàn toàn (trang 24):</b> giá trị dẫn đầu <b>PK1 65 (±0), PK3 68 (±0), PK4 40 (±0)</b> — không một cột nào đổi sau hai tuần, trong khi W41 còn ghi nhận PK4 +9. PK4 vẫn chưa có lịch nghiệm thu.",
+   "<b>⚠ Lỗi lặp nguyên văn sang tuần thứ ba liên tiếp:</b> trang 20 (“Đào tạo các bộ phận liên quan về quy trình nghiệm thu bàn giao — BP An Ninh, MTĐT và CSCD; thống nhất phương án; bổ sung Q&amp;A”) và trang 21 (“Phối hợp cùng Ban Kinh Doanh &amp; PTT hoàn thành các thủ tục bàn giao; lên phương án lưu trữ trang thiết bị set up bàn giao”) giống W40 và W41 từng chữ. Yêu cầu sửa đã nêu ở W41, chưa được thực hiện.",
+   "<b>⚠ Ảnh minh họa không phải của tuần báo cáo:</b> ảnh trang 19 đóng dấu <b>4 Aug 2026</b>; ảnh trang 25 đóng dấu <b>17 Tháng 10 2026</b> (tuần 42); ảnh trang 3 là “Chương trình chào đón CBNV tháng 06 &amp; 07/2026”. Báo cáo ngày 24.10.2026.",
+   "<b>Nhân sự và nhà thầu đi ngược chiều nhau:</b> nhân sự BQL 166 → <b>161 (−5)</b> trong khi nhà thầu thi công 16 → <b>33 (+17 · +106,2%)</b>. Khối lượng nghiệm thu tăng mà nhân sự vận hành giảm — cần nêu rõ cách bố trí."
+  ]
+ },
+ "progress": {
+  "ecp": [
+   {
+    "label": "Thấp tầng",
+    "value": "1.219 / 1.923 · 63,4% (+17 căn) · ⚠ mẫu số 1.923 vẫn chưa được thuyết minh",
+    "pct": 63.4,
+    "warn": true
+   },
+   {
+    "label": "Tòa Central Park Residences",
+    "value": "618 / 620 · 99,7% · ±0 bảy tuần liền",
+    "pct": 99.7,
+    "warn": false
+   },
+   {
+    "label": "Còn phải bàn giao (thấp tầng)",
+    "value": "704 căn (W41: 721) · nhịp +17 căn / 2 tuần",
+    "pct": 36.6,
+    "warn": true
+   },
+   {
+    "label": "CT02 – nghiệm thu XD lần 1 (S1+S2)",
+    "value": "488 / 764 căn · 63,9% (S1 211/381 · S2 277/383)",
+    "pct": 63.9,
+    "warn": false
+   },
+   {
+    "label": "CT02 – MTĐT đã nhận căn",
+    "value": "49 / 764 căn · 6,4% (+25 trong tuần) · An ninh nhận chìa khóa 49 căn",
+    "pct": 6.4,
+    "warn": false
+   }
+  ],
+  "ela": [
+   {
+    "label": "PK1 – Mùa Xuân (BQL đã nhận 90, +20)",
+    "value": "⚠ trang 19 ghi NT lần 1 238/198 (120,2% — bất khả); trang 23 ghi 238/299 (79,6%); trang 3 ghi 31/198. Lần 2: 90/98 (±0) · khách đã nhận nhà 32/96 thư mời",
+    "pct": 79.6,
+    "warn": true
+   },
+   {
+    "label": "PK3 – Mùa Hạ (BQL đã nhận 53, +13)",
+    "value": "Lịch QLXD 68 / 121 · 56,2% (±0) · NT lần 1 68/68 · lần 2 68/68 (đủ) · đang chuyển bước HK, AN 63 căn (+17)",
+    "pct": 56.2,
+    "warn": false
+   },
+   {
+    "label": "PK4 – Mùa Thu (xây dựng)",
+    "value": "40% · ±0 sau hai tuần · vẫn chưa có lịch nghiệm thu",
+    "pct": 40.0,
+    "warn": true
+   },
+   {
+    "label": "Eco Bazaar (BQL→BKD)",
+    "value": "58 / 66 · 87,9% theo trang chi tiết · ⚠ trang tổng hợp ghi 54/66 (81,8%) — tuần thứ năm chưa chốt",
+    "pct": 87.9,
+    "warn": true
+   }
+  ]
+ },
+ "actions": {
+  "ecp": [
+   {
+    "tag": "FILL",
+    "title": "Lỗi lệch 8 căn ở số đăng ký thi công thấp tầng: tuần thứ ba, y nguyên",
+    "meta": "W43 ghi <b>649</b> căn đăng ký nhưng “đang thi công 124 + đã xong 517” = <b>641</b> — lệch đúng <b>8 căn</b>, bằng đúng mức lệch của W41 (637 vs 629). Các phép cộng khác trong cùng trang đều đã khớp tuần này (cao tầng 22 + 364 = 386 ✓; căn thi công về ở 116 + 19 = 135 ✓; đậu đỗ 44 + 22 = 66 ✓), nên đây là <b>một ô sai cố định được chép lại</b>, không phải lỗi ngẫu nhiên. Sửa ô nguồn, đừng sửa kết quả. <span class=\"own\">Owner: Ban Bàn giao + QLTC.</span> <span class=\"freeze\">Treo từ W41.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Khách khu vui chơi và hộ cư dân về ở trùng khít W41 đến từng đơn vị",
+    "meta": "Khu vui chơi <b>989 → 989</b> và hộ cư dân về ở <b>641 → 641</b> sau hai tuần, trong khi cùng trang bìa khách công viên nhảy +2.052 (+40,8%) và bên dưới bàn giao +17, fit-out +16, căn thi công về ở +7. Trang chi tiết lại ghi “<b>343 căn về ở – 1.258 cư dân</b>”, trong khi W41 phân rã 641 = 302 thấp tầng + 339 CPR — 343 &gt; 339 mà tổng không đổi. Cần xác nhận hai ô này được cập nhật hay chép lại từ W41. <span class=\"own\">Owner: Bộ phận Chăm sóc Cư dân.</span> <span class=\"freeze\">Yêu cầu đối chiếu hộ về ở treo từ W38.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Mẫu số bàn giao thấp tầng 1.923 vẫn chưa có một dòng thuyết minh",
+    "meta": "Mẫu số đã giữ ổn định ở 1.923 qua W41 và W43, nên không còn là lỗi nhập một lần — nhưng <b>vẫn chưa ai nói nó gồm phân khu nào và áp dụng từ kỳ nào</b>, và mẫu số 1.657 dùng suốt W37–W40 là sai hay đã hết hiệu lực. Chừng nào chưa có trả lời, <b>mọi so sánh % tiến độ thấp tầng bắc qua mốc W40–W41 đều không dùng được</b>. <span class=\"own\">Owner: Ban Bàn giao + QLTC.</span> <span class=\"freeze\">Treo từ W41.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "ECP không nộp báo cáo Tuần 42",
+    "meta": "ELA đã nộp (“ELA-2026-W42.pdf”, 137.228.674 B, 17/10) nhưng không có file ECP nào cho W42 trong thư mục inbox tại thời điểm chạy. Theo quy tắc chỉ công bố tuần cả hai bên đã nộp, <b>Tuần 42 bị bỏ hẳn khỏi trang</b> và mọi Δ tuần này là biến thiên hai tuần. Cần chốt: W42 sẽ được nộp bù hay bỏ luôn. <span class=\"own\">Owner: BLĐ + Ban QLVH Vinh.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "An ninh vẫn 128/218 vị trí (58,7%) — ±0 sau hai tuần",
+    "meta": "Thiếu <b>90 vị trí</b> không đổi, trong khi CT02 bắt đầu nhận bàn giao thật (An ninh đã giữ chìa khóa 49 căn, MTĐT nhận 49/764) và khu đô thị vừa qua tuần sự kiện đông nhất từ đầu kỳ theo dõi (7.077 lượt). Tuyển dụng đã nêu trong kế hoạch ba tuần liên tiếp mà quân số không nhích. Cần mốc tuyển cụ thể hoặc nêu rõ phạm vi bảo vệ bị thu hẹp. <span class=\"own\">Owner: BLĐ + Ban An ninh.</span> <span class=\"freeze\">Treo từ W41.</span>"
+   },
+   {
+    "tag": "DECIDE",
+    "title": "Lộ trình đóng 704 căn thấp tầng chưa bàn giao",
+    "meta": "Nhịp quan sát được: +5 (W41) rồi +17 trong hai tuần tới W43, tức <b>~8,5 căn/tuần</b>. Với 704 căn còn lại, nhịp này cần <b>~83 tuần (~1,6 năm)</b> — nhanh gấp đôi ước tính của W41 nhưng vẫn là nhịp tự nhiên, không phải cam kết. Cần mốc theo phân khu. <span class=\"own\">Owner: Ban Bàn giao + QLTC.</span> <span class=\"freeze\">Treo từ W37.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Tách nền khách thực khỏi hiệu ứng sự kiện",
+    "meta": "Khách công viên 5.025 → <b>7.077 (+40,8%)</b> trong tuần có chuỗi 20/10 với 05 đoàn sự kiện; riêng ngày 18/10 đã chiếm 2.725 lượt (38,5% cả tuần). Không có footfall theo ngày thì không tách được nền thực khỏi sự kiện, và cũng không giải thích nổi vì sao khu vui chơi đứng im ở 989. Yêu cầu tách theo ngày đã treo từ W37. <span class=\"own\">Owner: BQL + Marketing.</span> <span class=\"freeze\">Treo từ W37.</span>"
+   }
+  ],
+  "ela": [
+   {
+    "tag": "VERIFY",
+    "title": "PK1 công bố tỷ lệ 238/198 = 120,2% — phát hành lại trước khi dùng bất kỳ số PK1 nào",
+    "meta": "Trang 19 ghi “theo lịch nghiệm thu từ Ban QLXD: <b>238/198 căn</b>” và “đã nghiệm thu lần 1: <b>238/198 căn</b>”. Tử số lớn hơn mẫu số — <b>không thể tồn tại</b>. Cùng bản: trang 23 ghi <b>238/299</b>, trang 3 ghi <b>31/198</b>, trang 22 ghi <b>32/96</b>. Trang 10 ghi “Phân khu Mùa Xuân (<b>299 căn</b>)”. Suy ra 198 là mẫu số cũ chưa thay — <b>nhưng đó là suy luận của bản tổng hợp này, không phải xác nhận của ELA</b>. Cần ELA chốt một mẫu số cho PK1, nêu 198 và 96 là gì, và phát hành lại trang 19. <span class=\"own\">Owner: Ban QLVH Long An + Ban QLXD.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Căn đang hoạt động kinh doanh 57 → 53 (−4): bốn căn tắt đèn, không một dòng lý do",
+    "meta": "Chuỗi W38 36 → W39 57 → W40 57 → W41 57 → <b>W43 53</b>. Lần đầu chỉ số này đổi sau năm tuần, và nó đi xuống. Cần danh sách 04 căn dừng kinh doanh, lý do (hết hạn HĐ / trả mặt bằng / tạm dừng), và số HĐ còn hiệu lực. Đây là lúc cơ chế xử lý căn tối đèn phải có, không còn là việc phòng ngừa. <span class=\"own\">Owner: KDTM + BQL.</span> <span class=\"freeze\">Treo nhiều tuần.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Eco Bazaar 54/66 (trang tổng hợp) vs 58 (trang chi tiết) — tuần thứ năm",
+    "meta": "Trang 3 vẫn ghi “Khu Eco Bazaar: 54/66 căn”; trang 9 vẫn ghi “đã bàn giao BQL–BKD: 58 căn” cùng với “nghiệm thu BXD–BQL đã bàn giao 66 căn” trên tổng khu 115 căn. <b>Không đổi một con số nào suốt W39, W40, W41, W43.</b> Ba mẫu số trong một báo cáo, treo năm tuần, chưa ai đính chính. Chốt một định nghĩa và một con số. <span class=\"own\">Owner: Ban QLVH Long An.</span> <span class=\"freeze\">Treo từ W39.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Lệch 1 giữa trang tổng hợp và trang chi tiết lặp lại y như W41",
+    "meta": "Trang 3 ghi “Phân khu 1: <b>31</b>/198 căn”; trang 22 ghi “đã nhận nhà: <b>32</b>/96 căn”. W41 có đúng lỗi này (trang 3 ghi 12, trang 20 ghi 11). Lỗi được nêu ở W41, không sửa, và tái diễn với con số mới. Cần một nguồn số duy nhất cho trang tổng hợp. <span class=\"own\">Owner: Ban QLVH Long An.</span> <span class=\"freeze\">Treo từ W41.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Khảo sát tiến độ xây dựng đứng im cả ba phân khu sau hai tuần",
+    "meta": "Giá trị dẫn đầu PK1 <b>65 (±0)</b>, PK3 <b>68 (±0)</b>, PK4 <b>40 (±0)</b> — không cột nào đổi, trong khi cùng kỳ bàn giao tăng +33 căn. Hoặc công tác xây dựng thực sự đứng im (cần nói rõ), hoặc <b>biểu đồ được chép lại</b> — cùng loại với lỗi lặp trang 20–21. PK4 vẫn chưa có lịch nghiệm thu sau nhiều tuần. <span class=\"own\">Owner: Ban QLVH Long An + Ban QLXD.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Trang đào tạo và chuẩn bị bàn giao lặp nguyên văn sang tuần thứ ba",
+    "meta": "Trang 20 và 21 của W43 giống W40 và W41 từng chữ. Yêu cầu “phần mô tả phải là việc của chính tuần đó” đã nêu ở W41 và không được thực hiện. Kèm theo: ảnh trang 19 đóng dấu <b>4 Aug 2026</b>, ảnh trang 25 đóng dấu <b>17/10/2026</b> (tuần 42), ảnh trang 3 là chương trình <b>tháng 06 &amp; 07/2026</b> — trong báo cáo ngày 24.10.2026. <span class=\"own\">Owner: Ban QLVH Long An.</span> <span class=\"freeze\">Treo từ W41.</span>"
+   },
+   {
+    "tag": "VERIFY",
+    "title": "Nhân sự BQL −5 trong khi nhà thầu thi công +17",
+    "meta": "Nhân sự 166 → <b>161</b>, nhà thầu 16 → <b>33 (+106,2%)</b>, cùng tuần căn đã nhận +33 và chuyển bước PK3 +17. Cần nêu: 05 nhân sự giảm ở bộ phận nào, và mức +17 nhà thầu là đơn vị mới vào hay đổi cách đếm (W41 giảm −5 cũng chưa được giải thích). <span class=\"own\">Owner: BQLVH + Ban QLXD.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Bắt buộc 5 dòng KPI thương mại vào mẫu báo cáo",
+    "meta": "Doanh thu / phải thu phí dịch vụ, bảng aging công nợ, khai trương mới &amp; chấm dứt HĐ trong tuần, footfall theo ngày. Tuần này mức giảm −4 căn kinh doanh cho thấy thiếu đúng những dòng đó thì không ai thấy xu hướng trước khi nó thành số. <span class=\"own\">Owner: BLĐ + KDTM.</span> <span class=\"freeze\">Treo từ review W21.</span>"
+   },
+   {
+    "tag": "FILL",
+    "title": "Xuất PDF có lớp text và rút gọn dung lượng",
+    "meta": "Bản W43 nặng <b>139.983.943 B / 58 trang</b> — nặng hơn W41 (129.348.043 B / 55 trang) và vẫn là slide xuất ảnh, phải render từng trang mới đọc được. Chỉ 30 trang đầu được render nên <b>trang 31–58 không được đọc tuần này</b>. Đã treo sáu tuần. <span class=\"own\">Owner: Ban QLVH Long An.</span> <span class=\"freeze\">Treo từ W38.</span>"
+   }
+  ]
+ },
+ "ksnb": [
+  "<b>Tuần 42 không tồn tại trên trang này, và đó là một dữ kiện quản trị:</b> ELA nộp W42 đúng hạn (17/10), ECP không nộp. Theo quy tắc chỉ công bố tuần cả hai bên đã nộp, trang nhảy thẳng W41 → W43. Hệ quả kỹ thuật: <b>mọi Δ trong bản này là biến thiên hai tuần</b>, không so sánh được trực tiếp với các Δ một tuần của W37–W41. Hệ quả quản trị: một bên nộp đều, một bên hụt, và trang mất khả năng hiển thị tuần đó dù dữ liệu của ELA đã nằm sẵn trong inbox.",
+  "<b>ELA — lỗi nặng nhất từ W37 đến nay là một tỷ lệ không thể tồn tại:</b> trang 19 công bố PK1 “đã nghiệm thu lần 1: 238/198 căn” = <b>120,2%</b>. Khác với mâu thuẫn Eco Bazaar (hai trang ghi hai số, cả hai đều khả dĩ), đây là <b>một ô tự phủ định trong chính nó</b> — không cần nguồn thứ hai để biết là sai. Đối chiếu bốn trang (3: 31/198 · 19: 238/198 · 22: 32/96 · 23: 238/299) với slide phạm vi trang 10 (“Mùa Xuân 299 căn”) cho thấy tử số đã được cập nhật lên 238 còn mẫu số 198 thì chưa thay. <b>Đó là suy luận, không phải xác nhận của ELA</b>, nên không chỉ số PK1 nào trong bản này được dùng cho kết luận % cho tới khi ELA phát hành lại.",
+  "<b>ELA — mẫu số là lỗi hệ thống của cả hai dự án, không phải sự cố riêng lẻ:</b> ECP đổi 1.657 → 1.923 ở W41 không thuyết minh; ELA tuần này có PK1 với 198, 96 và 299 cùng lúc. Hai Ban khác nhau, cùng một kiểu hỏng: <b>tử số được cập nhật hàng tuần, mẫu số thì sống theo bản mẫu</b>. Cần một quy tắc chung cho cả hai Ban: mỗi chỉ số dạng x/y phải ghi rõ y là gì và đổi khi nào, và trang tổng hợp phải lấy số từ trang chi tiết chứ không nhập tay lại.",
+  "<b>ECP — chất lượng số học cải thiện thật nhưng không triệt để:</b> ba trong bốn phép cộng của W41 nay khớp (đậu đỗ 44 + 22 = 66 ✓, cao tầng 22 + 364 = 386 ✓, MTĐT 24 + 25 = 49 ✓), nhưng ô lệch 8 căn ở đăng ký thi công thấp tầng thì <b>lặp lại chính xác mức lệch cũ</b> (W41: 637 vs 629; W43: 649 vs 641). Một lỗi được sửa quanh nó mà bản thân nó không đổi là dấu hiệu ô đó được chép, không được tính.",
+  "<b>ECP — hai ô bìa đứng im là rủi ro báo cáo, không phải tin tốt:</b> khu vui chơi 989 và hộ cư dân về ở 641 trùng khít W41 trong khi mọi chỉ số vận hành bên dưới đều chạy, và khách công viên trên cùng trang bìa lại nhảy +40,8%. Tức trang bìa <i>được</i> cập nhật, chỉ hai ô này thì không. Thêm vào đó trang chi tiết ghi 343 căn về ở trong khi W41 phân rã 641 = 302 + 339. <b>Chưa đủ căn cứ để kết luận là chép lại, nhưng đủ để không dùng hai số này làm cơ sở quyết định tuần này.</b>",
+  "<b>ELA — phần chạy được thì chạy rất mạnh:</b> căn BQL đã nhận +33 (+30,0%) sau khi đã +30 ở W41; khách nhận nhà PK1 11 → 32 (+190,9%) với tỷ lệ nhận trên thư mời 19,3% → 33,3%; PK3 chuyển bước +17. Hai kỳ liên tiếp nút thắt bàn giao được phá, và lần này cả vế mời lẫn vế nhận cùng chạy — khác với W40 (mời nhiều, nhận ít) và W41 (mời dừng, nhận chạy).",
+  "<b>ELA — nhưng chỉ số thương mại vừa đổi chiều lần đầu sau năm tuần, và đổi xuống:</b> căn đang hoạt động kinh doanh 57 → 53 (−4 · −7,0%), trong khi Eco Bazaar kẹt nguyên ở 58/66 và 54/66. Bàn giao chạy nhanh mà mặt bằng kinh doanh tắt bớt đèn là hai chiều ngược nhau; nếu không có 5 dòng KPI thương mại đã yêu cầu từ review W21 thì không ai thấy được xu hướng này trước khi nó thành con số.",
+  "<b>Đối chiếu chéo hai dự án — lỗi lặp nội dung đã đổi chủ và chưa ai dứt hẳn:</b> ECP thoát lỗi này ở W41 và giữ được ở W43 (mục 06 có số theo khu, mã căn định danh, bảng CT02 hai tuần liền kề). ELA thì lặp nguyên văn trang 20–21 sang tuần thứ ba, biểu đồ khảo sát đứng im cả ba phân khu, và dùng ảnh từ tháng 8, tháng 6–7 lẫn tuần 42 trong báo cáo ngày 24/10. Cùng một chuẩn phải áp cho cả hai Ban: <b>phần mô tả và hình ảnh phải là việc của chính tuần báo cáo.</b>"
+ ],
+ "legend": [
+  "✓ <b>Đã kiểm chứng</b> — 6 chỉ số ECP đọc từ lớp text của “ECP-2026-W43.pdf” phiên này. Các con số trùng khớp ở hai nơi độc lập trong cùng báo cáo: khách công viên <b>7.077</b> (trang Thông tin chung và trang An ninh), khu vui chơi <b>989</b> (cùng hai trang), bàn giao thấp tầng <b>1.219/1.923</b> (Thông tin chung và trang Bàn giao &amp; QLTC), CPR <b>618/620</b> (cùng hai trang), căn thi công về ở <b>135</b> = 116 thấp tầng + 19 cao tầng. Mọi Δ tính lại bằng mã so với Tuần 41 đã công bố.",
+  "✓ <b>Đã kiểm chứng bằng mã</b> — các phép cộng nội bộ của ECP W43 được tính lại: 124 + 517 = <b>641 ≠ 649</b> ghi trong báo cáo (lệch 8); 22 + 364 = <b>386 ✓</b>; 649 + 386 = <b>1.035 ✓</b>; 116 + 19 = <b>135 ✓</b>; 44 + 22 = <b>66 ✓</b>; 24 + 25 = <b>49 ✓</b>.",
+  "~ <b>Đọc từ ảnh trang</b> — toàn bộ số liệu ELA đọc từ ảnh trang báo cáo W43 (slide xuất ảnh, không có lớp text): trang <b>1</b> (bìa, ngày 24.10.2026), <b>2</b> (mục lục, “BÁO CÁO TUẦN 43”), <b>3</b> (thông tin chung), <b>9</b> (Eco Bazaar), <b>10</b> (phạm vi Phân khu Mùa Xuân), <b>18</b> (giới thiệu bộ phận QLTC &amp; bàn giao), <b>19</b> (công tác nghiệm thu bàn giao), <b>20</b> (đào tạo CBNV), <b>21</b> (chuẩn bị bàn giao), <b>22</b> (công tác bàn giao nhà), <b>23</b> (kế hoạch nghiệm thu cùng Ban QLXD), <b>24</b> (khảo sát và đánh giá tiến độ xây dựng), <b>25</b> (môi trường đô thị). Mỗi ảnh đã đối chiếu đúng dung lượng và đúng tên file Drive trước khi đọc; thư mục render mang đúng số byte của PDF nguồn (<b>139.983.943</b>) và tệp <i>done</i> ghi pages_rendered=30, source_pages=58.",
+  "~ <b>PK4 = 40%</b> đọc từ biểu đồ cột trang 24; các cột <b>không có nhãn chuỗi</b>, chỉ lấy giá trị dẫn đầu (PK1 65, PK3 68, PK4 40) đúng quy ước đã dùng cho W39, W40 và W41 — nên kết luận “±0” là so sánh cùng quy ước, không phải cùng định nghĩa đã được ELA xác nhận.",
+  "⚠ <b>Cần đối chiếu</b> — ELA: PK1 trang 19 ghi <b>238/198 (120,2% — bất khả)</b> trong khi trang 23 ghi 238/299, trang 3 ghi 31/198 và trang 22 ghi 32/96; Eco Bazaar 54/66 vs 58 vs 66 (tuần thứ năm); căn kinh doanh 57 → 53 không lý do; biểu đồ khảo sát ±0 cả ba phân khu. ECP: khu vui chơi và hộ về ở trùng khít W41 (989, 641) trong khi 343 căn về ở ở trang chi tiết không khớp phân rã cũ; 649 ≠ 641; mẫu số thấp tầng 1.923 vẫn chưa thuyết minh.",
+  "⚠ <b>Δ là biến thiên hai tuần</b> — Tuần 42 không được công bố vì ECP không nộp (ELA có nộp: “ELA-2026-W42.pdf”, 137.228.674 B, 17/10). Mọi Δ trong bản này so với <b>Tuần 41 đã công bố</b>, không phải tuần liền kề. Riêng các Δ năng lượng của ECP là so với tuần 42 <i>theo chính báo cáo ECP</i> và đã được ghi chú riêng.",
+  "○ <b>Chưa đọc</b> — deck ELA W43 dài <b>58 trang</b>, chỉ 30 trang đầu được render thành ảnh, nên các trang <b>31–58 không được đọc trong tuần này</b>. Toàn bộ chỉ số bắt buộc của ELA đều nằm trong 30 trang đầu nên không có chỉ số nào phải suy đoán hay giữ lại từ tuần trước."
+ ],
+ "sourceNote": "ECP Tuần 43 — “ECP-2026-W43.pdf” (5.711.786 B · báo cáo ngày 23/10/2026, Ban QLVH Eco Central Park), đọc được lớp text; bìa ghi đúng “tuần 43 năm 2026”. ELA Tuần 43 — “ELA-2026-W43.pdf” (139.983.943 B · 58 trang · báo cáo ngày 24.10.2026, Ban QLVH Eco Retreat): không có lớp text; đọc từ ảnh trang 1, 2, 3, 9, 10, 18, 19, 20, 21, 22, 23, 24, 25 (render 30/58 trang, 26/10/2026 09:48 UTC, số byte thư mục render khớp PDF nguồn). Δ so với <b>Tuần 41 đã công bố</b> — không phải tuần liền kề: <b>Tuần 42 bị bỏ qua vì ECP không nộp báo cáo W42</b>, trong khi ELA đã nộp (“ELA-2026-W42.pdf”, 137.228.674 B, 17/10). Nguồn: thư mục hợp nhất <i>00 Inbox/Weekly Reports ECP-ELA</i> (44 mục theo danh sách Drive API 01/11 14:04 UTC: 42 PDF đúng chuẩn tên, không có tên Zalo, không có bản trùng, không có file nào bị bỏ qua; 2 thư mục phụ trợ). Lưu ý so sánh: ECP không có tuần W34–W35 và W42; ELA không có tuần W35. Tổng hợp cho KSNB &amp; QTRR."
+}
